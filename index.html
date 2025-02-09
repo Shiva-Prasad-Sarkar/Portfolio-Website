@@ -10,9 +10,15 @@
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #141e30, #243b55);
+            background: linear-gradient(135deg, #141e30, #243b55, #1a2a40);
             color: #ffffff;
             text-align: center;
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .logo {
@@ -24,31 +30,31 @@
             font-size: 1.5em;
             font-weight: bold;
             background: rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
         }
 
         h1 {
             margin-top: 10px;
-        }
-
-        img {
-            max-width: 100%;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.3);
         }
 
         .skills img, .connect img {
             margin: 5px;
+            transition: transform 0.3s ease;
         }
 
-        .skills, .problem-solving, .stats, .trophies, .quotes, .connect, .cv, .blog {
-            margin: 30px 0;
+        .skills img:hover, .connect img:hover {
+            transform: scale(1.1);
         }
 
         .stats img, .trophies img {
             width: 90%;
-        }
-
-        a {
-            text-decoration: none;
-            color: #fff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
         }
 
         .connect a {
@@ -60,13 +66,22 @@
             transform: scale(1.1);
         }
 
-        .connect img {
-            height: 40px;
-        }
-
         .cv a:hover {
             background: #ffcc00;
             color: #121212;
+        }
+
+        .blog a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #ff5722;
+            color: white;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .blog a:hover {
+            background: #e64a19;
         }
     </style>
 </head>
@@ -109,26 +124,6 @@
         <a href="https://linkedin.com/in/shiva-prasad-sarkar-4700ab227/">
             <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white">
         </a>
-        
-    </div>
-
-    <div class="blog">
-        <h3>📝 Check Out My Blog :</h3>
-        <a href="https://vigilantassociation.blogspot.com/" target="_blank">
-            <img src="https://img.shields.io/badge/Blogspot-%23FF5722.svg?style=for-the-badge&logo=blogger&logoColor=white">
-        </a>
-    </div>
-
-    <div class="cv">
-        <h3>📄 My CV :</h3>
-        <a href="https://drive.google.com/file/d/1OlLHPIBoeyEa3oHDMlxzQrspPnI1qkaH/view?usp=sharing" target="_blank">
-            <img src="https://img.shields.io/badge/CV-Download-brightgreen?style=for-the-badge&logo=google-drive&logoColor=white">
-        </a>
     </div>
 </body>
-
 </html>
-
-<p align="center">
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Rubik+Maps&size=27&duration=3000&pause=1000&center=true&random=false&width=435&height=60&lines=THANKS+FOR+THE+VISIT;DO+GOOD,;BE+GOOD,;PLANT+MORE+TREES!" alt="Typing SVG" /></a>
-</p>
