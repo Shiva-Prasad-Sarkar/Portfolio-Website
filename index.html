@@ -1,134 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shiva Prasad Sarkar's Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #141e30, #243b55);
-            color: #ffffff;
-            text-align: center;
-        }
-
-        .logo {
-            margin-top: 20px;
-            border: 3px solid #fff;
-            border-radius: 50%;
-            display: inline-block;
-            padding: 15px;
-            font-size: 1.5em;
-            font-weight: bold;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        h1 {
-            margin-top: 10px;
-        }
-
-        img {
-            max-width: 100%;
-        }
-
-        .skills img, .connect img {
-            margin: 5px;
-        }
-
-        .skills, .problem-solving, .stats, .trophies, .quotes, .connect, .cv, .blog {
-            margin: 30px 0;
-        }
-
-        .stats img, .trophies img {
-            width: 90%;
-        }
-
-        a {
-            text-decoration: none;
-            color: #fff;
-        }
-
-        .connect a {
-            margin: 0 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .connect a:hover {
-            transform: scale(1.1);
-        }
-
-        .connect img {
-            height: 40px;
-        }
-
-        .cv a:hover {
-            background: #ffcc00;
-            color: #121212;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shiva Prasad Sarkar's Portfolio</title>
+  <!-- Font Awesome for extra icons if needed -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    /* Centered container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+    /* Header & Navigation */
+    header {
+      background-color: #ffffff;
+      padding: 15px 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #0056b3;
+    }
+    /* Hero Section */
+    #home {
+      padding: 60px 0 40px;
+    }
+    .logo h2 {
+      display: inline-block;
+      padding: 15px;
+      border: 3px solid #007bff;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      font-size: 1.5em;
+    }
+    #home h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    #home h2 {
+      font-size: 1.2em;
+      color: #555;
+      margin-bottom: 40px;
+    }
+    /* Skills Section */
+    .skills {
+      padding: 40px 0;
+    }
+    .skills h3 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .skills img {
+      margin: 5px;
+      vertical-align: middle;
+    }
+    /* Problem Solving Section */
+    .problem-solving {
+      padding: 40px 0;
+    }
+    .problem-solving h3 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .problem-solving p {
+      margin: 15px 0;
+      text-align: center;
+    }
+    .problem-solving img {
+      margin: 5px;
+      vertical-align: middle;
+    }
+    /* Projects Section */
+    .projects {
+      padding: 40px 0;
+    }
+    .projects h3 {
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+    .project-card {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+      max-width: 300px;
+      transition: transform 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+    .project-card img {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    .project-card h4 {
+      font-size: 1.3em;
+      margin-bottom: 10px;
+    }
+    .project-card p {
+      font-size: 0.95em;
+      margin-bottom: 15px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    /* Connect Section */
+    .connect {
+      padding: 40px 0;
+    }
+    .connect h3 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .connect a {
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    .connect img {
+      vertical-align: middle;
+      margin: 5px;
+    }
+    /* CV Section */
+    .cv {
+      padding: 40px 0;
+    }
+    .cv h3 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .cv .btn {
+      padding: 12px 24px;
+      font-size: 1em;
+    }
+    /* Footer */
+    footer {
+      padding: 20px 0;
+      font-size: 0.8em;
+      color: #888;
+      margin-top: 40px;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <div class="logo">SPS</div>
-
-    <h1 align="center">
-        <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=5000&lines=Hello!+👋;+I+am+Shiva+Prasad+Sarkar!;Undergrad+CSE+Student;+Brac+University,+Bangladesh;" />
-    </h1>
-
-    <div class="skills">
-        <h3>💻 My Skills:</h3>
-        <img src="https://img.shields.io/badge/latex-%23008080.svg?style=for-the-badge&logo=latex&logoColor=white">
-        <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white">
-        <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54">
-        <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white">
-        <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white">
-        <img src="https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white">
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#skills">Skills</a>
+        <a href="#problem-solving">Problem Solving</a>
+        <a href="#projects">Projects</a>
+        <a href="#connect">Connect</a>
+        <a href="#cv">CV</a>
+      </nav>
     </div>
-
-    <div class="problem-solving">
-        <h3>✨ Problem Solving :</h3>
-        <a href="https://leetcode.com/user9575st/">
-            <img height="220" src="https://leetcard.jacoblin.cool/user9575st?theme=dark&font=ABeeZee&ext=heatmap">
-        </a>
-        <a href="https://codeforces.com/profile/SpS__79">
-            <img height="220" src="https://codeforces-readme-stats.vercel.app/api/card?username=SpS__79&theme=dark&force_username=true">
-        </a>
+  </header>
+  
+  <!-- Hero Section -->
+  <section id="home">
+    <div class="container">
+      <div class="logo">
+        <h2>SPS</h2>
+      </div>
+      <h1>
+        <img src="https://i.gifer.com/Wczc.gif" height="55" width="55" alt="Animated Icon">
+        I am Shiva
+      </h1>
+      <h2>A CSE Undergrad Student from Brac University, Bangladesh</h2>
     </div>
-
-    <div class="connect">
-        <h3>🌐 Connect With Me :</h3>
-        <a href="mailto:shivaprasadsarkarsps@gmail.com">
-            <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white">
-        </a>
-        <a href="https://github.com/Shiva-Prasad-Sarkar" target="_blank">
-            <img src="https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white">
-        </a>
-        <a href="https://linkedin.com/in/shiva-prasad-sarkar-4700ab227/">
-            <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white">
-        </a>
-        
+  </section>
+  
+  <!-- Skills Section -->
+  <section class="skills" id="skills">
+    <div class="container">
+      <h3>💻 My Skills:</h3>
+      <img src="https://img.shields.io/badge/latex-%23008080.svg?style=for-the-badge&logo=latex&logoColor=white" alt="LaTeX">
+      <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java">
+      <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+      <img src="https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white" alt="C">
+      <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="Python">
+      <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+      <img src="https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy">
+      <img src="https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black" alt="Matplotlib">
+      <img src="https://img.shields.io/badge/SciPy-%230C55A5.svg?style=for-the-badge&logo=scipy&logoColor=white" alt="SciPy">
+      <img src="https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white" alt="Canva">
+      <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white" alt="Git">
     </div>
-
-    <div class="blog">
-        <h3>📝 Check Out My Blog :</h3>
-        <a href="https://vigilantassociation.blogspot.com/" target="_blank">
-            <img src="https://img.shields.io/badge/Blogspot-%23FF5722.svg?style=for-the-badge&logo=blogger&logoColor=white">
+  </section>
+  
+  <!-- Problem Solving Section -->
+  <section class="problem-solving" id="problem-solving">
+    <div class="container">
+      <h3>✨ Problem Solving:</h3>
+      <p>
+        <a href="https://www.hackerrank.com/profile/shiva_prasad_sa1" target="_blank">
+          <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/hackerrank.svg" height="30" width="30" alt="HackerRank">
         </a>
-    </div>
-
-    <div class="cv">
-        <h3>📄 My CV :</h3>
-        <a href="https://drive.google.com/file/d/1OlLHPIBoeyEa3oHDMlxzQrspPnI1qkaH/view?usp=sharing" target="_blank">
-            <img src="https://img.shields.io/badge/CV-Download-brightgreen?style=for-the-badge&logo=google-drive&logoColor=white">
+        <a href="https://www.leetcode.com/u/user9575st/" target="_blank">
+          <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/leet-code.svg" height="30" width="30" alt="LeetCode">
         </a>
+        <a href="https://codeforces.com/profile/SpS__79" target="_blank">
+          <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/codeforces.svg" height="30" width="30" alt="Codeforces">
+        </a>
+      </p>
+      <p>
+        <a href="https://leetcode.com/user9575st/" target="_blank">
+          <img height="220" src="https://leetcard.jacoblin.cool/user9575st?theme=dark&font=ABeeZee&ext=heatmap" alt="LeetCode Stats">
+        </a>
+        <a href="https://codeforces.com/profile/SpS__79" target="_blank">
+          <img height="220" src="https://codeforces-readme-stats.vercel.app/api/card?username=SpS__79&theme=dark&force_username=true" alt="Codeforces Stats">
+        </a>
+      </p>
     </div>
+  </section>
+  
+  <!-- Projects Section -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <h3>🚀 My Projects:</h3>
+      <div class="projects-grid">
+        <!-- Project Card 1 -->
+        <div class="project-card">
+          <img src="images/project1.png" alt="3D Space Shooter Game" />
+          <h4>3D Space Shooter Game with OpenGL</h4>
+          <p>
+            A Python and PyOpenGL‑based 3D space combat game featuring a player ship, enemies, bullets, a health system, and multiple camera perspectives.
+          </p>
+          <a href="https://github.com/Shiva-Prasad-Sarkar/Space_Shooter_OpenGL" class="btn" target="_blank">View Project</a>
+        </div>
+        <!-- Project Card 2 -->
+        <div class="project-card">
+          <img src="images/project2.png" alt="EcoGrow Nursery Management System" />
+          <h4>EcoGrow Nursery Management System</h4>
+          <p>
+            A PHP and MySQL‑based system to manage nursery orders, events, and admin functionalities.
+          </p>
+          <a href="https://github.com/Shiva-Prasad-Sarkar/CSE370-Project" class="btn" target="_blank">View Project</a>
+        </div>
+        <!-- Project Card 3 -->
+        <div class="project-card">
+          <img src="images/project3.png" alt="Charging Monitor" />
+          <h4>Charging Monitor</h4>
+          <p>
+            A Python application that monitors battery charging status and notifies when the battery is full.
+          </p>
+          <a href="https://github.com/Shiva-Prasad-Sarkar/Charging-Monitor" class="btn" target="_blank">View Project</a>
+        </div>
+        <!-- Project Card 4 -->
+        <div class="project-card">
+          <img src="images/project4.png" alt="YouTube Playlist Length Calculator" />
+          <h4>YouTube Playlist Length Calculator</h4>
+          <p>
+            A Python script that calculates the total length of a YouTube playlist using the YouTube Data API.
+          </p>
+          <a href="https://github.com/Shiva-Prasad-Sarkar/YouTube-Playlist-Length" class="btn" target="_blank">View Project</a>
+        </div>
+        <!-- Project Card 5 -->
+        <div class="project-card">
+          <img src="images/project5.png" alt="Comparator - DLD Project" />
+          <h4>Comparator - DLD Project</h4>
+          <p>
+            Designed a digital comparator circuit using logic design tools and concepts from digital electronics coursework.
+          </p>
+          <a href="https://github.com/Shiva-Prasad-Sarkar/CSE260-Projects" class="btn" target="_blank">View Project</a>
+        </div>
+        <!-- Project Card 6 -->
+        <div class="project-card">
+          <img src="images/project6.png" alt="Damped Harmonic Oscillator" />
+          <h4>Damped Harmonic Oscillator</h4>
+          <p>
+            Simulated and visualized damped harmonic motion using Python libraries (NumPy, SciPy, Matplotlib).
+          </p>
+          <a href="https://github.com/Shiva-Prasad-Sarkar/MATH-LAB-PROJECT" class="btn" target="_blank">View Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Connect Section -->
+  <section class="connect" id="connect">
+    <div class="container">
+      <h3>🌐 Connect With Me:</h3>
+      <a href="mailto:shivaprasadsarkarsps@gmail.com">
+        <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail">
+      </a>
+      <a href="https://facebook.com/shivaprasadsarkar.sps/" target="_blank">
+        <img src="https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white" alt="Facebook">
+      </a>
+      <a href="https://linkedin.com/in/shiva-prasad-sarkar-4700ab227/" target="_blank">
+        <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white" alt="LinkedIn">
+      </a>
+    </div>
+  </section>
+  
+  <!-- CV Download Section -->
+  <section class="cv" id="cv">
+    <div class="container">
+      <h3>📄 Download My CV:</h3>
+      <a href="https://drive.google.com/file/d/1OlLHPIBoeyEa3oHDMlxzQrspPnI1qkaH/view?usp=sharing" target="_blank" class="btn">
+        Download CV
+      </a>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Shiva Prasad Sarkar. All Rights Reserved.</p>
+    </div>
+  </footer>
 </body>
-
 </html>
-
-<p align="center">
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Rubik+Maps&size=27&duration=3000&pause=1000&center=true&random=false&width=435&height=60&lines=THANKS+FOR+THE+VISIT;DO+GOOD,;BE+GOOD,;PLANT+MORE+TREES!" alt="Typing SVG" /></a>
-</p>
