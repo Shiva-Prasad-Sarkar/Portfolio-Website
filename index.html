@@ -2,242 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shiva Prasad Sarkar's Portfolio</title>
-  <link rel="icon" href="https://cdn.dribbble.com/userupload/15911053/file/original-e9fc7a43eb0aac0995b88b56062c1e18.jpg?resize=1504x1128&vertical=center" type="image/png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    /* Reset */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-
-      /* Section backgrounds with shading */
-      #home {
-        background: linear-gradient(135deg, #e3f2fd 50%, #bbdefb 100%);
-      }
-      .skills {
-        background: linear-gradient(135deg, #f1f8e9 50%, #dcedc8 100%);
-      }
-      .problem-solving {
-        background: linear-gradient(135deg, #fff3e0 50%, #ffe0b2 100%);
-      }
-      .projects {
-        background: linear-gradient(135deg, #fce4ec 30%, #f8bbd0 70%);
-      }
-      .connect {
-        background: linear-gradient(135deg, #ede7f6 50%, #d1c4e9 100%);
-      }
-      .cv {
-        background: linear-gradient(135deg, #e0f7fa 50%, #b2ebf2 100%);
-      }
-      /* Nav bar background with shading */
-      header {
-        background: linear-gradient(90deg, #ffffff 50%, #e3f2fd 100%);
-      }
-    }
-    /* Global Styles */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-      line-height: 1.6;
-    }
-    /* Centered container */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
-    }
-    /* Header & Navigation */
-    header {
-      background-color: #ffffff;
-      padding: 15px 0;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    nav a {
-      text-decoration: none;
-      color: #007bff;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #0056b3;
-    }
-    /* Hero Section */
-    #home {
-      padding: 60px 0 40px;
-    }
-    .logo h2 {
-      display: inline-block;
-      padding: 15px;
-      border: 3px solid #007bff;
-      border-radius: 50%;
-      margin-bottom: 20px;
-      font-size: 1.5em;
-    }
-    #home h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-    }
-    #home h2 {
-      font-size: 1.2em;
-      color: #555;
-      margin-bottom: 40px;
-    }
-    /* Skills Section */
-    .skills {
-      padding: 40px 0;
-    }
-    .skills h3 {
-      font-size: 2em;
-      margin-bottom: 20px;
-    }
-    .skills img {
-      margin: 5px;
-      vertical-align: middle;
-    }
-    /* Problem Solving Section */
-    .problem-solving {
-      padding: 40px 0;
-    }
-    .problem-solving h3 {
-      font-size: 2em;
-      margin-bottom: 20px;
-    }
-    .problem-solving p {
-      margin: 15px 0;
-      text-align: center;
-    }
-    .problem-solving img {
-      margin: 5px;
-      vertical-align: middle;
-    }
-    /* Projects Section */
-    .projects {
-      padding: 40px 0;
-    }
-    .projects h3 {
-      font-size: 2em;
-      margin-bottom: 30px;
-    }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      justify-items: center;
-    }
-    .project-card {
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      padding: 20px;
-      text-align: center;
-      max-width: 300px;
-      transition: transform 0.3s;
-    }
-    .project-card:hover {
-      transform: translateY(-5px);
-    }
-    .project-card img {
-      width: 100%;
-      border-radius: 5px;
-      margin-bottom: 15px;
-    }
-    .project-card h4 {
-      font-size: 1.3em;
-      margin-bottom: 10px;
-    }
-    .project-card p {
-      font-size: 0.95em;
-      margin-bottom: 15px;
-    }
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-    .btn:hover {
-      background-color: #0056b3;
-    }
-    /* Connect Section */
-    .connect {
-      padding: 40px 0;
-    }
-    .connect h3 {
-      font-size: 2em;
-      margin-bottom: 20px;
-    }
-    .connect a {
-      margin: 0 10px;
-      text-decoration: none;
-    }
-    .connect img {
-      vertical-align: middle;
-      margin: 5px;
-    }
-    /* CV Section */
-    .cv {
-      padding: 40px 0;
-    }
-    .cv h3 {
-      font-size: 2em;
-      margin-bottom: 20px;
-    }
-    .cv .btn {
-      padding: 12px 24px;
-      font-size: 1em;
-    }
-    /* Footer */
-    footer {
-      padding: 20px 0;
-      font-size: 0.8em;
-      color: #888;
-      margin-top: 40px;
-    }
-    /* Responsive */
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shiva Prasad Sarkar | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header -->
+
+  <!-- Header with Hamburger Menu -->
   <header>
     <div class="container">
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#skills">Skills</a>
-        <a href="#problem-solving">Problem Solving</a>
-        <a href="#projects">Projects</a>
-        <a href="#connect">Connect</a>
-        <a href="#cv">CV</a>
+      <nav class="navbar">
+        <div class="logo">Shiva Prasad Sarkar</div>
+        <div class="hamburger" id="hamburger">&#9776;</div>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#hello">Home</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#problem-solving">Problem Solving</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#mygames">Games</a></li>
+          <li><a href="#certificates">Certificates</a></li>
+          <li><a href="#cv">CV</a></li>
+          <li><a href="#connect">Connect</a></li>
+        </ul>
       </nav>
     </div>
   </header>
-  
-  <!-- Hero Section -->
-  <section id="home">
+
+  <!-- Hello / Intro Section -->
+  <section id="hello" class="hello-section">
     <div class="container">
-      <div class="logo">
-        <h2>SPS</h2>
-      </div>
       <h1>
         <img src="https://i.gifer.com/Wczc.gif" height="55" width="55" alt="Animated Icon">
         I am Shiva
@@ -245,7 +38,7 @@
       <h2>A CSE Undergrad Student from Brac University, Bangladesh</h2>
     </div>
   </section>
-  
+
   <!-- Skills Section -->
   <section class="skills" id="skills">
     <div class="container">
@@ -276,9 +69,9 @@
       <img src="https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white" alt="Canva">
     </div>
   </section>
-  
+
   <!-- Problem Solving Section -->
-  <section class="problem-solving" id="problem-solving">
+<section class="problem-solving" id="problem-solving">
     <div class="container">
       <h3>✨ Problem Solving:</h3>
       <p>
@@ -302,104 +95,122 @@
       </p>
     </div>
   </section>
-  
+
   <!-- Projects Section -->
   <section class="projects" id="projects">
     <div class="container">
       <h3>🚀 My Projects:</h3>
       <div class="projects-grid">
-        <!-- Project Card 1 -->
-        <div class="project-card">
-          <img src="space.png" alt="3D Space Shooter Game" />
-          <h4>3D Space Shooter Game with OpenGL</h4>
-          <p>
-            A Python and PyOpenGL‑based 3D space combat game featuring a player ship, enemies, bullets, a health system, and multiple camera perspectives.
-          </p>
-          <a href="https://github.com/Shiva-Prasad-Sarkar/Space_Shooter_OpenGL" class="btn" target="_blank">View Project</a>
-        </div>
         <!-- Project Card 2 -->
         <div class="project-card">
           <img src="eco.png" alt="EcoGrow Nursery Management System" />
           <h4>EcoGrow Nursery Management System</h4>
-          <p>
-            A PHP and MySQL‑based system to manage nursery orders, events, and admin functionalities.
-          </p>
+          <p>A PHP and MySQL‑based system to manage nursery orders, events, and admin functionalities.</p>
           <a href="https://github.com/Shiva-Prasad-Sarkar/CSE370-Project" class="btn" target="_blank">View Project</a>
         </div>
         <!-- Project Card 3 -->
         <div class="project-card">
           <img src="charge.png" alt="Charging Monitor" />
           <h4>Charging Monitor</h4>
-          <p>
-            A Python application that monitors battery charging status and notifies when the battery is full.
-          </p>
+          <p>A Python application that monitors battery charging status and notifies when the battery is full.</p>
           <a href="https://github.com/Shiva-Prasad-Sarkar/Charging-Monitor" class="btn" target="_blank">View Project</a>
         </div>
         <!-- Project Card 4 -->
         <div class="project-card">
           <img src="you.png" alt="YouTube Playlist Length Calculator" />
           <h4>YouTube Playlist Length Calculator</h4>
-          <p>
-            A Python script that calculates the total length of a YouTube playlist using the YouTube Data API.
-          </p>
+          <p>A Python script that calculates the total length of a YouTube playlist using the YouTube Data API.</p>
           <a href="https://github.com/Shiva-Prasad-Sarkar/YouTube-Playlist-Length" class="btn" target="_blank">View Project</a>
         </div>
         <!-- Project Card 5 -->
         <div class="project-card">
           <img src="dld.png" alt="Comparator - DLD Project" />
           <h4>Comparator - DLD Project</h4>
-          <p>
-            Designed a digital comparator circuit using logic design tools and concepts from digital electronics coursework.
-          </p>
+          <p>Designed a digital comparator circuit using logic design tools and concepts from digital electronics coursework.</p>
           <a href="https://github.com/Shiva-Prasad-Sarkar/CSE260-Projects" class="btn" target="_blank">View Project</a>
         </div>
         <!-- Project Card 6 -->
         <div class="project-card">
           <img src="dam.png" alt="Damped Harmonic Oscillator" />
           <h4>Damped Harmonic Oscillator</h4>
-          <p>
-            Simulated and visualized damped harmonic motion using Python libraries (NumPy, SciPy, Matplotlib).
-          </p>
+          <p>Simulated and visualized damped harmonic motion using Python libraries (NumPy, SciPy, Matplotlib).</p>
           <a href="https://github.com/Shiva-Prasad-Sarkar/MATH-LAB-PROJECT" class="btn" target="_blank">View Project</a>
         </div>
       </div>
     </div>
   </section>
-  
-  <!-- Connect Section -->
-  <section class="connect" id="connect">
+
+  <!-- My Games Section -->
+  <section class="projects" id="mygames">
     <div class="container">
-      <h3>🌐 Connect With Me:</h3>
-      <a href="https://facebook.com/shivaprasadsarkar.sps/" target="_blank">
-        <img src="https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white" alt="Facebook">
-      </a>
-      <a href="mailto:shivaprasadsarkarsps@gmail.com">
-        <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail">
-      </a>
-
-
-      
-      <a href="https://linkedin.com/in/shiva-prasad-sarkar-4700ab227/" target="_blank">
-        <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white" alt="LinkedIn">
-      </a>
+      <h3>🎮 My Games :</h3>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="space.png" alt="3D Space Shooter Game" />
+          <h4>3D Space Shooter Game with OpenGL</h4>
+          <p>A Python and PyOpenGL‑based 3D space combat game featuring a player ship, enemies, bullets, a health system, and multiple camera perspectives.</p>
+          <a href="https://github.com/Shiva-Prasad-Sarkar/Space_Shooter_OpenGL" class="btn" target="_blank">View Project</a>
+        </div>
+      </div>
     </div>
   </section>
-  
+
+  <!-- Certificates & Achievements Section -->
+  <section class="projects" id="certificates">
+    <div class="container">
+      <h3>🏅 Certificates & Achievements :</h3>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="cert1.png" alt="Certificate 1" />
+          <h4>Machine Learning - Coursera</h4>
+          <p>Completed Andrew Ng's Machine Learning course on Coursera.</p>
+          <a href="https://coursera.org/verify/EXAMPLE" class="btn" target="_blank">View Certificate</a>
+        </div>
+        <div class="project-card">
+          <img src="cert2.png" alt="Certificate 2" />
+          <h4>Python for Everybody - Coursera</h4>
+          <p>Mastered Python fundamentals through real-world coding tasks.</p>
+          <a href="https://coursera.org/verify/EXAMPLE" class="btn" target="_blank">View Certificate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CV Download Section -->
   <section class="cv" id="cv">
     <div class="container">
-      <h3>📄 Download My CV:</h3>
-      <a href="https://drive.google.com/file/d/1OlLHPIBoeyEa3oHDMlxzQrspPnI1qkaH/view?usp=sharing" target="_blank" class="btn">
-        Download CV
-      </a>
+      <h2>📄 Download My CV :</h2>
+      <a href="https://drive.google.com/file/d/1OlLHPIBoeyEa3oHDMlxzQrspPnI1qkaH/view?usp=sharing" target="_blank" class="btn">Download CV</a>
     </div>
   </section>
-  
+
+  <!-- Connect Section -->
+ <section class="connect" id="connect">
+  <div class="container">
+    <h4>🌐 Connect With Me:</h4>
+    <a href="https://facebook.com/shivaprasadsarkar.sps/" target="_blank">
+      <img src="https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white" alt="Facebook">
+    </a>
+    <a href="mailto:shivaprasadsarkarsps@gmail.com">
+      <img src="https://img.shields.io/badge/Gmail-D14836.svg?logo=gmail&logoColor=white" alt="Gmail">
+    </a>
+    <a href="https://linkedin.com/in/shiva-prasad-sarkar-4700ab227/" target="_blank">
+      <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white" alt="LinkedIn">
+    </a>
+    <a href="https://github.com/Shiva-Prasad-Sarkar" target="_blank">
+      <img src="https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white" alt="GitHub">
+    </a>
+  </div>
+</section>
+
+
   <!-- Footer -->
   <footer>
     <div class="container">
       <p>&copy; 2025 Shiva Prasad Sarkar. All Rights Reserved.</p>
     </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
