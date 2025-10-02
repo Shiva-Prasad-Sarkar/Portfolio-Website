@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
   <title>Shiva Prasad Sarkar — Portfolio</title>
   <meta name="description" content="Portfolio of Shiva Prasad Sarkar — CSE Undergraduate at BRAC University. Projects, games, research, and contact." />
   <meta name="author" content="Shiva Prasad Sarkar" />
@@ -65,7 +65,7 @@
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
   body{
     font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     background: radial-gradient(1200px 500px at 10% 10%, rgba(96,165,250,0.06), transparent 8%),
@@ -76,6 +76,8 @@
     -moz-osx-font-smoothing:grayscale;
     line-height:1.45;
     padding-bottom:4rem;
+    -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
   }
   [data-theme="light"] body { color: #0b1320; }
 
@@ -131,36 +133,163 @@
     background:transparent;border:1px solid rgba(255,255,255,0.05);color:var(--muted);font-weight:600;padding:.4rem .7rem;border-radius:10px;
   }
 
-  /* Hamburger */
-  .hamburger{
-    display:none;background:transparent;border:none;cursor:pointer;padding:.45rem;border-radius:8px;
+  /* =========================
+     Mobile Navigation
+     ========================= */
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
   }
-  .hamburger .lines{width:26px;height:18px;position:relative;display:inline-block}
-  .hamburger .lines span{
-    position:absolute;left:0;right:0;height:3px;border-radius:3px;background:linear-gradient(90deg,#fff,rgba(255,255,255,0.9));
-    transition:transform .28s cubic-bezier(.2,.9,.2,1),opacity .2s,top .28s;
+  
+  .mobile-toggle:hover {
+    background: rgba(255,255,255,0.05);
   }
-  .hamburger .lines span:nth-child(1){top:0}
-  .hamburger .lines span:nth-child(2){top:7.5px}
-  .hamburger .lines span:nth-child(3){top:15px}
-  .hamburger[aria-expanded="true"] .lines span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
-  .hamburger[aria-expanded="true"] .lines span:nth-child(2){opacity:0}
-  .hamburger[aria-expanded="true"] .lines span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
-
-  /* Mobile Menu (panel) */
-  .mobile-panel{
-    display:none;
-    position:fixed;inset:0;z-index:50;
-    background:linear-gradient(180deg,rgba(2,6,23,0.6),rgba(2,6,23,0.85));
-    padding-top:84px;padding-left:24px;
-    transition:opacity .22s ease, transform .25s ease;
+  
+  .hamburger-line {
+    width: 28px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
-  .mobile-panel nav{display:flex;flex-direction:column;gap:12px;max-width:320px}
-  .mobile-panel a{font-size:1.05rem;color:#e6eef6;padding:.6rem .8rem;border-radius:10px}
-  .mobile-panel a:hover{background:rgba(255,255,255,0.02)}
+  
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+  
+  .mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(15,23,36,0.98), rgba(4,16,33,0.98));
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .mobile-nav.open {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .mobile-nav-content {
+    width: 100%;
+    padding: 80px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .mobile-close-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    color: #e6eef6;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 1001;
+  }
+  
+  .mobile-close-btn:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
+    transform: scale(1.05);
+  }
+  
+  .mobile-close-btn:active {
+    transform: scale(0.95);
+  }
+  
+  .close-icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1;
+  }
+  
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e6eef6;
+    text-decoration: none;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.2s ease;
+    min-height: 56px;
+  }
+  
+  .mobile-nav-link:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(96,165,250,0.3);
+    transform: translateX(4px);
+  }
+  
+  .mobile-theme-btn {
+    margin-top: 24px;
+    padding: 12px 24px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    color: #04263a;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 48px;
+  }
+  
+  .mobile-theme-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(45,212,191,0.3);
+  }
 
   /* =========================
-     HERO
+     Sections & Projects
      ========================= */
   .hero{
     padding:3.6rem 0;
@@ -241,17 +370,177 @@
   footer{padding:2rem 0;text-align:center;color:var(--muted);margin-top:2rem}
 
   /* =========================
-     Responsive
+     Responsive Design
      ========================= */
-  @media (max-width: 980px){
-    .hero{grid-template-columns:1fr;gap:1.1rem}
-    .contact-grid{grid-template-columns:1fr}
+  
+  /* Tablet styles */
+  @media (max-width: 1024px) {
+    .wrap { width: 95%; }
+    .hero { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+    .hero-card { max-width: 400px; margin: 0 auto; }
+    .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .modal-dialog .grid { grid-template-columns: 1fr; }
   }
-  @media (max-width:760px){
-    .nav-links{display:none}
-    .hamburger{display:block}
-    .mobile-panel{display:none}
-    .mobile-panel.open{display:block}
+  
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    /* Hide desktop nav, show mobile toggle */
+    .nav-links { display: none; }
+    .mobile-toggle { display: flex; }
+    
+    /* Optimize spacing */
+    .wrap { width: 95%; padding: 1rem 0; }
+    section { padding: 2rem 0; }
+    
+    /* Typography adjustments */
+    .intro h2 { font-size: 1.8rem; line-height: 1.2; }
+    .intro p.lead { font-size: 1rem; }
+    section h2 { font-size: 1.4rem; }
+    
+    /* Hero section mobile layout */
+    .hero { 
+      padding: 2rem 0; 
+      gap: 1.5rem; 
+      text-align: center;
+    }
+    
+    .hero-card { 
+      padding: 1rem; 
+      max-width: 100%;
+    }
+    
+    .avatar { height: 220px; }
+    
+    .stats { 
+      gap: 0.5rem; 
+      flex-wrap: wrap;
+    }
+    
+    .stat { 
+      padding: 0.8rem; 
+      flex: 1;
+      min-width: 80px;
+    }
+    
+    .stat h3 { font-size: 1rem; }
+    .stat p { font-size: 0.8rem; }
+    
+    /* CTA buttons mobile layout */
+    .cta-row { 
+      flex-direction: column; 
+      gap: 0.8rem; 
+      align-items: stretch;
+    }
+    
+    .btn, .ghost { 
+      justify-content: center; 
+      padding: 0.8rem 1rem;
+      min-height: 48px;
+    }
+    
+    /* Project grid mobile optimization */
+    .projects-grid { 
+      grid-template-columns: 1fr; 
+      gap: 1rem; 
+    }
+    
+    .card { 
+      padding: 1rem; 
+      min-height: auto;
+    }
+    
+    .card img { height: 180px; }
+    
+    /* Modal mobile optimization */
+    .modal { padding: 1rem; }
+    .modal-dialog { 
+      width: 95%; 
+      padding: 1rem;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    
+    .modal-dialog img { height: 200px; }
+    
+    /* Skills grid mobile */
+    .skills-grid { gap: 0.5rem; }
+    .pill { 
+      padding: 0.6rem 0.8rem; 
+      font-size: 0.9rem;
+    }
+    
+    /* Contact form mobile */
+    .contact-card { padding: 1rem; }
+    .contact-card input, .contact-card textarea {
+      padding: 0.8rem;
+      font-size: 16px; /* Prevent zoom on iOS */
+      min-height: 48px;
+    }
+    
+    /* Brand mobile optimization */
+    .brand h1 { font-size: 1rem; }
+    .brand p { font-size: 0.75rem; }
+    .logo-sq { width: 40px; height: 40px; }
+    
+    /* Back to top button mobile */
+    .to-top { 
+      right: 16px; 
+      bottom: 16px;
+      padding: 0.8rem;
+      min-width: 48px;
+      min-height: 48px;
+    }
+  }
+  
+  /* Small mobile styles */
+  @media (max-width: 480px) {
+    .wrap { width: 92%; }
+    
+    .intro h2 { font-size: 1.6rem; }
+    .hero { padding: 1.5rem 0; }
+    section { padding: 1.5rem 0; }
+    
+    .avatar { height: 180px; }
+    
+    .stats { 
+      flex-direction: column; 
+      gap: 0.5rem;
+    }
+    
+    .modal-dialog { 
+      width: 98%; 
+      padding: 0.8rem;
+    }
+    
+    .skills-grid { gap: 0.4rem; }
+    .pill { 
+      padding: 0.5rem 0.7rem; 
+      font-size: 0.85rem;
+    }
+    
+    .mobile-nav-content { padding: 60px 16px 16px; }
+    .mobile-nav-links { max-width: 280px; }
+  }
+  
+  /* Touch device optimizations */
+  @media (hover: none) and (pointer: coarse) {
+    .card:hover { 
+      transform: none; 
+      box-shadow: 0 8px 30px rgba(2,6,23,0.4);
+    }
+    
+    .card:active { 
+      transform: scale(0.98);
+      transition: transform 0.1s ease;
+    }
+    
+    .btn:hover, .ghost:hover, .nav-links a:hover {
+      transform: none;
+    }
+    
+    .btn:active, .ghost:active {
+      transform: scale(0.95);
+    }
   }
 
   /* Focus ring */
@@ -271,36 +560,46 @@
         </div>
       </a>
 
-      <!-- desktop links -->
+      <!-- desktop navigation -->
       <nav class="nav-links" aria-label="Primary Links">
         <a href="#hello">Home</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#mygames">Games</a>
+        <a href="#videos">Videos</a>
         <a href="#research">Research</a>
         <a href="#blogs">Blogs</a>
         <a href="#connect">Contact</a>
         <button id="theme-toggle" class="ghost" aria-pressed="false" title="Toggle theme">🌗 Theme</button>
       </nav>
 
-      <!-- hamburger for mobile -->
-      <button id="hamburger" class="hamburger" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
-        <span class="lines" aria-hidden="true"><span></span><span></span><span></span></span>
+      <!-- mobile hamburger menu -->
+      <button id="mobile-toggle" class="mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
       </button>
     </div>
 
-    <!-- Mobile Panel -->
-    <div id="mobile-menu" class="mobile-panel" aria-hidden="true">
-      <nav>
-        <a href="#hello">Home</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#mygames">Games</a>
-        <a href="#research">Research</a>
-        <a href="#blogs">Blogs</a>
-        <a href="#connect">Contact</a>
-        <a id="mobile-theme" href="#" class="ghost" role="button">Toggle Theme</a>
-      </nav>
+    <!-- mobile navigation overlay -->
+    <div id="mobile-nav" class="mobile-nav" aria-hidden="true">
+      <div class="mobile-nav-content">
+        <button id="mobile-close" class="mobile-close-btn" aria-label="Close mobile menu">
+          <span class="close-icon">✕</span>
+        </button>
+        
+        <nav class="mobile-nav-links">
+          <a href="#hello" class="mobile-nav-link">🏠 Home</a>
+          <a href="#skills" class="mobile-nav-link">💻 Skills</a>
+          <a href="#projects" class="mobile-nav-link">🚀 Projects</a>
+          <a href="#mygames" class="mobile-nav-link">🎮 Games</a>
+          <a href="#videos" class="mobile-nav-link">📹 Videos</a>
+          <a href="#research" class="mobile-nav-link">🧾 Research</a>
+          <a href="#blogs" class="mobile-nav-link">✍️ Blogs</a>
+          <a href="#connect" class="mobile-nav-link">🌐 Contact</a>
+          <button id="mobile-theme-toggle" class="mobile-theme-btn">🌗 Toggle Theme</button>
+        </nav>
+      </div>
     </div>
   </header>
 
@@ -310,7 +609,7 @@
       <div class="intro">
         <div class="tag">💡 Student • Developer • Maker</div>
         <h2 id="hero-heading">Hi — I'm <strong>Shiva Prasad Sarkar</strong></h2>
-        <p class="lead">CSE undergraduate at BRAC University. I build games, web apps, and research projects. I love OpenGL, Python, and creative problem solving.</p>
+        <p class="lead">CSE undergraduate at BRAC University. I build games, web apps, and research projects. I love creating new and problem solving.</p>
 
         <div class="cta-row">
           <a class="btn" href="#projects">View Projects</a>
@@ -325,9 +624,9 @@
       <aside class="hero-card" aria-label="Profile">
         <div class="avatar" role="img" aria-label="Shiva Prasad Sarkar — avatar / illustration"></div>
         <div class="stats" style="margin-top:0.8rem">
-          <div class="stat"><h3>10+</h3><p>Projects</p></div>
-          <div class="stat"><h3>3</h3><p>Games</p></div>
-          <div class="stat"><h3>100+</h3><p>Problems Solved</p></div>
+          <div class="stat"><h3>15+</h3><p>Projects</p></div>
+          <div class="stat"><h3>10+</h3><p>Games</p></div>
+          <div class="stat"><h3>500+</h3><p>Problems Solved</p></div>
         </div>
       </aside>
     </section>
@@ -345,6 +644,8 @@
         <span class="pill">HTML & CSS</span>
         <span class="pill">PHP & MySQL</span>
         <span class="pill">NumPy / SciPy</span>
+        <span class="pill">Git / GitHub</span>
+        <span class="pill">Assembly</span>
         <span class="pill">Git / GitHub</span>
         <span class="pill">LaTeX</span>
       </div>
@@ -369,7 +670,7 @@
 
         <!-- Card 2 -->
         <article class="card" tabindex="0" data-project='{"title":"3D Space Shooter","img":"https://i.imgur.com/4r2xIkM.jpg","desc":"Python + PyOpenGL 3D space shooter with enemy AI, bullets, and camera modes."}'>
-          <img loading="lazy" src="enemy.png">
+          <img loading="lazy" src="https://i.imgur.com/4r2xIkM.jpg" alt="3D Space Shooter screenshot">
           <h4>3D Space Shooter (OpenGL)</h4>
           <p>A PyOpenGL based 3D combat game with multiple camera views and full combat logic.</p>
           <div style="display:flex;gap:.5rem;align-items:center">
@@ -542,9 +843,9 @@
    * Utility & UI logic
    ***********************/
   (function(){
-    const hamburger = document.getElementById('hamburger');
-    const mobilePanel = document.getElementById('mobile-menu');
-    const mobileTheme = document.getElementById('mobile-theme');
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.documentElement;
     const toTopBtn = document.getElementById('to-top');
@@ -563,41 +864,72 @@
     }
     applyTheme(readTheme());
 
-    // Theme button
-    themeToggle && themeToggle.addEventListener('click', (e)=>{
+    // Theme toggle functionality
+    function toggleTheme() {
       const next = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
       applyTheme(next);
-    });
-    mobileTheme && mobileTheme.addEventListener('click', (e)=>{
-      e.preventDefault();
-      const next = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      applyTheme(next);
-    });
+    }
 
-    // Hamburger open/close
-    hamburger.addEventListener('click', ()=>{
-      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-      hamburger.setAttribute('aria-expanded', String(!expanded));
-      if(!expanded){
-        mobilePanel.classList.add('open');
-        mobilePanel.setAttribute('aria-hidden','false');
-        document.body.style.overflow = 'hidden';
-      } else {
-        mobilePanel.classList.remove('open');
-        mobilePanel.setAttribute('aria-hidden','true');
+    // Desktop theme button
+    themeToggle && themeToggle.addEventListener('click', toggleTheme);
+    
+    // Mobile theme button
+    mobileThemeToggle && mobileThemeToggle.addEventListener('click', toggleTheme);
+
+    // Mobile navigation toggle
+    if (mobileToggle && mobileNav) {
+      const mobileCloseBtn = document.getElementById('mobile-close');
+      
+      function closeMobileNav() {
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        mobileNav.classList.remove('open');
         document.body.style.overflow = '';
       }
-    });
+      
+      function openMobileNav() {
+        mobileToggle.setAttribute('aria-expanded', 'true');
+        mobileNav.setAttribute('aria-hidden', 'false');
+        mobileNav.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
 
-    // Close mobile panel when clicking a link inside
-    mobilePanel.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',(e)=>{
-        hamburger.setAttribute('aria-expanded', 'false');
-        mobilePanel.classList.remove('open');
-        mobilePanel.setAttribute('aria-hidden','true');
-        document.body.style.overflow = '';
+      // Hamburger menu toggle
+      mobileToggle.addEventListener('click', () => {
+        const isOpen = mobileToggle.getAttribute('aria-expanded') === 'true';
+        
+        if (isOpen) {
+          closeMobileNav();
+        } else {
+          openMobileNav();
+        }
       });
-    });
+
+      // Close button functionality
+      if (mobileCloseBtn) {
+        mobileCloseBtn.addEventListener('click', closeMobileNav);
+      }
+
+      // Close mobile nav when clicking navigation links
+      const mobileNavLinks = mobileNav.querySelectorAll('.mobile-nav-link[href^="#"]');
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', closeMobileNav);
+      });
+
+      // Close mobile nav when clicking outside
+      mobileNav.addEventListener('click', (e) => {
+        if (e.target === mobileNav) {
+          closeMobileNav();
+        }
+      });
+
+      // Close mobile nav on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+          closeMobileNav();
+        }
+      });
+    }
 
     // Project preview modal
     const modal = document.getElementById('modal');
@@ -652,7 +984,7 @@
         e.preventDefault();
         const name = contactForm.name.value.trim() || 'Friend';
         // Replace with actual integration (email service / server) if desired
-        alert(`Thanks, ${name}! Your message was received (demo). I'll get back to you at ${contactForm.email.value}.`);
+        alert(`Thanks, ${name}! Your message was received. I'll get back to you at ${contactForm.email.value}.`);
         contactForm.reset();
       });
     }
