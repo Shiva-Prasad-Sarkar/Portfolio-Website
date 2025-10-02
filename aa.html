@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shiva Prasad Sarkar — Portfolio</title>
+  <meta name="description" content="Portfolio of Shiva Prasad Sarkar — CSE Undergraduate at BRAC University. Projects, games, research, and contact." />
+  <meta name="author" content="Shiva Prasad Sarkar" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- OpenGraph / Twitter -->
+  <meta property="og:title" content="Shiva Prasad Sarkar — Portfolio" />
+  <meta property="og:description" content="CSE Undergrad — Projects, Games, Research, and more." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://shiva-prasad-sarkar.github.io/Portfolio-Website/" />
+  <meta property="og:image" content="https://shiva-prasad-sarkar.github.io/Portfolio-Website/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Shiva Prasad Sarkar",
+    "jobTitle":"CSE Undergraduate Student",
+    "url":"https://shiva-prasad-sarkar.github.io/Portfolio-Website/",
+    "sameAs":[
+      "https://github.com/Shiva-Prasad-Sarkar",
+      "https://linkedin.com/in/shiva-prasad-sarkar-4700ab227/"
+    ],
+    "alumniOf": {
+      "@type":"EducationalOrganization",
+      "name":"BRAC University"
+    }
+  }
+  </script>
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+  /* =========================
+     Variables & Reset
+     ========================= */
+  :root{
+    --bg: #0f1724;
+    --card: #0b1220;
+    --muted: #9aa4b2;
+    --accent: #2dd4bf;
+    --accent-2: #60a5fa;
+    --glass: rgba(255,255,255,0.03);
+    --glass-2: rgba(255,255,255,0.02);
+    --radius: 12px;
+    --maxw: 1200px;
+  }
+  [data-theme="light"]{
+    --bg: #f7f9fc;
+    --card: #ffffff;
+    --muted: #556270;
+    --accent: #007bff;
+    --accent-2: #06b6d4;
+    --glass: rgba(0,0,0,0.03);
+    --glass-2: rgba(0,0,0,0.02);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: radial-gradient(1200px 500px at 10% 10%, rgba(96,165,250,0.06), transparent 8%),
+                linear-gradient(180deg, var(--bg), #041021 120%);
+    color: #e6eef6;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+    padding-bottom:4rem;
+  }
+  [data-theme="light"] body { color: #0b1320; }
+
+  .wrap{width:92%;max-width:var(--maxw);margin:0 auto;padding:1.25rem 0;}
+
+  /* =========================
+     Header / Nav
+     ========================= */
+  header{
+    position: sticky;top:0;z-index:60;
+    backdrop-filter: blur(6px);
+    background: linear-gradient(180deg, rgba(0,0,0,0.25), transparent);
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+  header .nav{
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.75rem 0;
+  }
+  .brand{
+    display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:inherit;
+  }
+  .logo-sq{
+    width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:inline-grid;place-items:center;font-weight:800;font-family:"JetBrains Mono",monospace;color:#04263a;
+    box-shadow:0 6px 24px rgba(2,6,23,0.6);
+  }
+  .brand h1{font-size:1.05rem;margin-bottom:0;letter-spacing:0.2px}
+  .brand p{font-size:0.78rem;color:var(--muted);margin-top:0.15rem}
+
+  nav{
+    display:flex;align-items:center;gap:1rem;
+  }
+
+  .nav-links{
+    display:flex;gap:0.65rem;align-items:center;
+  }
+  .nav-links a{
+    color:inherit;text-decoration:none;padding:.5rem .7rem;border-radius:8px;font-weight:600;font-size:.95rem;
+    transition:all .18s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus{
+    transform:translateY(-2px);
+    background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    outline: none;
+  }
+
+  /* buttons */
+  .btn {
+    display:inline-flex;gap:.55rem;align-items:center;padding:.45rem .75rem;border-radius:10px;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#04263a;font-weight:700;border:none;cursor:pointer;
+    box-shadow: 0 6px 22px rgba(2,6,23,0.55);text-decoration:none;font-size:.95rem;
+  }
+  .ghost {
+    background:transparent;border:1px solid rgba(255,255,255,0.05);color:var(--muted);font-weight:600;padding:.4rem .7rem;border-radius:10px;
+  }
+
+  /* Hamburger */
+  .hamburger{
+    display:none;background:transparent;border:none;cursor:pointer;padding:.45rem;border-radius:8px;
+  }
+  .hamburger .lines{width:26px;height:18px;position:relative;display:inline-block}
+  .hamburger .lines span{
+    position:absolute;left:0;right:0;height:3px;border-radius:3px;background:linear-gradient(90deg,#fff,rgba(255,255,255,0.9));
+    transition:transform .28s cubic-bezier(.2,.9,.2,1),opacity .2s,top .28s;
+  }
+  .hamburger .lines span:nth-child(1){top:0}
+  .hamburger .lines span:nth-child(2){top:7.5px}
+  .hamburger .lines span:nth-child(3){top:15px}
+  .hamburger[aria-expanded="true"] .lines span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+  .hamburger[aria-expanded="true"] .lines span:nth-child(2){opacity:0}
+  .hamburger[aria-expanded="true"] .lines span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+
+  /* Mobile Menu (panel) */
+  .mobile-panel{
+    display:none;
+    position:fixed;inset:0;z-index:50;
+    background:linear-gradient(180deg,rgba(2,6,23,0.6),rgba(2,6,23,0.85));
+    padding-top:84px;padding-left:24px;
+    transition:opacity .22s ease, transform .25s ease;
+  }
+  .mobile-panel nav{display:flex;flex-direction:column;gap:12px;max-width:320px}
+  .mobile-panel a{font-size:1.05rem;color:#e6eef6;padding:.6rem .8rem;border-radius:10px}
+  .mobile-panel a:hover{background:rgba(255,255,255,0.02)}
+
+  /* =========================
+     HERO
+     ========================= */
+  .hero{
+    padding:3.6rem 0;
+    display:grid;grid-template-columns:1fr 420px;gap:2.25rem;align-items:center;
+  }
+  .intro{
+    color:inherit;
+  }
+  .tag{
+    display:inline-flex;align-items:center;gap:.5rem;background:var(--glass);padding:6px 10px;border-radius:999px;color:var(--accent-2);font-weight:700;margin-bottom:1rem;font-size:.88rem;
+  }
+  .intro h2{font-size:2rem;margin-bottom:.35rem}
+  .intro p.lead{color:var(--muted);margin-bottom:1.2rem;font-size:1.02rem}
+  .cta-row{display:flex;gap:0.8rem;align-items:center}
+
+  .hero-card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:var(--radius);padding:1rem;border:1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+  }
+  .avatar{
+    width:100%;height:260px;border-radius:8px;background:url('https://i.imgur.com/7k8QG2t.png') center/cover no-repeat; /* placeholder */
+  }
+  .stats{display:flex;gap:1rem;margin-top:0.9rem}
+  .stat{flex:1;padding:.6rem .75rem;background:var(--glass-2);border-radius:10px;text-align:center}
+  .stat h3{font-size:1.1rem;margin-bottom:.25rem}
+  .stat p{color:var(--muted);font-size:.85rem}
+
+  /* =========================
+     Sections & Projects
+     ========================= */
+  section{padding:2.4rem 0}
+  section h3{font-size:1.1rem;color:var(--muted);margin-bottom:.35rem}
+  section h2{font-size:1.5rem;margin-bottom:1rem}
+
+  .projects-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem;margin-top:1rem;
+  }
+  .card{
+    background:var(--card);border-radius:12px;padding:1rem;border:1px solid rgba(255,255,255,0.03);
+    transition:transform .18s ease, box-shadow .18s ease;
+    display:flex;flex-direction:column;gap:.6rem;min-height:200px;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(2,6,23,0.6)}
+  .card img{width:100%;height:140px;object-fit:cover;border-radius:8px}
+  .card h4{font-size:1.02rem}
+  .card p{color:var(--muted);font-size:.92rem;flex:1}
+
+  /* modal */
+  .modal{
+    position:fixed;inset:0;display:none;place-items:center;z-index:80;padding:1rem;
+    background:linear-gradient(180deg,rgba(2,6,23,0.6),rgba(2,6,23,0.9));
+  }
+  .modal.open{display:grid}
+  .modal-dialog{
+    width:min(900px,98%);background:var(--card);border-radius:12px;padding:1.25rem;border:1px solid rgba(255,255,255,0.04);
+  }
+  .modal-dialog .grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .modal-dialog img{width:100%;height:260px;object-fit:cover;border-radius:8px}
+  .modal-close{background:transparent;border:0;color:var(--muted);cursor:pointer;font-weight:700}
+
+  /* skills */
+  .skills-grid{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.6rem}
+  .pill{padding:.5rem .7rem;border-radius:999px;background:var(--glass-2);font-weight:600;color:var(--muted)}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:1rem}
+  .contact-card{padding:1rem;border-radius:12px;background:var(--card);border:1px solid rgba(255,255,255,0.03)}
+  .contact-card label{display:block;margin-bottom:.35rem;color:var(--muted);font-weight:600}
+  .contact-card input, .contact-card textarea{
+    width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit;
+  }
+
+  /* back to top */
+  .to-top{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:.6rem;border-radius:10px;box-shadow:0 8px 30px rgba(2,6,23,0.6);border:none;cursor:pointer;display:none;z-index:70}
+  .to-top.show{display:block}
+
+  footer{padding:2rem 0;text-align:center;color:var(--muted);margin-top:2rem}
+
+  /* =========================
+     Responsive
+     ========================= */
+  @media (max-width: 980px){
+    .hero{grid-template-columns:1fr;gap:1.1rem}
+    .contact-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:760px){
+    .nav-links{display:none}
+    .hamburger{display:block}
+    .mobile-panel{display:none}
+    .mobile-panel.open{display:block}
+  }
+
+  /* Focus ring */
+  a:focus, button:focus, input:focus, textarea:focus {outline: 3px solid rgba(96,165,250,0.18);outline-offset:2px;border-radius:8px}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap nav" role="navigation" aria-label="Main Navigation">
+      <a class="brand" href="#hello">
+        <span class="logo-sq" aria-hidden="true">S</span>
+        <div>
+          <h1>Shiva Prasad Sarkar</h1>
+          <p>BRAC University — CSE • Projects • Games</p>
+        </div>
+      </a>
+
+      <!-- desktop links -->
+      <nav class="nav-links" aria-label="Primary Links">
+        <a href="#hello">Home</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#mygames">Games</a>
+        <a href="#research">Research</a>
+        <a href="#blogs">Blogs</a>
+        <a href="#connect">Contact</a>
+        <button id="theme-toggle" class="ghost" aria-pressed="false" title="Toggle theme">🌗 Theme</button>
+      </nav>
+
+      <!-- hamburger for mobile -->
+      <button id="hamburger" class="hamburger" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+        <span class="lines" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Panel -->
+    <div id="mobile-menu" class="mobile-panel" aria-hidden="true">
+      <nav>
+        <a href="#hello">Home</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#mygames">Games</a>
+        <a href="#research">Research</a>
+        <a href="#blogs">Blogs</a>
+        <a href="#connect">Contact</a>
+        <a id="mobile-theme" href="#" class="ghost" role="button">Toggle Theme</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="hello" tabindex="-1">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="intro">
+        <div class="tag">💡 Student • Developer • Maker</div>
+        <h2 id="hero-heading">Hi — I'm <strong>Shiva Prasad Sarkar</strong></h2>
+        <p class="lead">CSE undergraduate at BRAC University. I build games, web apps, and research projects. I love OpenGL, Python, and creative problem solving.</p>
+
+        <div class="cta-row">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="ghost" href="https://drive.google.com/file/d/1OlLHPIBoeyEa3oHDMlxzQrspPnI1qkaH/view?usp=sharing" target="_blank">Download CV</a>
+        </div>
+
+        <div style="margin-top:1.15rem">
+          <small style="color:var(--muted)">Pro tip: Click a project card to open details.</small>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Profile">
+        <div class="avatar" role="img" aria-label="Shiva Prasad Sarkar — avatar / illustration"></div>
+        <div class="stats" style="margin-top:0.8rem">
+          <div class="stat"><h3>10+</h3><p>Projects</p></div>
+          <div class="stat"><h3>3</h3><p>Games</p></div>
+          <div class="stat"><h3>100+</h3><p>Problems Solved</p></div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" aria-labelledby="skills-heading">
+      <h3>💻 Skills & Tools</h3>
+      <h2 id="skills-heading">What I use</h2>
+
+      <div class="skills-grid" style="margin-top:.6rem">
+        <span class="pill">Python</span>
+        <span class="pill">C / C++</span>
+        <span class="pill">Java</span>
+        <span class="pill">PyOpenGL</span>
+        <span class="pill">HTML & CSS</span>
+        <span class="pill">PHP & MySQL</span>
+        <span class="pill">NumPy / SciPy</span>
+        <span class="pill">Git / GitHub</span>
+        <span class="pill">LaTeX</span>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <h3>🚀 Selected Work</h3>
+      <h2 id="projects-heading">Projects & Highlights</h2>
+
+      <div class="projects-grid" id="projects-grid">
+        <!-- Card 1 -->
+        <article class="card" tabindex="0" data-project='{"title":"EcoGrow Nursery System","img":"https://i.imgur.com/2r2v6qk.jpg","desc":"A PHP and MySQL system to manage nursery orders, events, and admin dashboard."}'>
+          <img loading="lazy" src="https://i.imgur.com/2r2v6qk.jpg" alt="EcoGrow project screenshot">
+          <h4>EcoGrow Nursery Management</h4>
+          <p>PHP & MySQL system to manage orders, events and admin functions for nursery management.</p>
+          <div style="display:flex;gap:.5rem;align-items:center">
+            <a class="btn" href="https://github.com/Shiva-Prasad-Sarkar/CSE370-Project" target="_blank">View Code</a>
+            <button class="ghost preview-btn" aria-label="Preview EcoGrow">Preview</button>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card" tabindex="0" data-project='{"title":"3D Space Shooter","img":"https://i.imgur.com/4r2xIkM.jpg","desc":"Python + PyOpenGL 3D space shooter with enemy AI, bullets, and camera modes."}'>
+          <img loading="lazy" src="https://i.imgur.com/4r2xIkM.jpg" alt="3D Space Shooter screenshot">
+          <h4>3D Space Shooter (OpenGL)</h4>
+          <p>A PyOpenGL based 3D combat game with multiple camera views and full combat logic.</p>
+          <div style="display:flex;gap:.5rem;align-items:center">
+            <a class="btn" href="https://github.com/Shiva-Prasad-Sarkar/Space_Shooter_OpenGL" target="_blank">View Game</a>
+            <button class="ghost preview-btn" aria-label="Preview Space Shooter">Preview</button>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card" tabindex="0" data-project='{"title":"YouTube Playlist Length","img":"https://i.imgur.com/Xr3gY9m.jpg","desc":"Python script to calculate the total length of a YouTube playlist using the Data API."}'>
+          <img loading="lazy" src="https://i.imgur.com/Xr3gY9m.jpg" alt="YouTube Playlist Calculator">
+          <h4>YouTube Playlist Length Calculator</h4>
+          <p>Python script that uses YouTube Data API to sum video durations of a playlist automatically.</p>
+          <div style="display:flex;gap:.5rem;align-items:center">
+            <a class="btn" href="https://github.com/Shiva-Prasad-Sarkar/YouTube-Playlist-Length" target="_blank">View Code</a>
+            <button class="ghost preview-btn" aria-label="Preview Playlist Tool">Preview</button>
+          </div>
+        </article>
+
+        <!-- Card 4 (placeholder) -->
+        <article class="card" tabindex="0" data-project='{"title":"Heart Disease Prediction","img":"https://i.imgur.com/0R3JQ7C.jpg","desc":"A machine learning classifier to predict heart disease using clinical datasets."}'>
+          <img loading="lazy" src="https://i.imgur.com/0R3JQ7C.jpg" alt="Heart Disease Prediction ML">
+          <h4>Heart Disease Prediction (ML)</h4>
+          <p>Built classification models to estimate risk using real clinical datasets and evaluation metrics.</p>
+          <div style="display:flex;gap:.5rem;align-items:center">
+            <a class="btn" href="https://github.com/Shiva-Prasad-Sarkar/ML-Project" target="_blank">View Code</a>
+            <button class="ghost preview-btn" aria-label="Preview ML Project">Preview</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- GAMES -->
+    <section id="mygames" aria-labelledby="games-heading">
+      <h3>🎮 Games</h3>
+      <h2 id="games-heading">Small but fun</h2>
+
+      <div class="projects-grid">
+        <div class="card">
+          <img loading="lazy" src="https://i.imgur.com/4r2xIkM.jpg" alt="Space shooter thumbnail">
+          <h4>Space Shooter</h4>
+          <p>OpenGL-based 3D shooter with enemy AI and multiple weapons.</p>
+          <a class="btn" href="https://github.com/Shiva-Prasad-Sarkar/Space_Shooter_OpenGL" target="_blank">Play / Code</a>
+        </div>
+
+        <div class="card">
+          <img loading="lazy" src="https://i.imgur.com/Cu7QK1y.jpg" alt="Catch the diamond">
+          <h4>Catch the Diamond</h4>
+          <p>Midpoint line algorithm + fun mechanics built with Python & OpenGL.</p>
+          <a class="btn" href="https://github.com/Shiva-Prasad-Sarkar/GAMES-AND-PROJECTS" target="_blank">View</a>
+        </div>
+
+        <div class="card">
+          <img loading="lazy" src="https://i.imgur.com/7k8QG2t.png" alt="Tic Tac Toe">
+          <h4>Tic Tac Toe</h4>
+          <p>Clean OOP implementation with AI opponent and intuitive UI.</p>
+          <a class="btn" href="https://github.com/Shiva-Prasad-Sarkar/GAMES-AND-PROJECTS" target="_blank">View</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research -->
+    <section id="research" aria-labelledby="research-heading">
+      <h3>🧾 Research</h3>
+      <h2 id="research-heading">Case studies & writeups</h2>
+
+      <div class="projects-grid">
+        <div class="card">
+          <h4>Price Hike - PBL</h4>
+          <p>An analytical study of Bangladesh's price increases — methodology, data, and policy suggestions.</p>
+          <a class="btn" href="pbl.html">Read</a>
+        </div>
+
+        <div class="card">
+          <h4>Case Study: Self-Driving Crash</h4>
+          <p>Deep dive into the 2016 Tesla crash — sensors, failure modes and responsible design lessons.</p>
+          <a class="btn" href="case422.html">Read</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blogs -->
+    <section id="blogs" aria-labelledby="blogs-heading">
+      <h3>✍️ Blogs</h3>
+      <h2 id="blogs-heading">Writing</h2>
+
+      <div class="projects-grid">
+        <div class="card">
+          <h4>The Intricacies of Cryptography</h4>
+          <p>An overview — from classical ciphers to modern encryption practices and real-world usage.</p>
+          <a class="btn" href="https://vigilantassociation.blogspot.com/2025/01/the-intricacies-of-cryptography-ciphers.html" target="_blank">Read</a>
+        </div>
+
+        <div class="card">
+          <h4>Exploring Arduino</h4>
+          <p>My journey learning Arduino: sensors, prototyping and small projects to learn electronics.</p>
+          <a class="btn" href="https://vigilantassociation.blogspot.com/2025/01/exploring-wonders-of-arduino-unleashing.html" target="_blank">Read</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Connect / Contact -->
+    <section id="connect" aria-labelledby="connect-heading">
+      <h3>🌐 Connect</h3>
+      <h2 id="connect-heading">Let's talk</h2>
+
+      <div class="contact-grid" style="margin-top:1rem">
+        <form class="contact-card" id="contact-form" aria-label="Contact form">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" required placeholder="Shiva or Friend">
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="you@example.com">
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" placeholder="Tell me about your project or opportunity"></textarea>
+
+          <div style="margin-top:.7rem;display:flex;gap:.6rem">
+            <button class="btn" type="submit">Send Message</button>
+            <a class="ghost" href="mailto:shivaprasadsarkarsps@gmail.com">Email Me</a>
+          </div>
+        </form>
+
+        <aside class="contact-card" aria-label="Contact details">
+          <h4>Find me online</h4>
+          <p style="color:var(--muted)">GitHub • LinkedIn • LeetCode • Codeforces</p>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem">
+            <a class="pill" href="https://github.com/Shiva-Prasad-Sarkar" target="_blank">GitHub</a>
+            <a class="pill" href="https://linkedin.com/in/shiva-prasad-sarkar-4700ab227/" target="_blank">LinkedIn</a>
+            <a class="pill" href="https://leetcode.com/user9575st/" target="_blank">LeetCode</a>
+            <a class="pill" href="https://codeforces.com/profile/SpS__79" target="_blank">Codeforces</a>
+          </div>
+
+          <hr style="margin:1rem 0;border-color:rgba(255,255,255,0.03)">
+          <p style="color:var(--muted)"><strong>Email:</strong> shivaprasadsarkarsps@gmail.com</p>
+          <p style="color:var(--muted)"><strong>CV:</strong> <a class="ghost" href="https://drive.google.com/file/d/1OlLHPIBoeyEa3oHDMlxzQrspPnI1qkaH/view?usp=sharing" target="_blank">Download</a></p>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 Shiva Prasad Sarkar · Built with ❤️ · <span style="color:var(--muted)">Made for learning & sharing</span></p>
+    </footer>
+  </main>
+
+  <!-- Modal for project preview -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem">
+        <strong id="modal-title">Project</strong>
+        <button class="modal-close" id="modal-close" aria-label="Close preview">✕</button>
+      </div>
+      <div class="grid">
+        <img id="modal-img" src="" alt="">
+        <div>
+          <p id="modal-desc" style="color:var(--muted)"></p>
+          <div style="margin-top:1rem">
+            <a id="modal-link" class="btn" href="#" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to top -->
+  <button id="to-top" class="to-top" aria-label="Back to top">⬆</button>
+
+  <script>
+  /***********************
+   * Utility & UI logic
+   ***********************/
+  (function(){
+    const hamburger = document.getElementById('hamburger');
+    const mobilePanel = document.getElementById('mobile-menu');
+    const mobileTheme = document.getElementById('mobile-theme');
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.documentElement;
+    const toTopBtn = document.getElementById('to-top');
+
+    // Theme: read preference from localStorage or system
+    function readTheme(){
+      const stored = localStorage.getItem('theme');
+      if(stored) return stored;
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    function applyTheme(t){
+      body.setAttribute('data-theme', t);
+      const pressed = t === 'dark' ? false : true;
+      if(themeToggle) themeToggle.setAttribute('aria-pressed', t === 'light');
+      localStorage.setItem('theme', t);
+    }
+    applyTheme(readTheme());
+
+    // Theme button
+    themeToggle && themeToggle.addEventListener('click', (e)=>{
+      const next = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      applyTheme(next);
+    });
+    mobileTheme && mobileTheme.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const next = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      applyTheme(next);
+    });
+
+    // Hamburger open/close
+    hamburger.addEventListener('click', ()=>{
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', String(!expanded));
+      if(!expanded){
+        mobilePanel.classList.add('open');
+        mobilePanel.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+      } else {
+        mobilePanel.classList.remove('open');
+        mobilePanel.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Close mobile panel when clicking a link inside
+    mobilePanel.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',(e)=>{
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobilePanel.classList.remove('open');
+        mobilePanel.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Project preview modal
+    const modal = document.getElementById('modal');
+    const modalClose = document.getElementById('modal-close');
+    const modalTitle = document.getElementById('modal-title');
+    const modalImg = document.getElementById('modal-img');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalLink = document.getElementById('modal-link');
+
+    function openModal(data){
+      modalTitle.textContent = data.title || 'Project';
+      modalImg.src = data.img || '';
+      modalImg.alt = data.title || 'Project image';
+      modalDesc.textContent = data.desc || '';
+      modalLink.href = data.link || '#';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      // trap focus simply by focusing close button
+      modalClose.focus();
+    }
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+    }
+    // attach preview buttons
+    document.querySelectorAll('.card').forEach(card=>{
+      const previewBtn = card.querySelector('.preview-btn');
+      const projectData = JSON.parse(card.getAttribute('data-project') || '{}');
+      // optionally add a link key for modal button
+      projectData.link = projectData.link || (card.querySelector('a') ? card.querySelector('a').href : '#');
+      previewBtn && previewBtn.addEventListener('click', ()=> openModal(projectData));
+      // keyboard: enter on card opens modal (accessible)
+      card.addEventListener('keydown',(e)=>{
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          openModal(projectData);
+        }
+      });
+    });
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click',(e)=>{
+      if(e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape') closeModal();
+    });
+
+    // Contact form basic handler (no backend) — we show a friendly success toast (or fallback)
+    const contactForm = document.getElementById('contact-form');
+    if(contactForm){
+      contactForm.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const name = contactForm.name.value.trim() || 'Friend';
+        // Replace with actual integration (email service / server) if desired
+        alert(`Thanks, ${name}! Your message was received (demo). I'll get back to you at ${contactForm.email.value}.`);
+        contactForm.reset();
+      });
+    }
+
+    // Back-to-top
+    window.addEventListener('scroll', ()=>{
+      if(window.scrollY > 400) toTopBtn.classList.add('show'); else toTopBtn.classList.remove('show');
+    });
+    toTopBtn.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+    // smooth keyboard focus for heading anchor navigation
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const href = this.getAttribute('href');
+        if(href.length > 1){
+          const el = document.querySelector(href);
+          if(el){
+            // small delay to allow :focus outline
+            setTimeout(()=> el.focus({preventScroll:true}), 300);
+          }
+        }
+      });
+    });
+
+    // small accessibility improvement: skip to content on load if hash present
+    if(location.hash){
+      const el = document.querySelector(location.hash);
+      if(el) el.setAttribute('tabindex','-1'), el.focus();
+    }
+  })();
+  </script>
+</body>
+</html>
