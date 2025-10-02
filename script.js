@@ -1,49 +1,75 @@
 /***********************
  * Dark Knight Portfolio - Interactive Features
+ * GitHub Pages Compatible Version
  ***********************/
 (function(){
   'use strict';
   
-  // Cache DOM elements
-  const mobileToggle = document.getElementById('mobile-toggle');
-  const mobileNav = document.getElementById('mobile-nav');
-  const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-  const themeToggle = document.getElementById('theme-toggle');
-  const body = document.documentElement;
-  const toTopBtn = document.getElementById('to-top');
+  // Wait for DOM to be fully loaded for GitHub Pages
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializePortfolio);
+  } else {
+    initializePortfolio();
+  }
+  
+  function initializePortfolio() {
+    // Cache DOM elements with error handling
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.documentElement;
+    const toTopBtn = document.getElementById('to-top');
 
-  // Batman-themed console message
-  console.log(`
-    🦇 Welcome to the Dark Knight's Digital Cave 🦇
-    ════════════════════════════════════════════════
-    "It's not who I am underneath, but what I do that defines me."
-    - The Dark Knight Developer
-    
-    You've found the secret developer console.
-    The Dark Knight's code is always watching...
-  `);
+    // Check if critical elements exist before proceeding
+    if (!body) {
+      console.error('Critical DOM elements not found');
+      return;
+    }
+
+    // Batman-themed console message
+    console.log(`
+      🦇 Welcome to the Dark Knight's Digital Cave 🦇
+      ════════════════════════════════════════════════
+      "It's not who I am underneath, but what I do that defines me."
+      - The Dark Knight Developer
+      
+      You've found the secret developer console.
+      The Dark Knight's code is always watching...
+      
+      GitHub Pages Version - Optimized for deployment
+    `);
 
   // Theme: read preference from localStorage or system
   function readTheme(){
-    const stored = localStorage.getItem('dark-knight-theme');
-    if(stored) return stored;
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    try {
+      const stored = localStorage.getItem('dark-knight-theme');
+      if(stored) return stored;
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    } catch (e) {
+      console.warn('LocalStorage access failed, using default theme');
+      return 'dark';
+    }
   }
   
   function applyTheme(t){
-    body.setAttribute('data-theme', t);
-    const pressed = t === 'light';
-    if(themeToggle) {
-      themeToggle.setAttribute('aria-pressed', pressed);
-      themeToggle.textContent = t === 'light' ? '🌞 Light Mode' : '🌙 Dark Knight Mode';
+    try {
+      body.setAttribute('data-theme', t);
+      const pressed = t === 'light';
+      if(themeToggle) {
+        themeToggle.setAttribute('aria-pressed', pressed);
+        themeToggle.textContent = t === 'light' ? '🌞 Light Mode' : '🌙 Dark Knight Mode';
+      }
+      if(mobileThemeToggle) {
+        mobileThemeToggle.textContent = t === 'light' ? '🌞 Light Mode' : '🌙 Dark Knight Mode';
+      }
+      localStorage.setItem('dark-knight-theme', t);
+      
+      // Batman theme change effect
+      createBatSignal();
+    } catch (e) {
+      console.warn('Theme application failed:', e);
     }
-    if(mobileThemeToggle) {
-      mobileThemeToggle.textContent = t === 'light' ? '🌞 Light Mode' : '🌙 Dark Knight Mode';
-    }
-    localStorage.setItem('dark-knight-theme', t);
-    
-    // Batman theme change effect
-    createBatSignal();
   }
   
   // Bat signal effect when changing themes
@@ -374,4 +400,7 @@
 
   // Start animations after page load
   setTimeout(initBatmanAnimations, 1000);
-})();
+  
+  } // End of initializePortfolio function
+
+})(); // End of IIFE
