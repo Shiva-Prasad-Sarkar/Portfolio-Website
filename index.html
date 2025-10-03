@@ -68,7 +68,60 @@
     }
   </style>
 </head>
-<body>
+<body class="loading">
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loading-screen">
+    <div class="floating-particles">
+      <div class="particle">🦇</div>
+      <div class="particle">⚡</div>
+      <div class="particle">🌟</div>
+      <div class="particle">🎮</div>
+      <div class="particle">💻</div>
+      <div class="particle">🔍</div>
+      <div class="particle">⚡</div>
+      <div class="particle">🦇</div>
+      <div class="particle">🌟</div>
+    </div>
+    
+    <div class="bat-loader">
+      <div class="bat-wings">🦇</div>
+    </div>
+    
+    <div class="loading-text">Shiva Prasad Sarkar - Portfolio</div>
+    <div class="loading-subtitle">The Dark Knight Developer • Initializing Gotham's Digital Fortress...</div>
+    
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+    
+    <div class="loading-quotes">
+      "It's not who I am underneath, but what I do that defines me."
+    </div>
+  </div>
+
+  <!-- Falling code animation -->
+  <div class="falling-icons">
+    <div class="falling-icon">01</div>
+    <div class="falling-icon">10</div>
+    <div class="falling-icon">{}</div>
+    <div class="falling-icon">[]</div>
+    <div class="falling-icon">;</div>
+    <div class="falling-icon">()</div>
+    <div class="falling-icon">11</div>
+    <div class="falling-icon">00</div>
+    <div class="falling-icon"><></div>
+    <div class="falling-icon">=></div>
+    <div class="falling-icon">01</div>
+    <div class="falling-icon">10</div>
+    <div class="falling-icon">&</div>
+    <div class="falling-icon">*</div>
+    <div class="falling-icon">#</div>
+    <div class="falling-icon">++</div>
+    <div class="falling-icon">&&</div>
+    <div class="falling-icon">||</div>
+    <div class="falling-icon">!=</div>
+    <div class="falling-icon">==</div>
+  </div>  <div class="main-content">
 
   <header>
     <div class="wrap nav" role="navigation" aria-label="Main Navigation">
@@ -82,17 +135,19 @@
 
       <!-- desktop navigation -->
       <nav class="nav-links" aria-label="Primary Links">
-        <a href="#hello">Home</a>
-        <a href="#skills">Skills</a>
-        <a href="#problem-solving">Problem Solving</a>
-        <a href="#projects">Projects</a>
-        <a href="#mygames">Games</a>
-        <a href="#certificates">Certificates</a>
-        <a href="#videos">Videos</a>
-        <a href="#research">Research</a>
-        <a href="#blogs">Blogs</a>
-        <a href="#cv">CV</a>
-        <a href="#connect">Contact</a>
+
+        <a href="#hello" data-tooltip="Home">🏠</a>
+        <a href="#skills" data-tooltip="Skills">⚡</a>
+        <a href="#problem-solving" data-tooltip="Problem Solving">🧩</a>
+        <a href="#projects" data-tooltip="Projects">🦇</a>
+        <a href="#mygames" data-tooltip="Games">🎮</a>
+        <a href="#certificates" data-tooltip="Certificates">🏅</a>
+        <a href="#videos" data-tooltip="Videos">📹</a>
+        <a href="#research" data-tooltip="Research">🔍</a>
+        <a href="#blogs" data-tooltip="Blogs">✍️</a>
+        <a href="#cv" data-tooltip="CV">📄</a>
+        <a href="#connect" data-tooltip="Contact">🌐</a>
+
         <button id="theme-toggle" class="ghost" aria-pressed="false" title="Toggle theme">� Dark Knight Mode</button>
       </nav>
 
@@ -688,6 +743,7 @@
       <p>© 2025 The Dark Knight Developer • Protecting Gotham's Digital Realm • <span style="color:var(--muted)">Built in the shadows for the light</span></p>
     </footer>
   </main>
+  </div> <!-- End main-content -->
 
   <!-- Modal for project preview -->
   <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">

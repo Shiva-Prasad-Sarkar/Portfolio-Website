@@ -5,10 +5,49 @@
 (function(){
   'use strict';
   
+  // =========================
+  // Loading Screen Animation
+  // =========================
+  
+  function initLoadingScreen() {
+    const loadingScreen = document.getElementById('loading-screen');
+    const body = document.body;
+    const quotes = [
+      '"It\'s not who I am underneath, but what I do that defines me."',
+      '"Why do we fall? So we can learn to pick ourselves up."',
+      '"The night is darkest just before the dawn."'
+    ];
+    
+    let quoteIndex = 0;
+    const quoteElement = document.querySelector('.loading-quotes');
+    
+    // Cycle through quotes faster
+    const quoteInterval = setInterval(() => {
+      quoteIndex = (quoteIndex + 1) % quotes.length;
+      quoteElement.textContent = quotes[quoteIndex];
+    }, 1500);
+    
+    // Hide loading screen after 2 seconds (50% faster)
+    setTimeout(() => {
+      loadingScreen.classList.add('loaded');
+      body.classList.remove('loading');
+      clearInterval(quoteInterval);
+      
+      // Remove loading screen from DOM after transition
+      setTimeout(() => {
+        loadingScreen.remove();
+      }, 500);
+    }, 2000);
+  }
+  
   // Wait for DOM to be fully loaded for GitHub Pages
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializePortfolio);
+    document.addEventListener('DOMContentLoaded', function() {
+      initLoadingScreen();
+      initializePortfolio();
+    });
   } else {
+    initLoadingScreen();
     initializePortfolio();
   }
   
@@ -19,6 +58,9 @@
     const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.documentElement;
+    
+    // Initialize active section detection
+    initActiveSectionDetection();
     const toTopBtn = document.getElementById('to-top');
 
     // Check if critical elements exist before proceeding
@@ -401,6 +443,57 @@
   // Start animations after page load
   setTimeout(initBatmanAnimations, 1000);
   
+  // =========================
+  // Custom Cursor Animation
+  // =========================
+  
   } // End of initializePortfolio function
+  
+  // =========================
+  // Active Section Detection
+  // =========================
+  
+  function initActiveSectionDetection() {
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    const sections = document.querySelectorAll('section[id], main[id]');
+    
+    function updateActiveSection() {
+      let currentSection = '';
+      const scrollPosition = window.scrollY + 100; // Offset for header height
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+      
+      // Update navigation links
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        if (href === `#${currentSection}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+    
+    // Update on scroll with throttling for performance
+    let ticking = false;
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(updateActiveSection);
+        ticking = true;
+        setTimeout(() => ticking = false, 10);
+      }
+    }
+    
+    window.addEventListener('scroll', requestTick);
+    
+    // Initial update
+    updateActiveSection();
+  }
 
 })(); // End of IIFE
