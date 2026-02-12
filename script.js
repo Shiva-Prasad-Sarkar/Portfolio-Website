@@ -495,5 +495,48 @@
     // Initial update
     updateActiveSection();
   }
+  
+  // =========================
+  // See More / See Less Functionality
+  // =========================
+  
+  function initSeeMoreButtons() {
+    const seeMoreButtons = document.querySelectorAll('.see-more-btn');
+    
+    seeMoreButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const sectionId = this.getAttribute('data-section');
+        const grid = document.getElementById(sectionId);
+        const textSpan = this.querySelector('.text');
+        
+        if (grid) {
+          // Toggle the show-all class
+          grid.classList.toggle('show-all');
+          
+          // Update button text and add active class for icon rotation
+          if (grid.classList.contains('show-all')) {
+            textSpan.textContent = 'See Less';
+            this.classList.add('active');
+          } else {
+            textSpan.textContent = 'See More';
+            this.classList.remove('active');
+            
+            // Scroll to the section when collapsing
+            const section = grid.closest('section');
+            if (section) {
+              section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        }
+      });
+    });
+  }
+  
+  // Initialize See More buttons after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSeeMoreButtons);
+  } else {
+    initSeeMoreButtons();
+  }
 
 })(); // End of IIFE

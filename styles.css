@@ -2228,8 +2228,14 @@ body:not(.loaded)::before {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
   overflow: hidden;
+}
+
+/* Ensure main content is above falling icons */
+.main-content {
+  position: relative;
+  z-index: 1;
 }
 
 .falling-icon {
@@ -2290,3 +2296,66 @@ body:not(.loaded)::before {
 .falling-icon:nth-child(18) { animation-duration: 13.5s; animation-delay: 1.3s; left: 78%; }
 .falling-icon:nth-child(19) { animation-duration: 9.8s; animation-delay: 4.8s; left: 88%; }
 .falling-icon:nth-child(20) { animation-duration: 7.8s; animation-delay: 2.3s; left: 92%; }
+
+/* =========================
+   See More/Less Functionality
+   ========================= */
+
+/* Hide cards after the 3rd one by default */
+#projects-grid .card:nth-child(n+4),
+#mygames-grid .card:nth-child(n+4),
+#certificates-grid .card:nth-child(n+4),
+#blogs-grid .card:nth-child(n+4) {
+  display: none;
+}
+
+/* Show all cards when show-all class is applied */
+#projects-grid.show-all .card,
+#mygames-grid.show-all .card,
+#certificates-grid.show-all .card,
+#blogs-grid.show-all .card {
+  display: block;
+}
+
+/* See More Button Styles */
+.see-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.see-more-btn {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.see-more-btn:hover {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 215, 0, 0.15));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.35);
+  border-color: var(--accent);
+}
+
+.see-more-btn:active {
+  transform: translateY(0);
+}
+
+.see-more-btn .icon {
+  transition: transform 0.3s ease;
+}
+
+.see-more-btn.active .icon {
+  transform: rotate(180deg);
+}
