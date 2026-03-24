@@ -100,10 +100,10 @@
       const pressed = t === 'light';
       if(themeToggle) {
         themeToggle.setAttribute('aria-pressed', pressed);
-        themeToggle.textContent = t === 'light' ? '🌞 Light Mode' : '🌙 Dark Knight Mode';
+        themeToggle.textContent = t === 'light' ? '🦇 Switch to batmode' : '🌞 Switch to Light Mode';
       }
       if(mobileThemeToggle) {
-        mobileThemeToggle.textContent = t === 'light' ? '🌞 Light Mode' : '🌙 Dark Knight Mode';
+        mobileThemeToggle.textContent = t === 'light' ? '🦇 Switch to batmode' : '🌞 Switch to Light Mode';
       }
       localStorage.setItem('dark-knight-theme', t);
       
@@ -196,13 +196,22 @@
 
   // Desktop and mobile theme buttons
   themeToggle && themeToggle.addEventListener('click', toggleTheme);
-  mobileThemeToggle && mobileThemeToggle.addEventListener('click', toggleTheme);
+  
+  if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('click', () => {
+      toggleTheme();
+      if (typeof closeMobileNav === 'function') {
+        closeMobileNav();
+      }
+    });
+  }
 
   // Mobile navigation toggle
+  let closeMobileNav;
   if (mobileToggle && mobileNav) {
     const mobileCloseBtn = document.getElementById('mobile-close');
     
-    function closeMobileNav() {
+    closeMobileNav = function() {
       mobileToggle.setAttribute('aria-expanded', 'false');
       mobileNav.setAttribute('aria-hidden', 'true');
       mobileNav.classList.remove('open');
@@ -252,6 +261,27 @@
       }
     });
   }
+  
+  // Intersection Observer for Scroll Animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Add the class 'fade-up' to elements we want to animate (sections, cards, etc)
+  document.querySelectorAll('section, .card, .cv-card, .skill-category').forEach(el => {
+    el.classList.add('fade-up');
+    observer.observe(el);
+  });
 
   // Project preview modal
   const modal = document.getElementById('modal');
