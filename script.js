@@ -476,7 +476,8 @@
   // =========================
   // Custom Cursor Animation
   // =========================
-  
+
+
   } // End of initializePortfolio function
   
   // =========================
