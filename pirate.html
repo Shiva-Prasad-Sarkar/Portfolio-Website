@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" data-universe="pirate">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Lost Developer's World | Shiva Prasad Sarkar</title>
+  <meta name="description" content="Set sail through The Lost Developer's World — an animated treasure-map portfolio of Shiva Prasad Sarkar, CSE undergrad at BRAC University. Every island is a real project, game, certificate, study or blog post." />
+  <meta name="author" content="Shiva Prasad Sarkar" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#071a26" />
+  <meta property="og:title" content="The Lost Developer's World | Shiva Prasad Sarkar" />
+  <meta property="og:description" content="An animated treasure-map portfolio: projects, games, research, certificates and more." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://shiva-prasad-sarkar.github.io/Portfolio-Website/pirate.html" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230b3b45' stroke='%23d8aa4a' stroke-width='2'/%3E%3Cpath d='M16 4l3 9 9 3-9 3-3 9-3-9-9-3 9-3z' fill='%23f3e2b3'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&amp;family=Cinzel:wght@500;600;700&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=IM+Fell+English:ital@0;1&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="pirate/pirate.css" />
+  <script>document.documentElement.className = 'js';</script>
+</head>
+<body>
+  <a class="skip-link" href="#stage">Skip to the map</a>
+
+  <!-- shared artwork: islands, monsters, galleon, paints. Referenced with <use>. -->
+  <svg class="art-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<!-- ============ paints ============ -->
+<linearGradient id="landFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6e9c0"/><stop offset="1" stop-color="#dcc189"/></linearGradient>
+<linearGradient id="landShade" x1="0" y1="0" x2="1" y2="1"><stop offset=".35" stop-color="#5b3a14" stop-opacity="0"/><stop offset="1" stop-color="#5b3a14" stop-opacity=".42"/></linearGradient>
+<radialGradient id="paperGrad" cx="50%" cy="46%" r="78%"><stop offset="0" stop-color="#f7ebc7"/><stop offset=".62" stop-color="#ecd9a6"/><stop offset="1" stop-color="#d2b36f"/></radialGradient>
+<radialGradient id="paperBurn" cx="50%" cy="50%" r="72%"><stop offset=".55" stop-color="#5a300a" stop-opacity="0"/><stop offset=".86" stop-color="#5a300a" stop-opacity=".26"/><stop offset="1" stop-color="#3a1c04" stop-opacity=".62"/></radialGradient>
+<radialGradient id="stain" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#8b5a1e" stop-opacity=".2"/><stop offset=".6" stop-color="#8b5a1e" stop-opacity=".08"/><stop offset="1" stop-color="#8b5a1e" stop-opacity="0"/></radialGradient>
+<radialGradient id="seaWash" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#3f8a92" stop-opacity=".22"/><stop offset="1" stop-color="#3f8a92" stop-opacity="0"/></radialGradient>
+<radialGradient id="waxGrad" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#cf5642"/><stop offset=".55" stop-color="#a02f22"/><stop offset="1" stop-color="#6a160f"/></radialGradient>
+<radialGradient id="waterBlob" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#e6d3a0" stop-opacity=".98"/><stop offset=".72" stop-color="#e6d3a0" stop-opacity=".9"/><stop offset="1" stop-color="#e6d3a0" stop-opacity="0"/></radialGradient>
+<radialGradient id="glassGrad" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#e9f6f4" stop-opacity=".95"/><stop offset="1" stop-color="#93c4c3" stop-opacity=".7"/></radialGradient>
+<filter id="paperNoise" x="0" y="0" width="100%" height="100%">
+  <feTurbulence type="fractalNoise" baseFrequency=".82" numOctaves="2" seed="11" result="n"/>
+  <feColorMatrix in="n" type="matrix" values="0 0 0 0 .36  0 0 0 0 .22  0 0 0 0 .08  0 0 0 .55 -.12"/>
+</filter>
+<filter id="blotch" x="0" y="0" width="100%" height="100%">
+  <feTurbulence type="fractalNoise" baseFrequency=".006 .009" numOctaves="3" seed="5" result="n"/>
+  <feColorMatrix in="n" type="matrix" values="0 0 0 0 .45  0 0 0 0 .27  0 0 0 0 .08  0 0 0 1.1 -.42"/>
+</filter>
+
+<!-- ============ land shapes ============ -->
+<path id="b1" d="M-78 6C-82-22-52-44-22-40C-8-58 22-54 36-38C62-42 84-22 80 2C86 22 64 40 40 38C26 50-4 48-16 38C-44 46-76 34-78 6Z"/>
+<path id="b2" d="M-90 10C-92-10-64-26-40-22C-22-40 14-38 28-22C52-30 88-16 88 6C90 26 58 36 36 30C18 44-14 42-26 30C-52 38-88 30-90 10Z"/>
+<path id="b3" d="M-70 0C-72-30-38-50-6-46C26-52 66-34 70-4C74 24 44 46 10 42C-6 56-34 50-44 36C-62 34-70 20-70 0Z"/>
+<path id="b4" d="M-56 4C-58-18-34-34-10-30C12-40 44-28 52-6C58 14 38 30 14 28C-2 40-28 36-36 24C-50 24-56 14-56 4Z"/>
+<path id="b5" d="M-84 14C-90-8-66-30-38-28C-20-52 18-50 34-30C58-32 80-12 74 8C70 26 46 36 28 30C10 44-20 42-30 28C-52 36-80 32-84 14Z"/>
+
+<!-- ============ galleon (silhouette on the ocean, inked on the chart; colours come from CSS variables) ============ -->
+<g id="galleon">
+  <path class="g-rig" d="M-4-168L-98-34M-4-168L100-22M64-140L150-46M64-140L100-22M-72-112L-98-34"/>
+  <g class="g-mast"><rect x="-5.5" y="-170" width="3.4" height="158"/><rect x="62.5" y="-142" width="3.4" height="130"/><rect x="-73.5" y="-114" width="3.2" height="82"/></g>
+  <path class="g-hull" d="M-100-26L-88-26L-88-34L-60-34L-60-14L72-14L72-24L96-24L104-14L130-8L132-11L110 14C96 30 70 34 40 34L-56 34C-84 32-98 14-100-26Z"/>
+  <g class="g-sail">
+    <path d="M-34-166Q-4-160 26-166L24-138Q-4-131-32-138Z"/><path d="M-42-134Q-4-126 34-134L31-92Q-4-83-39-92Z"/><path d="M-50-88Q-4-78 42-88L38-42Q-4-32-46-42Z"/>
+    <path d="M46-138Q64-133 82-138L80-116Q64-111 48-116Z"/><path d="M40-112Q64-105 88-112L85-76Q64-69 43-76Z"/><path d="M34-72Q64-63 94-72L90-32Q64-23 38-32Z"/>
+    <path d="M-72-110L-122-40L-72-42Z"/><path d="M66-140L150-46L70-58Z"/>
+  </g>
+  <g class="g-flag"><path d="M-4-170L-4-184L22-177L-4-172Z"/><path d="M64-142L64-154L84-148L64-145Z"/></g>
+</g>
+
+<!-- ============ ISLANDS ============ -->
+<!-- I · Captain's Log : cabin, open book, quill -->
+<g id="isle-log">
+  <use href="#b1" class="shallow" transform="scale(1.34 1.3)"/><use href="#b1" class="ripple" transform="scale(1.17 1.15)"/><use href="#b1" class="ripple r2" transform="scale(1.07)"/>
+  <use href="#b1" class="land"/><use href="#b1" class="land-shade"/>
+  <path class="k hint" d="M-62 22q8 4 16 0M40 26q8 4 16 0M-60 -4q6-3 12 0"/>
+  <path class="kf" fill="#f1e4bf" d="M-30-2V-26H18V-2Z"/><path class="kf" fill="#a4432b" d="M-36-26L-6-46L24-26Z"/>
+  <path class="kf" fill="#5a3a1c" d="M-12-2V-14a6 6 0 0 1 12 0V-2Z"/><rect class="kf" fill="#9ec3c4" x="4" y="-21" width="9" height="9"/>
+  <path class="k" d="M-6-46V-64"/><path class="kf" fill="#8c2a1f" d="M-6-64l17 5-17 5Z"/>
+  <path class="kf" fill="#fffaf0" d="M-54 24q14-8 28 0v17q-14-8-28 0Z"/><path class="kf" fill="#fffaf0" d="M-26 24q14-8 28 0v17q-14-8-28 0Z"/>
+  <path class="k thin" d="M-26 24V41M-49 30h17M-49 34h17M-21 30h17M-21 34h17"/>
+  <path class="kf" fill="#f7efd6" d="M22 40q12-14 36-23q-6 15-21 25Z"/><path class="k thin" d="M22 40L58 17"/>
+</g>
+
+<!-- II · The Arsenal : cannon, cannonballs, crossed swords -->
+<g id="isle-arsenal">
+  <use href="#b2" class="shallow" transform="scale(1.3 1.34)"/><use href="#b2" class="ripple" transform="scale(1.15 1.17)"/><use href="#b2" class="ripple r2" transform="scale(1.07)"/>
+  <use href="#b2" class="land"/><use href="#b2" class="land-shade"/>
+  <path class="k hint" d="M-70 18q8 4 16 0M54 -4q8 4 16 0"/>
+  <g transform="translate(-8 16)"><circle class="kf" fill="#8a5a2e" r="15"/><circle class="k" r="4.5"/><path class="k thin" d="M-15 0H15M0-15V15M-10.6-10.6L10.6 10.6M-10.6 10.6L10.6-10.6"/></g>
+  <g transform="translate(-8 -2) rotate(-18)">
+    <path class="kf" fill="#3d4046" d="M-34-9H28q9 0 9 9t-9 9H-34q-7 0-7-9t7-9Z"/><path class="k" d="M12-9.5V9.5M-14-9V9" stroke-width="1.1"/>
+    <path d="M-30-4.5H22" stroke="#fff" stroke-opacity=".28" stroke-width="2.4" fill="none" stroke-linecap="round"/><path class="kf" fill="#2a2c30" d="M30-9.5h9v19h-9Z"/>
+  </g>
+  <path class="kf" fill="#e9b13a" d="M-50-12l3-8 3 8 8 3-8 3-3 8-3-8-8-3Z" transform="scale(.8) translate(-8 0)"/>
+  <circle class="kf" fill="#3d4046" cx="40" cy="22" r="6.5"/><circle class="kf" fill="#3d4046" cx="53" cy="22" r="6.5"/><circle class="kf" fill="#3d4046" cx="46.5" cy="11.5" r="6.5"/>
+  <path class="k" d="M-58-38L-30-64M-30-38L-58-64" stroke-width="2.6"/><path class="k" d="M-62-34l9-5M-26-34l-9-5" stroke-width="2.6"/>
+</g>
+
+<!-- III · The Challenge Arena : colosseum + crossed swords -->
+<g id="isle-arena">
+  <use href="#b3" class="shallow" transform="scale(1.34 1.3)"/><use href="#b3" class="ripple" transform="scale(1.17 1.15)"/><use href="#b3" class="ripple r2" transform="scale(1.07)"/>
+  <use href="#b3" class="land"/><use href="#b3" class="land-shade"/>
+  <path class="kf" fill="#e2cf9a" d="M-52-8V14A52 24 0 0 0 52 14V-8A52 24 0 0 1-52-8Z"/>
+  <ellipse class="kf" fill="#ead9a8" cx="0" cy="-8" rx="52" ry="24"/><ellipse class="kf" fill="#c3a46d" cx="0" cy="-8" rx="38" ry="16"/>
+  <path class="k thin" d="M-42 26.2 v-9 a3.6 3.6 0 0 1 7.2 0 v9 M-29 31.9 v-9 a3.6 3.6 0 0 1 7.2 0 v9 M-16 34.8 v-9 a3.6 3.6 0 0 1 7.2 0 v9 M-3 36 v-9 a3.6 3.6 0 0 1 7.2 0 v9 M10 35.6 v-9 a3.6 3.6 0 0 1 7.2 0 v9 M23 33.5 v-9 a3.6 3.6 0 0 1 7.2 0 v9 M36 29.3 v-9 a3.6 3.6 0 0 1 7.2 0 v9"/>
+  <path class="k thin" d="M-52 2A52 24 0 0 0 52 2" opacity=".6"/>
+  <path class="k" d="M-18-44L18-70M18-44L-18-70" stroke-width="2.8"/><path class="k" d="M-23-40l9-5M23-40l-9-5" stroke-width="2.8"/>
+  <path class="kf" fill="#8c2a1f" d="M-4-34h8l-4 10Z"/>
+</g>
+
+<!-- IV · Treasure Islands : palms, chest, red X -->
+<g id="isle-treasure">
+  <use href="#b5" class="shallow" transform="scale(1.3 1.34)"/><use href="#b5" class="ripple" transform="scale(1.15 1.18)"/><use href="#b5" class="ripple r2" transform="scale(1.07)"/>
+  <use href="#b4" class="land" transform="translate(-102 30) scale(.5)"/><use href="#b4" class="land" transform="translate(98 34) scale(.42)"/>
+  <use href="#b5" class="land"/><use href="#b5" class="land-shade"/>
+  <path class="k hint" d="M-70 24q8 4 16 0M44 -12q8 4 16 0M54 14q6 3 12 0"/>
+  <g class="palm" transform="translate(-46 4)"><path class="k" d="M0 0Q-4-22 6-42" stroke-width="3"/><path class="kf" fill="#6f8a3d" d="M6-42Q-14-52-24-40Q-8-46 6-42Q-6-60 -4-70Q8-56 6-42Q22-62 34-56Q18-50 6-42Q28-40 32-28Q16-36 6-42Z"/></g>
+  <g class="palm" transform="translate(52 -2) scale(.85)"><path class="k" d="M0 0Q4-20-4-38" stroke-width="3"/><path class="kf" fill="#6f8a3d" d="M-4-38Q-24-46-32-34Q-16-40-4-38Q-14-56-12-64Q0-50-4-38Q12-58 24-52Q8-46-4-38Q16-36 20-24Q4-32-4-38Z"/></g>
+  <rect class="kf" fill="#8a5a2e" x="-17" y="2" width="34" height="19" rx="2"/><path class="kf" fill="#9d6a36" d="M-17 2Q0-20 17 2Z"/>
+  <path class="k thin" d="M-6-8V21M6-8V21"/><rect class="kf" fill="#e9b13a" x="-3" y="3" width="6" height="7" rx="1"/>
+  <circle class="kf" fill="#e9b13a" cx="24" cy="20" r="3.6"/><circle class="kf" fill="#e9b13a" cx="31" cy="23" r="3.6"/><circle class="kf" fill="#e9b13a" cx="28" cy="16" r="3.6"/>
+  <path d="M-44 8L-26 26M-26 8L-44 26" stroke="#8c2a1f" stroke-width="5.5" stroke-linecap="round"/>
+  <path class="k" d="M-70 34Q-60 20-52 26T-50 10" stroke-dasharray="1.5 6" stroke-width="2"/>
+</g>
+
+<!-- V · The Game Seas : two dice -->
+<g id="isle-games">
+  <use href="#b4" class="shallow" transform="scale(1.4 1.38)"/><use href="#b4" class="ripple" transform="scale(1.2 1.2)"/><use href="#b4" class="ripple r2" transform="scale(1.08)"/>
+  <use href="#b4" class="land"/><use href="#b4" class="land-shade"/>
+  <g transform="translate(-14 -6)">
+    <path class="kf" fill="#fffaf0" d="M0-30L22-19L0-8L-22-19Z"/><path class="kf" fill="#e2d4ac" d="M-22-19L0-8V18L-22 7Z"/><path class="kf" fill="#cdbb8b" d="M0-8L22-19V7L0 18Z"/>
+    <circle cx="0" cy="-19" r="2.6" fill="#2a1c0e"/>
+    <circle cx="-14" cy="-3" r="2.2" fill="#2a1c0e"/><circle cx="-7" cy="8" r="2.2" fill="#2a1c0e"/>
+    <circle cx="7" cy="2" r="2.2" fill="#2a1c0e"/><circle cx="14" cy="-5" r="2.2" fill="#2a1c0e"/><circle cx="14" cy="5" r="2.2" fill="#2a1c0e"/>
+  </g>
+  <g transform="translate(30 14) scale(.66) rotate(-12)">
+    <path class="kf" fill="#fffaf0" d="M0-30L22-19L0-8L-22-19Z"/><path class="kf" fill="#e2d4ac" d="M-22-19L0-8V18L-22 7Z"/><path class="kf" fill="#cdbb8b" d="M0-8L22-19V7L0 18Z"/>
+    <circle cx="0" cy="-19" r="3" fill="#8c2a1f"/><circle cx="-14" cy="-4" r="2.6" fill="#2a1c0e"/><circle cx="-7" cy="8" r="2.6" fill="#2a1c0e"/>
+    <circle cx="7" cy="2" r="2.6" fill="#2a1c0e"/><circle cx="14" cy="-6" r="2.6" fill="#2a1c0e"/><circle cx="14" cy="4" r="2.6" fill="#2a1c0e"/>
+  </g>
+  <path class="k hint" d="M-46 14q8 4 16 0M26 -16q8 4 16 0"/>
+</g>
+
+<!-- VI · The Hall of Honors : temple + medal -->
+<g id="isle-honors">
+  <use href="#b1" class="shallow" transform="scale(1.34 1.3)"/><use href="#b1" class="ripple" transform="scale(1.17 1.15)"/><use href="#b1" class="ripple r2" transform="scale(1.07)"/>
+  <use href="#b1" class="land"/><use href="#b1" class="land-shade"/>
+  <path class="kf" fill="#e9dcb4" d="M-48 22H48V16H-48ZM-42 16H42V10H-42Z"/>
+  <g fill="#f4ead0" class="kf"><rect x="-37" y="-22" width="8" height="32"/><rect x="-19" y="-22" width="8" height="32"/><rect x="-4" y="-22" width="8" height="32"/><rect x="11" y="-22" width="8" height="32"/><rect x="29" y="-22" width="8" height="32"/></g>
+  <rect class="kf" fill="#e9dcb4" x="-44" y="-30" width="88" height="8"/><path class="kf" fill="#f4ead0" d="M-48-30L0-54L48-30Z"/>
+  <circle class="kf" fill="#e9b13a" cx="0" cy="-38" r="5.5"/><path class="k thin" d="M-48-30L0-54L48-30"/>
+  <path class="k" d="M-46-30V-46M46-30V-46"/><path class="kf" fill="#8c2a1f" d="M-46-46l14 4-14 4ZM46-46l-14 4 14 4Z"/>
+  <g transform="translate(62 20)"><path class="kf" fill="#8c2a1f" d="M-6-4L-12 14L-6 10L-1 16L0-4Z"/><path class="kf" fill="#a4432b" d="M6-4L12 14L6 10L1 16L0-4Z"/><circle class="kf" fill="#e9b13a" cy="-8" r="8"/><path class="k thin" d="M0-12l2 4 4 0-3 3 1 4-4-2-4 2 1-4-3-3 4 0Z"/></g>
+</g>
+
+<!-- VII · The Research Guild : observatory + telescope -->
+<g id="isle-research">
+  <use href="#b3" class="shallow" transform="scale(1.34 1.3)"/><use href="#b3" class="ripple" transform="scale(1.17 1.15)"/><use href="#b3" class="ripple r2" transform="scale(1.07)"/>
+  <use href="#b3" class="land"/><use href="#b3" class="land-shade"/>
+  <rect class="kf" fill="#efe3c0" x="-26" y="-10" width="52" height="32"/><path class="kf" fill="#c9b57f" d="M-26-10A26 26 0 0 1 26-10Z"/>
+  <path class="kf" fill="#3a2812" d="M2-34L9-34L9-10L2-10Z"/>
+  <g transform="translate(6 -30) rotate(-50)"><rect class="kf" fill="#8a5a2e" x="0" y="-4.5" width="40" height="9"/><rect class="kf" fill="#e9b13a" x="34" y="-6" width="10" height="12"/><rect class="kf" fill="#e9b13a" x="-3" y="-3" width="4" height="6"/></g>
+  <path class="kf" fill="#5a3a1c" d="M-8 22V10a8 8 0 0 1 16 0V22Z"/><rect class="kf" fill="#9ec3c4" x="14" y="2" width="8" height="8"/><rect class="kf" fill="#9ec3c4" x="-22" y="2" width="8" height="8"/>
+  <g fill="#e9b13a" class="k thin"><path d="M-46-40l2.4 6 6 2.4-6 2.4-2.4 6-2.4-6-6-2.4 6-2.4Z"/><path d="M50-46l2 5 5 2-5 2-2 5-2-5-5-2 5-2Z"/><path d="M-22-62l1.8 4.4 4.4 1.8-4.4 1.8-1.8 4.4-1.8-4.4-4.4-1.8 4.4-1.8Z"/></g>
+</g>
+
+<!-- VIII · The Storyteller's Cove : lighthouse, rowing boat, scroll -->
+<g id="isle-cove">
+  <use href="#b5" class="shallow" transform="scale(1.3 1.34)"/><use href="#b5" class="ripple" transform="scale(1.15 1.18)"/><use href="#b5" class="ripple r2" transform="scale(1.07)"/>
+  <use href="#b5" class="land"/><use href="#b5" class="land-shade"/>
+  <path d="M9-43L60-58L60-30Z" fill="#ffe58a" opacity=".5"/><path d="M-9-43L-60-58L-60-30Z" fill="#ffe58a" opacity=".5"/>
+  <path class="kf" fill="#f4ead0" d="M-13 16L-8-38H8L13 16Z"/>
+  <path class="kf" fill="#a4432b" d="M-10.7-6L10.7-6L11.6 4L-11.6 4Z"/><path class="kf" fill="#a4432b" d="M-9.3-28L9.3-28L9.9-19L-9.9-19Z"/>
+  <rect class="kf" fill="#ffe58a" x="-9" y="-49" width="18" height="11"/><path class="k thin" d="M0-49V-38M-4.5-49V-38M4.5-49V-38"/>
+  <path class="kf" fill="#a4432b" d="M-12-49L0-62L12-49Z"/><circle class="kf" fill="#e9b13a" cy="-64" r="2.4"/>
+  <path class="kf" fill="#8a5a2e" d="M-19 16H19L15 8H-15Z"/>
+  <path class="kf" fill="#8a5a2e" d="M32 30q15 11 32 0l-5 9H37Z"/><path class="k" d="M48 30V12"/><path class="kf" fill="#f7efd6" d="M48 13L60 28H48Z"/>
+  <path class="kf" fill="#f7efd6" d="M-58 24h24v13h-24Z"/><path class="k thin" d="M-54 29h16M-54 33h12"/><ellipse class="kf" fill="#f7efd6" cx="-58" cy="30.5" rx="2.6" ry="6.5"/><ellipse class="kf" fill="#f7efd6" cx="-34" cy="30.5" rx="2.6" ry="6.5"/>
+</g>
+
+<!-- IX · The Ship's Broadcast : signal mast with play banner -->
+<g id="isle-broadcast">
+  <use href="#b2" class="shallow" transform="scale(1.3 1.34)"/><use href="#b2" class="ripple" transform="scale(1.15 1.17)"/><use href="#b2" class="ripple r2" transform="scale(1.07)"/>
+  <use href="#b2" class="land"/><use href="#b2" class="land-shade"/>
+  <path class="k" d="M-15 22L0-52L15 22M-11 5H11M-6-14H6M-13 14L7-2M13 14L-7-2" stroke-width="2"/>
+  <circle class="kf" fill="#ffe58a" cy="-56" r="6.5"/>
+  <g class="k" fill="none"><path d="M11-62a14 14 0 0 1 0 12M17-67a23 23 0 0 1 0 22M23-72a32 32 0 0 1 0 32"/><path d="M-11-62a14 14 0 0 0 0 12M-17-67a23 23 0 0 0 0 22M-23-72a32 32 0 0 0 0 32"/></g>
+  <path class="k" d="M40 18V-26"/><path class="kf" fill="#8c2a1f" d="M40-26h32v22H40Z"/><path d="M52-21l13 8-13 8Z" fill="#f7efd6"/>
+  <path class="kf" fill="#f1e4bf" d="M-62 22V6H-36V22Z"/><path class="kf" fill="#8a5a2e" d="M-66 6L-49-8L-32 6Z"/><rect class="kf" fill="#5a3a1c" x="-52" y="12" width="7" height="10"/>
+</g>
+
+<!-- X · The Captain's Dossier : castle + sealed scroll -->
+<g id="isle-dossier">
+  <use href="#b1" class="shallow" transform="scale(1.34 1.3)"/><use href="#b1" class="ripple" transform="scale(1.17 1.15)"/><use href="#b1" class="ripple r2" transform="scale(1.07)"/>
+  <use href="#b1" class="land"/><use href="#b1" class="land-shade"/>
+  <rect class="kf" fill="#e9dcb4" x="-42" y="-14" width="84" height="34"/><path class="k" d="M-41 -14v-4h4v4 M-34 -14v-4h4v4 M-27 -14v-4h4v4 M-20 -14v-4h4v4 M-13 -14v-4h4v4 M-6 -14v-4h4v4 M1 -14v-4h4v4 M8 -14v-4h4v4 M15 -14v-4h4v4 M22 -14v-4h4v4 M29 -14v-4h4v4 M36 -14v-4h4v4"/>
+  <rect class="kf" fill="#efe3c0" x="-52" y="-34" width="22" height="54"/><rect class="kf" fill="#efe3c0" x="30" y="-34" width="22" height="54"/>
+  <path class="k" d="M-51 -34v-4h3.4v4 M-45 -34v-4h3.4v4 M-39 -34v-4h3.4v4 M31 -34v-4h3.4v4 M37 -34v-4h3.4v4 M43 -34v-4h3.4v4"/>
+  <rect class="kf" fill="#f4ead0" x="-16" y="-48" width="32" height="68"/><path class="k" d="M-15 -48v-4h3.4v4 M-9 -48v-4h3.4v4 M-3 -48v-4h3.4v4 M3 -48v-4h3.4v4 M9 -48v-4h3.4v4"/>
+  <path class="kf" fill="#a4432b" d="M-56-34L-41-56L-26-34ZM26-34L41-56L56-34Z"/>
+  <path class="kf" fill="#3a2812" d="M-9 20V4a9 9 0 0 1 18 0V20Z"/><path class="k thin" d="M-4 20V6M4 20V6M-9 11H9"/>
+  <rect class="kf" fill="#3a2812" x="-3" y="-38" width="6" height="12" rx="3"/><rect class="kf" fill="#3a2812" x="-47" y="-20" width="5" height="9" rx="2.5"/><rect class="kf" fill="#3a2812" x="42" y="-20" width="5" height="9" rx="2.5"/>
+  <path class="k" d="M0-48V-70"/><path class="kf" fill="#8c2a1f" d="M0-70l18 5-18 5Z"/>
+  <rect class="kf" fill="#f7efd6" x="26" y="27" width="42" height="12" rx="6"/><path class="k thin" d="M32 31h24M32 35h18"/><circle class="kf" fill="url(#waxGrad)" cx="66" cy="33" r="6.5"/>
+</g>
+
+<!-- XI · Send a Message : message in a bottle, lantern post, drifting envelope -->
+<g id="isle-message">
+  <use href="#b4" class="shallow" transform="scale(1.4 1.38)"/><use href="#b4" class="ripple" transform="scale(1.2 1.2)"/><use href="#b4" class="ripple r2" transform="scale(1.08)"/>
+  <use href="#b4" class="land"/><use href="#b4" class="land-shade"/>
+  <g transform="translate(-6 4) rotate(-28)">
+    <path class="kf" fill="url(#glassGrad)" d="M-7-22H7V-14Q18-8 18 6V28Q18 34 12 34H-12Q-18 34-18 28V6Q-18-8-7-14Z"/>
+    <rect class="kf" fill="#f7efd6" x="-6" y="-2" width="12" height="28" rx="6"/><path class="k thin" d="M-3 4h6M-3 9h6M-3 14h6"/>
+    <rect class="kf" fill="#8a5a2e" x="-5" y="-33" width="10" height="12" rx="1.5"/><path d="M-12 8V24" stroke="#fff" stroke-opacity=".7" stroke-width="2.4" stroke-linecap="round"/>
+  </g>
+  <path class="k" d="M38 26V-26M38-26H26"/><rect class="kf" fill="#ffe58a" x="22" y="-34" width="10" height="14" rx="2"/><path class="k thin" d="M27-34V-20"/>
+  <g transform="translate(-52 26) rotate(-10)"><rect class="kf" fill="#f7efd6" x="-12" y="-7" width="24" height="15"/><path class="k thin" d="M-12-7L0 3L12-7"/></g>
+</g>
+
+<!-- ============ SEA MONSTERS ============ -->
+<g id="kraken">
+  <path id="kt1" d="M-26 6C-60-4-92-40-78-86C-72-104-50-108-48-92C-47-82-58-78-62-86" fill="none"/>
+  <path id="kt2" d="M-14 8C-34-20-52-50-34-80C-26-94-8-92-12-78" fill="none"/>
+  <path id="kt3" d="M12 8C30-22 58-46 50-84C48-98 28-102 26-88" fill="none"/>
+  <path id="kt4" d="M26 6C62-6 98-36 92-80C90-96 112-100 110-84C108-74 96-76 96-82" fill="none"/>
+  <g class="tube-o"><use href="#kt1"/><use href="#kt2"/><use href="#kt3"/><use href="#kt4"/></g>
+  <g class="tube-i"><use href="#kt1"/><use href="#kt2"/><use href="#kt3"/><use href="#kt4"/></g>
+  <path class="kf" fill="#cdb87f" d="M-36 8C-40-34-22-64 0-66C22-64 40-34 36 8Z"/>
+  <path class="k thin" d="M-22-40q4-6 10-4M10-52q4-4 9-1M-6-24q5-3 9 0M16-30q4-4 8 0M-20-14q4-3 8 0M8-8q4-3 8 0"/>
+  <circle class="kf" fill="#f6ecd0" cx="-14" cy="-30" r="7"/><circle class="kf" fill="#f6ecd0" cx="14" cy="-30" r="7"/>
+  <path class="k" d="M-14-36V-24M14-36V-24" stroke-width="2.6"/><path class="k" d="M-24-42L-8-36M24-42L8-36" stroke-width="2.4"/>
+  <path class="tube-o" d="M-44 14C-74 10-102 20-128 6M44 14C74 8 106 18 130 4" fill="none"/><path class="tube-i" d="M-44 14C-74 10-102 20-128 6M44 14C74 8 106 18 130 4" fill="none"/>
+  <ellipse cx="0" cy="22" rx="196" ry="30" fill="url(#waterBlob)"/>
+  <path class="k" d="M-150 10q15-10 30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0" opacity=".85"/>
+  <path class="k thin" d="M-120 26q10-6 20 0t20 0t20 0M-10 30q10-6 20 0t20 0t20 0M70 26q10-6 20 0t20 0t20 0" opacity=".7"/>
+</g>
+<g id="serpent">
+  <path id="sp-body" d="M12 50C22 4 54 4 64 50C74 4 106 4 116 50C126 8 152 8 162 44" fill="none"/>
+  <use href="#sp-body" class="tube-o"/><use href="#sp-body" class="tube-i"/>
+  <path class="tube-o" d="M12 50C10 22-4 6 0-14" fill="none"/><path class="tube-i" d="M12 50C10 22-4 6 0-14" fill="none"/>
+  <path class="kf" fill="#cdb87f" d="M-22-8C-20-22-2-28 8-20C12-10 6-2-6-2C-10 0-18-2-22-8Z"/>
+  <circle cx="-5" cy="-14" r="2.2" fill="#2a1c0e"/><path class="k thin" d="M-21-8Q-12-6-4-5"/>
+  <path class="kf" fill="#8c2a1f" d="M6-22L12-34L14-22ZM10-16L20-26L19-14Z"/>
+  <g class="kf" fill="#8c2a1f"><path d="M30 13l5-12 5 12ZM84 13l5-12 5 12ZM136 11l5-12 5 12Z"/></g>
+  <path class="kf" fill="#cdb87f" d="M160 42l16-12-3 14 14 2Z"/>
+  <ellipse cx="92" cy="58" rx="118" ry="16" fill="url(#waterBlob)"/>
+  <path class="k" d="M-6 54q10-8 20 0t20 0M80 56q9-7 18 0t18 0M132 50q9-7 18 0t18 0" opacity=".85"/>
+</g>
+
+  </defs></svg>
+
+  <!-- ================= OCEAN (fixed backdrop; every layer animates with transform only) ================= -->
+  <div class="ocean" aria-hidden="true">
+    <div class="o-sky"></div>
+    <div class="o-stars s1"></div><div class="o-stars s2"></div>
+    <div class="o-moon"></div>
+    <div class="o-cloud c1"></div><div class="o-cloud c2"></div><div class="o-cloud c3"></div>
+    <div class="o-horizon">
+      <svg class="o-isles" viewBox="0 0 1600 70" preserveAspectRatio="none" focusable="false">
+        <path d="M60 70q50-44 120-36q36-26 78-2q34 4 48 38ZM1180 70q40-30 96-24q34-22 70 0q40 2 60 24Z" fill="#0a2d36"/>
+        <path d="M0 70V62q200-10 380-2t420-4q260 10 420 2t380 2V70Z" fill="#0a2f39"/>
+      </svg>
+      <div class="o-ship"><div class="o-ship-in"><div class="o-ship-bob">
+        <svg class="ship-sil" viewBox="-130 -190 280 232" focusable="false"><use href="#galleon"/></svg>
+      </div></div></div>
+    </div>
+    <div class="o-sea"></div>
+    <div class="o-wave w1"></div><div class="o-wave w2"></div><div class="o-wave w3"></div><div class="o-wave w4"></div>
+    <div class="o-fog f1"></div><div class="o-fog f2"></div>
+  </div>
+  <div class="light" aria-hidden="true"></div>
+  <div class="motes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+  <!-- ================= HUD ================= -->
+  <header class="hud" id="hud">
+    <a class="brand" href="#" data-action="map" aria-label="The Lost Developer's World — back to the map">
+      <svg viewBox="-24 -24 48 48" width="30" height="30" aria-hidden="true"><circle r="21" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M0-19L4-4L19 0L4 4L0 19L-4 4L-19 0L-4-4Z" fill="currentColor"/></svg>
+      <span class="brand-text">The Lost Developer&rsquo;s World</span>
+    </a>
+    <div class="hud-tools">
+      <a class="hud-btn hud-cv" id="hud-cv" href="#dossier" aria-label="Captain's Dossier — CV">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 2h9l5 5v15H6zM14 2v6h6M9 13h8M9 17h8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>CV</span>
+      </a>
+      <button type="button" class="hud-btn" id="btn-voyage" aria-expanded="false" aria-controls="orders">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Voyage</span>
+      </button>
+      <button type="button" class="hud-btn" id="btn-sound" aria-pressed="false" title="Ocean sounds (off)">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 10v4h4l5 4V6L8 10zM16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="sound-label">Sound off</span>
+      </button>
+      <div class="hud-menu">
+        <button type="button" class="hud-btn" id="btn-universe" aria-expanded="false" aria-controls="universe-menu">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="9" cy="12" r="6" fill="none" stroke="#ffd700" stroke-width="1.7"/><circle cx="15" cy="12" r="6" fill="none" stroke="#3fc1c9" stroke-width="1.7"/></svg><span>Switch universe</span>
+        </button>
+        <div class="universe-menu" id="universe-menu" hidden>
+          <a href="batman.html" data-world="batman"><strong>The Dark Knight</strong><small>Enter Gotham</small></a>
+          <a href="pirate.html" aria-current="page"><strong>The Lost World</strong><small>You are here</small></a>
+          <a href="./"><strong>Universe gateway</strong><small>Back to the choice screen</small></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= STAGE: title + map ================= -->
+  <main class="stage" id="stage" tabindex="-1">
+    <div class="title-band">
+      <h1 id="map-title"><span class="t1">The Lost</span> <span class="t2">Developer&rsquo;s World</span></h1>
+      <p class="tagline">Shiva Prasad Sarkar &middot; a chart of projects, games, research &amp; voyages</p>
+    </div>
+
+    <div class="map-wrap" id="map-wrap">
+      <!-- layer 1 · static paper, stains, monsters (its one noise filter is rasterised once) -->
+      <svg class="map-layer map-bg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+        <defs><clipPath id="sheetClip"><path d="M26 28.2 L41 25.3 L56 25.1 L71 28.8 L86 27.5 L101 28.2 L116 25.3 L131 25.1 L146 17.3 L161 17.5 L176 19.8 L191 20.3 L206 22.5 L221 25.2 L236 35.8 L251 24.2 L266 22.2 L281 26.3 L296 28.3 L311 33.8 L326 36.2 L341 29.6 L356 29.2 L371 23.9 L386 27.4 L401 27.8 L416 27.2 L431 24.4 L446 21.9 L461 21.8 L476 18.9 L491 16 L506 20.8 L521 22.1 L536 26.6 L551 28.2 L566 27.4 L581 29.2 L596 24.8 L611 28.2 L626 33.7 L641 32 L656 30.2 L671 32.5 L686 25.2 L701 24.7 L716 23.1 L731 23.2 L746 21.2 L761 26.9 L776 25.7 L791 20.9 L806 20.6 L821 21.2 L836 21.1 L851 28.6 L866 32.4 L881 30 L896 32.3 L911 27.5 L926 27 L941 30.5 L956 27.1 L971 33.7 L986 33.2 L1001 29 L1016 25.1 L1031 18.3 L1046 20.4 L1061 22.5 L1076 21.4 L1091 25.4 L1106 22.6 L1121 23.7 L1136 24.5 L1151 24.2 L1166 26.4 L1181 29.5 L1196 30.9 L1211 35.2 L1226 29.7 L1241 26.8 L1256 28.2 L1271 28.9 L1286 26.2 L1301 25.3 L1316 25.8 L1331 26.1 L1346 23.6 L1361 18.2 L1376 19.1 L1391 18.5 L1406 21.7 L1421 25.9 L1436 25.2 L1451 27.1 L1466 25.3 L1481 28.2 L1496 26 L1511 29.2 L1526 36.1 L1541 34.9 L1556 33.2 L1571 29.7 L1559.4 26 L1570.3 41 L1574.3 56 L1574 71 L1577.6 86 L1572.8 101 L1580.4 116 L1583.2 131 L1577.2 146 L1576 161 L1571.9 176 L1574.3 191 L1572.3 206 L1577.3 221 L1572.6 236 L1573.5 251 L1570.5 266 L1566.3 281 L1566.8 296 L1570.9 311 L1571.5 326 L1575.7 341 L1576.4 356 L1573 371 L1574.1 386 L1575.6 401 L1578.4 416 L1579.9 431 L1582.6 446 L1580.6 461 L1578.1 476 L1575.2 491 L1568.1 506 L1567.3 521 L1571.9 536 L1569.4 551 L1573 566 L1572.1 581 L1571.1 596 L1569.4 611 L1567.9 626 L1573.6 641 L1577.3 656 L1577.1 671 L1580.8 686 L1576.3 701 L1575.2 716 L1573.5 731 L1575.9 746 L1579.5 761 L1581.3 776 L1580.6 791 L1574.6 806 L1571 821 L1565.1 836 L1569.9 851 L1570.6 866 L1573.2 881 L1571.7 896 L1570.6 911 L1569.4 926 L1572 941 L1569.2 956 L1577.1 971 L1574 976.8 L1559 978.3 L1544 980.4 L1529 979.3 L1514 978.9 L1499 975.2 L1484 967.8 L1469 960.5 L1454 968.2 L1439 969.7 L1424 970.8 L1409 973 L1394 973.6 L1379 969.4 L1364 969.9 L1349 970.3 L1334 977.1 L1319 980.9 L1304 982.2 L1289 980.4 L1274 981.8 L1259 974.7 L1244 973.8 L1229 970.6 L1214 978.2 L1199 976.8 L1184 973.4 L1169 972 L1154 970.9 L1139 965.6 L1124 969.3 L1109 955.4 L1094 974.4 L1079 972.1 L1064 973 L1049 974.8 L1034 976.2 L1019 977.3 L1004 978.5 L989 981.9 L974 983.6 L959 983.5 L944 977.2 L929 972.4 L914 971.6 L899 969.3 L884 969.6 L869 970.9 L854 972.6 L839 970.1 L824 969.4 L809 967.4 L794 969.7 L779 971.5 L764 975.3 L749 975.1 L734 979.9 L719 978.6 L704 975.6 L689 973.5 L674 976.3 L659 970.7 L644 981.6 L629 979.8 L614 973.8 L599 973.4 L584 969.6 L569 966.1 L554 971.1 L539 971 L524 973.6 L509 970.7 L494 971.8 L479 966.1 L464 965.8 L449 972.4 L434 977.9 L419 967.8 L404 981.7 L389 976.2 L374 978.4 L359 976.2 L344 978.2 L329 975.5 L314 975.7 L299 973.7 L284 971.7 L269 969.3 L254 966.3 L239 964.5 L224 966.5 L209 969.8 L194 973.3 L179 973.6 L164 974.2 L149 974.1 L134 974.4 L119 978.3 L104 982.4 L89 984.2 L74 979.2 L59 978.3 L44 974 L29 975.8 L26.1 974 L23.3 959 L18.1 944 L16 929 L21.7 914 L23.3 899 L27.6 884 L28.5 869 L28.8 854 L24 839 L28.1 824 L29 809 L29 794 L33.1 779 L32.7 764 L32.9 749 L29.3 734 L25.7 719 L23.4 704 L22.3 689 L31.8 674 L23.7 659 L21.4 644 L20.8 629 L18.9 614 L20.1 599 L20.8 584 L27.6 569 L31.7 554 L33.2 539 L28.4 524 L37.2 509 L28.4 494 L30.1 479 L30.1 464 L29.9 449 L34.3 434 L29 419 L22 404 L22.9 389 L19.4 374 L22.9 359 L24.3 344 L22.4 329 L21.5 314 L24.6 299 L18.7 284 L21.3 269 L23 254 L27.9 239 L33.8 224 L34 209 L33.6 194 L29.8 179 L29.4 164 L29.2 149 L29.9 134 L30.5 119 L28.7 104 L26.8 89 L20.4 74 L18.9 59 L19.2 44 L21.2 29Z"/></clipPath></defs>
+        <path d="M26 28.2 L41 25.3 L56 25.1 L71 28.8 L86 27.5 L101 28.2 L116 25.3 L131 25.1 L146 17.3 L161 17.5 L176 19.8 L191 20.3 L206 22.5 L221 25.2 L236 35.8 L251 24.2 L266 22.2 L281 26.3 L296 28.3 L311 33.8 L326 36.2 L341 29.6 L356 29.2 L371 23.9 L386 27.4 L401 27.8 L416 27.2 L431 24.4 L446 21.9 L461 21.8 L476 18.9 L491 16 L506 20.8 L521 22.1 L536 26.6 L551 28.2 L566 27.4 L581 29.2 L596 24.8 L611 28.2 L626 33.7 L641 32 L656 30.2 L671 32.5 L686 25.2 L701 24.7 L716 23.1 L731 23.2 L746 21.2 L761 26.9 L776 25.7 L791 20.9 L806 20.6 L821 21.2 L836 21.1 L851 28.6 L866 32.4 L881 30 L896 32.3 L911 27.5 L926 27 L941 30.5 L956 27.1 L971 33.7 L986 33.2 L1001 29 L1016 25.1 L1031 18.3 L1046 20.4 L1061 22.5 L1076 21.4 L1091 25.4 L1106 22.6 L1121 23.7 L1136 24.5 L1151 24.2 L1166 26.4 L1181 29.5 L1196 30.9 L1211 35.2 L1226 29.7 L1241 26.8 L1256 28.2 L1271 28.9 L1286 26.2 L1301 25.3 L1316 25.8 L1331 26.1 L1346 23.6 L1361 18.2 L1376 19.1 L1391 18.5 L1406 21.7 L1421 25.9 L1436 25.2 L1451 27.1 L1466 25.3 L1481 28.2 L1496 26 L1511 29.2 L1526 36.1 L1541 34.9 L1556 33.2 L1571 29.7 L1559.4 26 L1570.3 41 L1574.3 56 L1574 71 L1577.6 86 L1572.8 101 L1580.4 116 L1583.2 131 L1577.2 146 L1576 161 L1571.9 176 L1574.3 191 L1572.3 206 L1577.3 221 L1572.6 236 L1573.5 251 L1570.5 266 L1566.3 281 L1566.8 296 L1570.9 311 L1571.5 326 L1575.7 341 L1576.4 356 L1573 371 L1574.1 386 L1575.6 401 L1578.4 416 L1579.9 431 L1582.6 446 L1580.6 461 L1578.1 476 L1575.2 491 L1568.1 506 L1567.3 521 L1571.9 536 L1569.4 551 L1573 566 L1572.1 581 L1571.1 596 L1569.4 611 L1567.9 626 L1573.6 641 L1577.3 656 L1577.1 671 L1580.8 686 L1576.3 701 L1575.2 716 L1573.5 731 L1575.9 746 L1579.5 761 L1581.3 776 L1580.6 791 L1574.6 806 L1571 821 L1565.1 836 L1569.9 851 L1570.6 866 L1573.2 881 L1571.7 896 L1570.6 911 L1569.4 926 L1572 941 L1569.2 956 L1577.1 971 L1574 976.8 L1559 978.3 L1544 980.4 L1529 979.3 L1514 978.9 L1499 975.2 L1484 967.8 L1469 960.5 L1454 968.2 L1439 969.7 L1424 970.8 L1409 973 L1394 973.6 L1379 969.4 L1364 969.9 L1349 970.3 L1334 977.1 L1319 980.9 L1304 982.2 L1289 980.4 L1274 981.8 L1259 974.7 L1244 973.8 L1229 970.6 L1214 978.2 L1199 976.8 L1184 973.4 L1169 972 L1154 970.9 L1139 965.6 L1124 969.3 L1109 955.4 L1094 974.4 L1079 972.1 L1064 973 L1049 974.8 L1034 976.2 L1019 977.3 L1004 978.5 L989 981.9 L974 983.6 L959 983.5 L944 977.2 L929 972.4 L914 971.6 L899 969.3 L884 969.6 L869 970.9 L854 972.6 L839 970.1 L824 969.4 L809 967.4 L794 969.7 L779 971.5 L764 975.3 L749 975.1 L734 979.9 L719 978.6 L704 975.6 L689 973.5 L674 976.3 L659 970.7 L644 981.6 L629 979.8 L614 973.8 L599 973.4 L584 969.6 L569 966.1 L554 971.1 L539 971 L524 973.6 L509 970.7 L494 971.8 L479 966.1 L464 965.8 L449 972.4 L434 977.9 L419 967.8 L404 981.7 L389 976.2 L374 978.4 L359 976.2 L344 978.2 L329 975.5 L314 975.7 L299 973.7 L284 971.7 L269 969.3 L254 966.3 L239 964.5 L224 966.5 L209 969.8 L194 973.3 L179 973.6 L164 974.2 L149 974.1 L134 974.4 L119 978.3 L104 982.4 L89 984.2 L74 979.2 L59 978.3 L44 974 L29 975.8 L26.1 974 L23.3 959 L18.1 944 L16 929 L21.7 914 L23.3 899 L27.6 884 L28.5 869 L28.8 854 L24 839 L28.1 824 L29 809 L29 794 L33.1 779 L32.7 764 L32.9 749 L29.3 734 L25.7 719 L23.4 704 L22.3 689 L31.8 674 L23.7 659 L21.4 644 L20.8 629 L18.9 614 L20.1 599 L20.8 584 L27.6 569 L31.7 554 L33.2 539 L28.4 524 L37.2 509 L28.4 494 L30.1 479 L30.1 464 L29.9 449 L34.3 434 L29 419 L22 404 L22.9 389 L19.4 374 L22.9 359 L24.3 344 L22.4 329 L21.5 314 L24.6 299 L18.7 284 L21.3 269 L23 254 L27.9 239 L33.8 224 L34 209 L33.6 194 L29.8 179 L29.4 164 L29.2 149 L29.9 134 L30.5 119 L28.7 104 L26.8 89 L20.4 74 L18.9 59 L19.2 44 L21.2 29Z" fill="#000" opacity=".3" transform="translate(7 14)"/>
+        <path d="M26 28.2 L41 25.3 L56 25.1 L71 28.8 L86 27.5 L101 28.2 L116 25.3 L131 25.1 L146 17.3 L161 17.5 L176 19.8 L191 20.3 L206 22.5 L221 25.2 L236 35.8 L251 24.2 L266 22.2 L281 26.3 L296 28.3 L311 33.8 L326 36.2 L341 29.6 L356 29.2 L371 23.9 L386 27.4 L401 27.8 L416 27.2 L431 24.4 L446 21.9 L461 21.8 L476 18.9 L491 16 L506 20.8 L521 22.1 L536 26.6 L551 28.2 L566 27.4 L581 29.2 L596 24.8 L611 28.2 L626 33.7 L641 32 L656 30.2 L671 32.5 L686 25.2 L701 24.7 L716 23.1 L731 23.2 L746 21.2 L761 26.9 L776 25.7 L791 20.9 L806 20.6 L821 21.2 L836 21.1 L851 28.6 L866 32.4 L881 30 L896 32.3 L911 27.5 L926 27 L941 30.5 L956 27.1 L971 33.7 L986 33.2 L1001 29 L1016 25.1 L1031 18.3 L1046 20.4 L1061 22.5 L1076 21.4 L1091 25.4 L1106 22.6 L1121 23.7 L1136 24.5 L1151 24.2 L1166 26.4 L1181 29.5 L1196 30.9 L1211 35.2 L1226 29.7 L1241 26.8 L1256 28.2 L1271 28.9 L1286 26.2 L1301 25.3 L1316 25.8 L1331 26.1 L1346 23.6 L1361 18.2 L1376 19.1 L1391 18.5 L1406 21.7 L1421 25.9 L1436 25.2 L1451 27.1 L1466 25.3 L1481 28.2 L1496 26 L1511 29.2 L1526 36.1 L1541 34.9 L1556 33.2 L1571 29.7 L1559.4 26 L1570.3 41 L1574.3 56 L1574 71 L1577.6 86 L1572.8 101 L1580.4 116 L1583.2 131 L1577.2 146 L1576 161 L1571.9 176 L1574.3 191 L1572.3 206 L1577.3 221 L1572.6 236 L1573.5 251 L1570.5 266 L1566.3 281 L1566.8 296 L1570.9 311 L1571.5 326 L1575.7 341 L1576.4 356 L1573 371 L1574.1 386 L1575.6 401 L1578.4 416 L1579.9 431 L1582.6 446 L1580.6 461 L1578.1 476 L1575.2 491 L1568.1 506 L1567.3 521 L1571.9 536 L1569.4 551 L1573 566 L1572.1 581 L1571.1 596 L1569.4 611 L1567.9 626 L1573.6 641 L1577.3 656 L1577.1 671 L1580.8 686 L1576.3 701 L1575.2 716 L1573.5 731 L1575.9 746 L1579.5 761 L1581.3 776 L1580.6 791 L1574.6 806 L1571 821 L1565.1 836 L1569.9 851 L1570.6 866 L1573.2 881 L1571.7 896 L1570.6 911 L1569.4 926 L1572 941 L1569.2 956 L1577.1 971 L1574 976.8 L1559 978.3 L1544 980.4 L1529 979.3 L1514 978.9 L1499 975.2 L1484 967.8 L1469 960.5 L1454 968.2 L1439 969.7 L1424 970.8 L1409 973 L1394 973.6 L1379 969.4 L1364 969.9 L1349 970.3 L1334 977.1 L1319 980.9 L1304 982.2 L1289 980.4 L1274 981.8 L1259 974.7 L1244 973.8 L1229 970.6 L1214 978.2 L1199 976.8 L1184 973.4 L1169 972 L1154 970.9 L1139 965.6 L1124 969.3 L1109 955.4 L1094 974.4 L1079 972.1 L1064 973 L1049 974.8 L1034 976.2 L1019 977.3 L1004 978.5 L989 981.9 L974 983.6 L959 983.5 L944 977.2 L929 972.4 L914 971.6 L899 969.3 L884 969.6 L869 970.9 L854 972.6 L839 970.1 L824 969.4 L809 967.4 L794 969.7 L779 971.5 L764 975.3 L749 975.1 L734 979.9 L719 978.6 L704 975.6 L689 973.5 L674 976.3 L659 970.7 L644 981.6 L629 979.8 L614 973.8 L599 973.4 L584 969.6 L569 966.1 L554 971.1 L539 971 L524 973.6 L509 970.7 L494 971.8 L479 966.1 L464 965.8 L449 972.4 L434 977.9 L419 967.8 L404 981.7 L389 976.2 L374 978.4 L359 976.2 L344 978.2 L329 975.5 L314 975.7 L299 973.7 L284 971.7 L269 969.3 L254 966.3 L239 964.5 L224 966.5 L209 969.8 L194 973.3 L179 973.6 L164 974.2 L149 974.1 L134 974.4 L119 978.3 L104 982.4 L89 984.2 L74 979.2 L59 978.3 L44 974 L29 975.8 L26.1 974 L23.3 959 L18.1 944 L16 929 L21.7 914 L23.3 899 L27.6 884 L28.5 869 L28.8 854 L24 839 L28.1 824 L29 809 L29 794 L33.1 779 L32.7 764 L32.9 749 L29.3 734 L25.7 719 L23.4 704 L22.3 689 L31.8 674 L23.7 659 L21.4 644 L20.8 629 L18.9 614 L20.1 599 L20.8 584 L27.6 569 L31.7 554 L33.2 539 L28.4 524 L37.2 509 L28.4 494 L30.1 479 L30.1 464 L29.9 449 L34.3 434 L29 419 L22 404 L22.9 389 L19.4 374 L22.9 359 L24.3 344 L22.4 329 L21.5 314 L24.6 299 L18.7 284 L21.3 269 L23 254 L27.9 239 L33.8 224 L34 209 L33.6 194 L29.8 179 L29.4 164 L29.2 149 L29.9 134 L30.5 119 L28.7 104 L26.8 89 L20.4 74 L18.9 59 L19.2 44 L21.2 29Z" fill="#000" opacity=".14" transform="translate(15 31)"/>
+        <path d="M26 28.2 L41 25.3 L56 25.1 L71 28.8 L86 27.5 L101 28.2 L116 25.3 L131 25.1 L146 17.3 L161 17.5 L176 19.8 L191 20.3 L206 22.5 L221 25.2 L236 35.8 L251 24.2 L266 22.2 L281 26.3 L296 28.3 L311 33.8 L326 36.2 L341 29.6 L356 29.2 L371 23.9 L386 27.4 L401 27.8 L416 27.2 L431 24.4 L446 21.9 L461 21.8 L476 18.9 L491 16 L506 20.8 L521 22.1 L536 26.6 L551 28.2 L566 27.4 L581 29.2 L596 24.8 L611 28.2 L626 33.7 L641 32 L656 30.2 L671 32.5 L686 25.2 L701 24.7 L716 23.1 L731 23.2 L746 21.2 L761 26.9 L776 25.7 L791 20.9 L806 20.6 L821 21.2 L836 21.1 L851 28.6 L866 32.4 L881 30 L896 32.3 L911 27.5 L926 27 L941 30.5 L956 27.1 L971 33.7 L986 33.2 L1001 29 L1016 25.1 L1031 18.3 L1046 20.4 L1061 22.5 L1076 21.4 L1091 25.4 L1106 22.6 L1121 23.7 L1136 24.5 L1151 24.2 L1166 26.4 L1181 29.5 L1196 30.9 L1211 35.2 L1226 29.7 L1241 26.8 L1256 28.2 L1271 28.9 L1286 26.2 L1301 25.3 L1316 25.8 L1331 26.1 L1346 23.6 L1361 18.2 L1376 19.1 L1391 18.5 L1406 21.7 L1421 25.9 L1436 25.2 L1451 27.1 L1466 25.3 L1481 28.2 L1496 26 L1511 29.2 L1526 36.1 L1541 34.9 L1556 33.2 L1571 29.7 L1559.4 26 L1570.3 41 L1574.3 56 L1574 71 L1577.6 86 L1572.8 101 L1580.4 116 L1583.2 131 L1577.2 146 L1576 161 L1571.9 176 L1574.3 191 L1572.3 206 L1577.3 221 L1572.6 236 L1573.5 251 L1570.5 266 L1566.3 281 L1566.8 296 L1570.9 311 L1571.5 326 L1575.7 341 L1576.4 356 L1573 371 L1574.1 386 L1575.6 401 L1578.4 416 L1579.9 431 L1582.6 446 L1580.6 461 L1578.1 476 L1575.2 491 L1568.1 506 L1567.3 521 L1571.9 536 L1569.4 551 L1573 566 L1572.1 581 L1571.1 596 L1569.4 611 L1567.9 626 L1573.6 641 L1577.3 656 L1577.1 671 L1580.8 686 L1576.3 701 L1575.2 716 L1573.5 731 L1575.9 746 L1579.5 761 L1581.3 776 L1580.6 791 L1574.6 806 L1571 821 L1565.1 836 L1569.9 851 L1570.6 866 L1573.2 881 L1571.7 896 L1570.6 911 L1569.4 926 L1572 941 L1569.2 956 L1577.1 971 L1574 976.8 L1559 978.3 L1544 980.4 L1529 979.3 L1514 978.9 L1499 975.2 L1484 967.8 L1469 960.5 L1454 968.2 L1439 969.7 L1424 970.8 L1409 973 L1394 973.6 L1379 969.4 L1364 969.9 L1349 970.3 L1334 977.1 L1319 980.9 L1304 982.2 L1289 980.4 L1274 981.8 L1259 974.7 L1244 973.8 L1229 970.6 L1214 978.2 L1199 976.8 L1184 973.4 L1169 972 L1154 970.9 L1139 965.6 L1124 969.3 L1109 955.4 L1094 974.4 L1079 972.1 L1064 973 L1049 974.8 L1034 976.2 L1019 977.3 L1004 978.5 L989 981.9 L974 983.6 L959 983.5 L944 977.2 L929 972.4 L914 971.6 L899 969.3 L884 969.6 L869 970.9 L854 972.6 L839 970.1 L824 969.4 L809 967.4 L794 969.7 L779 971.5 L764 975.3 L749 975.1 L734 979.9 L719 978.6 L704 975.6 L689 973.5 L674 976.3 L659 970.7 L644 981.6 L629 979.8 L614 973.8 L599 973.4 L584 969.6 L569 966.1 L554 971.1 L539 971 L524 973.6 L509 970.7 L494 971.8 L479 966.1 L464 965.8 L449 972.4 L434 977.9 L419 967.8 L404 981.7 L389 976.2 L374 978.4 L359 976.2 L344 978.2 L329 975.5 L314 975.7 L299 973.7 L284 971.7 L269 969.3 L254 966.3 L239 964.5 L224 966.5 L209 969.8 L194 973.3 L179 973.6 L164 974.2 L149 974.1 L134 974.4 L119 978.3 L104 982.4 L89 984.2 L74 979.2 L59 978.3 L44 974 L29 975.8 L26.1 974 L23.3 959 L18.1 944 L16 929 L21.7 914 L23.3 899 L27.6 884 L28.5 869 L28.8 854 L24 839 L28.1 824 L29 809 L29 794 L33.1 779 L32.7 764 L32.9 749 L29.3 734 L25.7 719 L23.4 704 L22.3 689 L31.8 674 L23.7 659 L21.4 644 L20.8 629 L18.9 614 L20.1 599 L20.8 584 L27.6 569 L31.7 554 L33.2 539 L28.4 524 L37.2 509 L28.4 494 L30.1 479 L30.1 464 L29.9 449 L34.3 434 L29 419 L22 404 L22.9 389 L19.4 374 L22.9 359 L24.3 344 L22.4 329 L21.5 314 L24.6 299 L18.7 284 L21.3 269 L23 254 L27.9 239 L33.8 224 L34 209 L33.6 194 L29.8 179 L29.4 164 L29.2 149 L29.9 134 L30.5 119 L28.7 104 L26.8 89 L20.4 74 L18.9 59 L19.2 44 L21.2 29Z" fill="url(#paperGrad)"/>
+        <g clip-path="url(#sheetClip)">
+          <rect width="1600" height="1000" filter="url(#blotch)" opacity=".55"/>
+          <rect width="1600" height="1000" filter="url(#paperNoise)" opacity=".6"/>
+          <ellipse cx="600" cy="139" rx="181" ry="79" transform="rotate(51 600 139)" fill="url(#stain)" opacity="0.85"/><ellipse cx="922" cy="648" rx="189" ry="54" transform="rotate(93 922 648)" fill="url(#stain)" opacity="0.7"/><ellipse cx="660" cy="413" rx="205" ry="72" transform="rotate(60 660 413)" fill="url(#stain)" opacity="0.7"/><ellipse cx="415" cy="118" rx="85" ry="125" transform="rotate(76 415 118)" fill="url(#stain)" opacity="0.85"/><ellipse cx="1076" cy="117" rx="111" ry="89" transform="rotate(65 1076 117)" fill="url(#stain)" opacity="0.55"/><ellipse cx="195" cy="562" rx="140" ry="146" transform="rotate(138 195 562)" fill="url(#stain)" opacity="0.7"/><ellipse cx="547" cy="305" rx="121" ry="85" transform="rotate(16 547 305)" fill="url(#stain)" opacity="0.85"/><ellipse cx="768" cy="354" rx="165" ry="115" transform="rotate(54 768 354)" fill="url(#stain)" opacity="0.55"/><circle cx="1180" cy="880" r="54" fill="rgba(110,66,20,.045)" stroke="rgba(110,66,20,.16)" stroke-width="5"/><circle cx="1183" cy="878" r="47" fill="none" stroke="rgba(110,66,20,.08)" stroke-width="2"/><circle cx="330" cy="905" r="38" fill="rgba(110,66,20,.045)" stroke="rgba(110,66,20,.16)" stroke-width="5"/><circle cx="333" cy="903" r="31" fill="none" stroke="rgba(110,66,20,.08)" stroke-width="2"/><circle cx="1357" cy="284" r="1.2" fill="rgba(120,70,20,0.3)"/><circle cx="1081" cy="519" r="0.9" fill="rgba(120,70,20,0.2)"/><circle cx="482" cy="490" r="1.5" fill="rgba(120,70,20,0.2)"/><circle cx="479" cy="262" r="1.1" fill="rgba(120,70,20,0.2)"/><circle cx="803" cy="206" r="3.5" fill="rgba(120,70,20,0.2)"/><circle cx="1187" cy="512" r="2" fill="rgba(120,70,20,0.3)"/><circle cx="478" cy="866" r="1.9" fill="rgba(120,70,20,0.1)"/><circle cx="992" cy="499" r="1" fill="rgba(120,70,20,0.2)"/><circle cx="1212" cy="824" r="1" fill="rgba(120,70,20,0.1)"/><circle cx="1256" cy="179" r="2.4" fill="rgba(120,70,20,0.3)"/><circle cx="1125" cy="257" r="2.5" fill="rgba(120,70,20,0.3)"/><circle cx="401" cy="169" r="3.2" fill="rgba(120,70,20,0.3)"/><circle cx="207" cy="641" r="1.4" fill="rgba(120,70,20,0.2)"/><circle cx="1139" cy="205" r="2.6" fill="rgba(120,70,20,0.2)"/><circle cx="560" cy="262" r="2.5" fill="rgba(120,70,20,0.3)"/><circle cx="374" cy="632" r="2" fill="rgba(120,70,20,0.2)"/><circle cx="946" cy="826" r="3.2" fill="rgba(120,70,20,0.2)"/><circle cx="793" cy="92" r="1.1" fill="rgba(120,70,20,0.2)"/><circle cx="1459" cy="852" r="2.5" fill="rgba(120,70,20,0.3)"/><circle cx="582" cy="462" r="2.3" fill="rgba(120,70,20,0.1)"/><circle cx="1127" cy="922" r="2.2" fill="rgba(120,70,20,0.3)"/><circle cx="870" cy="764" r="1.2" fill="rgba(120,70,20,0.2)"/><circle cx="397" cy="245" r="1.3" fill="rgba(120,70,20,0.1)"/><circle cx="958" cy="304" r="3.2" fill="rgba(120,70,20,0.2)"/><circle cx="551" cy="254" r="1.2" fill="rgba(120,70,20,0.3)"/><circle cx="866" cy="756" r="1.3" fill="rgba(120,70,20,0.1)"/><circle cx="307" cy="293" r="3.5" fill="rgba(120,70,20,0.3)"/><circle cx="1299" cy="522" r="2.9" fill="rgba(120,70,20,0.2)"/><circle cx="1396" cy="916" r="2.3" fill="rgba(120,70,20,0.2)"/><circle cx="1169" cy="416" r="2.3" fill="rgba(120,70,20,0.1)"/><circle cx="152" cy="73" r="2.3" fill="rgba(120,70,20,0.1)"/><circle cx="522" cy="679" r="1.9" fill="rgba(120,70,20,0.2)"/><circle cx="423" cy="225" r="2.3" fill="rgba(120,70,20,0.2)"/><circle cx="190" cy="172" r="1.7" fill="rgba(120,70,20,0.1)"/>
+          <ellipse cx="820" cy="520" rx="760" ry="430" fill="url(#seaWash)"/>
+          <ellipse cx="380" cy="360" rx="360" ry="260" fill="url(#seaWash)"/>
+          <ellipse cx="1240" cy="640" rx="380" ry="300" fill="url(#seaWash)"/>
+          <path class="graticule" d="M100 60 V940 M275 60 V940 M450 60 V940 M625 60 V940 M800 60 V940 M975 60 V940 M1150 60 V940 M1325 60 V940 M1500 60 V940 M60 110 H1540 M60 270 H1540 M60 430 H1540 M60 590 H1540 M60 750 H1540 M60 910 H1540"/>
+          <path class="rhumb" d="M150 140 L2350 140 M150 140 L2182.5 981.9 M150 140 L1705.6 1695.6 M150 140 L991.9 2172.5 M150 140 L150 2340 M150 140 L-691.9 2172.5 M150 140 L-1405.6 1695.6 M150 140 L-1882.5 981.9 M150 140 L-2050 140 M150 140 L-1882.5 -701.9 M150 140 L-1405.6 -1415.6 M150 140 L-691.9 -1892.5 M150 140 L150 -2060 M150 140 L991.9 -1892.5 M150 140 L1705.6 -1415.6 M150 140 L2182.5 -701.9"/><path class="rhumb" d="M1180 790 L3380 790 M1180 790 L3212.5 1631.9 M1180 790 L2735.6 2345.6 M1180 790 L2021.9 2822.5 M1180 790 L1180 2990 M1180 790 L338.1 2822.5 M1180 790 L-375.6 2345.6 M1180 790 L-852.5 1631.9 M1180 790 L-1020 790 M1180 790 L-852.5 -51.9 M1180 790 L-375.6 -765.6 M1180 790 L338.1 -1242.5 M1180 790 L1180 -1410 M1180 790 L2021.9 -1242.5 M1180 790 L2735.6 -765.6 M1180 790 L3212.5 -51.9"/>
+          <path class="crease" d="M533 0V1000M1066 0V1000M0 333H1600M0 667H1600"/><path class="crease-hi" transform="translate(2 0)" d="M533 0V1000M1066 0V1000M0 333H1600M0 667H1600"/>
+          <rect width="1600" height="1000" fill="url(#paperBurn)"/>
+        </g>
+        <path d="M26 28.2 L41 25.3 L56 25.1 L71 28.8 L86 27.5 L101 28.2 L116 25.3 L131 25.1 L146 17.3 L161 17.5 L176 19.8 L191 20.3 L206 22.5 L221 25.2 L236 35.8 L251 24.2 L266 22.2 L281 26.3 L296 28.3 L311 33.8 L326 36.2 L341 29.6 L356 29.2 L371 23.9 L386 27.4 L401 27.8 L416 27.2 L431 24.4 L446 21.9 L461 21.8 L476 18.9 L491 16 L506 20.8 L521 22.1 L536 26.6 L551 28.2 L566 27.4 L581 29.2 L596 24.8 L611 28.2 L626 33.7 L641 32 L656 30.2 L671 32.5 L686 25.2 L701 24.7 L716 23.1 L731 23.2 L746 21.2 L761 26.9 L776 25.7 L791 20.9 L806 20.6 L821 21.2 L836 21.1 L851 28.6 L866 32.4 L881 30 L896 32.3 L911 27.5 L926 27 L941 30.5 L956 27.1 L971 33.7 L986 33.2 L1001 29 L1016 25.1 L1031 18.3 L1046 20.4 L1061 22.5 L1076 21.4 L1091 25.4 L1106 22.6 L1121 23.7 L1136 24.5 L1151 24.2 L1166 26.4 L1181 29.5 L1196 30.9 L1211 35.2 L1226 29.7 L1241 26.8 L1256 28.2 L1271 28.9 L1286 26.2 L1301 25.3 L1316 25.8 L1331 26.1 L1346 23.6 L1361 18.2 L1376 19.1 L1391 18.5 L1406 21.7 L1421 25.9 L1436 25.2 L1451 27.1 L1466 25.3 L1481 28.2 L1496 26 L1511 29.2 L1526 36.1 L1541 34.9 L1556 33.2 L1571 29.7 L1559.4 26 L1570.3 41 L1574.3 56 L1574 71 L1577.6 86 L1572.8 101 L1580.4 116 L1583.2 131 L1577.2 146 L1576 161 L1571.9 176 L1574.3 191 L1572.3 206 L1577.3 221 L1572.6 236 L1573.5 251 L1570.5 266 L1566.3 281 L1566.8 296 L1570.9 311 L1571.5 326 L1575.7 341 L1576.4 356 L1573 371 L1574.1 386 L1575.6 401 L1578.4 416 L1579.9 431 L1582.6 446 L1580.6 461 L1578.1 476 L1575.2 491 L1568.1 506 L1567.3 521 L1571.9 536 L1569.4 551 L1573 566 L1572.1 581 L1571.1 596 L1569.4 611 L1567.9 626 L1573.6 641 L1577.3 656 L1577.1 671 L1580.8 686 L1576.3 701 L1575.2 716 L1573.5 731 L1575.9 746 L1579.5 761 L1581.3 776 L1580.6 791 L1574.6 806 L1571 821 L1565.1 836 L1569.9 851 L1570.6 866 L1573.2 881 L1571.7 896 L1570.6 911 L1569.4 926 L1572 941 L1569.2 956 L1577.1 971 L1574 976.8 L1559 978.3 L1544 980.4 L1529 979.3 L1514 978.9 L1499 975.2 L1484 967.8 L1469 960.5 L1454 968.2 L1439 969.7 L1424 970.8 L1409 973 L1394 973.6 L1379 969.4 L1364 969.9 L1349 970.3 L1334 977.1 L1319 980.9 L1304 982.2 L1289 980.4 L1274 981.8 L1259 974.7 L1244 973.8 L1229 970.6 L1214 978.2 L1199 976.8 L1184 973.4 L1169 972 L1154 970.9 L1139 965.6 L1124 969.3 L1109 955.4 L1094 974.4 L1079 972.1 L1064 973 L1049 974.8 L1034 976.2 L1019 977.3 L1004 978.5 L989 981.9 L974 983.6 L959 983.5 L944 977.2 L929 972.4 L914 971.6 L899 969.3 L884 969.6 L869 970.9 L854 972.6 L839 970.1 L824 969.4 L809 967.4 L794 969.7 L779 971.5 L764 975.3 L749 975.1 L734 979.9 L719 978.6 L704 975.6 L689 973.5 L674 976.3 L659 970.7 L644 981.6 L629 979.8 L614 973.8 L599 973.4 L584 969.6 L569 966.1 L554 971.1 L539 971 L524 973.6 L509 970.7 L494 971.8 L479 966.1 L464 965.8 L449 972.4 L434 977.9 L419 967.8 L404 981.7 L389 976.2 L374 978.4 L359 976.2 L344 978.2 L329 975.5 L314 975.7 L299 973.7 L284 971.7 L269 969.3 L254 966.3 L239 964.5 L224 966.5 L209 969.8 L194 973.3 L179 973.6 L164 974.2 L149 974.1 L134 974.4 L119 978.3 L104 982.4 L89 984.2 L74 979.2 L59 978.3 L44 974 L29 975.8 L26.1 974 L23.3 959 L18.1 944 L16 929 L21.7 914 L23.3 899 L27.6 884 L28.5 869 L28.8 854 L24 839 L28.1 824 L29 809 L29 794 L33.1 779 L32.7 764 L32.9 749 L29.3 734 L25.7 719 L23.4 704 L22.3 689 L31.8 674 L23.7 659 L21.4 644 L20.8 629 L18.9 614 L20.1 599 L20.8 584 L27.6 569 L31.7 554 L33.2 539 L28.4 524 L37.2 509 L28.4 494 L30.1 479 L30.1 464 L29.9 449 L34.3 434 L29 419 L22 404 L22.9 389 L19.4 374 L22.9 359 L24.3 344 L22.4 329 L21.5 314 L24.6 299 L18.7 284 L21.3 269 L23 254 L27.9 239 L33.8 224 L34 209 L33.6 194 L29.8 179 L29.4 164 L29.2 149 L29.9 134 L30.5 119 L28.7 104 L26.8 89 L20.4 74 L18.9 59 L19.2 44 L21.2 29Z" fill="none" stroke="#4a2c0d" stroke-opacity=".55" stroke-width="1.6"/>
+        <rect class="frame" x="52" y="52" width="1496" height="896"/><rect class="frame thin" x="60" y="60" width="1480" height="880"/>
+        <g class="orn"><path d="M52 96A44 44 0 0 1 96 52"/><path d="M1504 52A44 44 0 0 1 1548 96"/><path d="M1548 904A44 44 0 0 1 1504 948"/><path d="M96 948A44 44 0 0 1 52 904"/></g>
+        <g class="numerals"><text x="100" y="49" text-anchor="middle">10°</text><text x="100" y="960" text-anchor="middle">10°</text><text x="275" y="49" text-anchor="middle">15°</text><text x="275" y="960" text-anchor="middle">15°</text><text x="450" y="49" text-anchor="middle">20°</text><text x="450" y="960" text-anchor="middle">20°</text><text x="625" y="49" text-anchor="middle">25°</text><text x="625" y="960" text-anchor="middle">25°</text><text x="800" y="49" text-anchor="middle">30°</text><text x="800" y="960" text-anchor="middle">30°</text><text x="975" y="49" text-anchor="middle">35°</text><text x="975" y="960" text-anchor="middle">35°</text><text x="1150" y="49" text-anchor="middle">40°</text><text x="1150" y="960" text-anchor="middle">40°</text><text x="1325" y="49" text-anchor="middle">45°</text><text x="1325" y="960" text-anchor="middle">45°</text><text x="1500" y="49" text-anchor="middle">50°</text><text x="1500" y="960" text-anchor="middle">50°</text><text x="46" y="114" text-anchor="middle">5°</text><text x="1554" y="114" text-anchor="middle">5°</text><text x="46" y="274" text-anchor="middle">15°</text><text x="1554" y="274" text-anchor="middle">15°</text><text x="46" y="434" text-anchor="middle">25°</text><text x="1554" y="434" text-anchor="middle">25°</text><text x="46" y="594" text-anchor="middle">35°</text><text x="1554" y="594" text-anchor="middle">35°</text><text x="46" y="754" text-anchor="middle">45°</text><text x="1554" y="754" text-anchor="middle">45°</text><text x="46" y="914" text-anchor="middle">55°</text><text x="1554" y="914" text-anchor="middle">55°</text></g>
+
+        <use href="#serpent" transform="translate(396 104) scale(1.1)"/>
+        <use href="#kraken" transform="translate(500 878) scale(.82)"/>
+        <text class="t-hint" x="500" y="946" text-anchor="middle">Hic sunt dracones</text>
+
+        <!-- cartouche -->
+        <g transform="translate(800 84)">
+          <path class="ribbon-tail" d="M-176-15L-214-15L-198 0L-214 15L-176 15Z"/><path class="ribbon-tail" d="M176-15L214-15L198 0L214 15L176 15Z"/>
+          <rect class="ribbon" x="-182" y="-21" width="364" height="42" rx="2"/><rect class="ribbon-in" x="-176" y="-15" width="352" height="30" rx="1"/>
+          <text class="t-cartouche" y="6" text-anchor="middle">HIC SUNT PROJECTA</text>
+        </g>
+        <text class="t-hint" x="800" y="132" text-anchor="middle">&mdash; here be projects &mdash;</text>
+
+        <!-- compass: ring + lettering are static, the star turns in the animated layer -->
+        <g transform="translate(150 140)">
+          <circle class="c-disc" r="104"/><circle class="c-ring" r="96"/><circle class="c-ring thin" r="78"/>
+          <path class="c-ticks" d="M80 0 L92 0 M83.6 8.2 L91.6 9 M82.4 16.4 L90.2 17.9 M80.4 24.4 L88 26.7 M73.9 30.6 L85 35.2 M74.1 39.6 L81.1 43.4 M69.8 46.7 L76.5 51.1 M64.9 53.3 L71.1 58.4 M56.6 56.6 L65.1 65.1 M53.3 64.9 L58.4 71.1 M46.7 69.8 L51.1 76.5 M39.6 74.1 L43.4 81.1 M30.6 73.9 L35.2 85 M24.4 80.4 L26.7 88 M16.4 82.4 L17.9 90.2 M8.2 83.6 L9 91.6 M0 80 L0 92 M-8.2 83.6 L-9 91.6 M-16.4 82.4 L-17.9 90.2 M-24.4 80.4 L-26.7 88 M-30.6 73.9 L-35.2 85 M-39.6 74.1 L-43.4 81.1 M-46.7 69.8 L-51.1 76.5 M-53.3 64.9 L-58.4 71.1 M-56.6 56.6 L-65.1 65.1 M-64.9 53.3 L-71.1 58.4 M-69.8 46.7 L-76.5 51.1 M-74.1 39.6 L-81.1 43.4 M-73.9 30.6 L-85 35.2 M-80.4 24.4 L-88 26.7 M-82.4 16.4 L-90.2 17.9 M-83.6 8.2 L-91.6 9 M-80 0 L-92 0 M-83.6 -8.2 L-91.6 -9 M-82.4 -16.4 L-90.2 -17.9 M-80.4 -24.4 L-88 -26.7 M-73.9 -30.6 L-85 -35.2 M-74.1 -39.6 L-81.1 -43.4 M-69.8 -46.7 L-76.5 -51.1 M-64.9 -53.3 L-71.1 -58.4 M-56.6 -56.6 L-65.1 -65.1 M-53.3 -64.9 L-58.4 -71.1 M-46.7 -69.8 L-51.1 -76.5 M-39.6 -74.1 L-43.4 -81.1 M-30.6 -73.9 L-35.2 -85 M-24.4 -80.4 L-26.7 -88 M-16.4 -82.4 L-17.9 -90.2 M-8.2 -83.6 L-9 -91.6 M-0 -80 L-0 -92 M8.2 -83.6 L9 -91.6 M16.4 -82.4 L17.9 -90.2 M24.4 -80.4 L26.7 -88 M30.6 -73.9 L35.2 -85 M39.6 -74.1 L43.4 -81.1 M46.7 -69.8 L51.1 -76.5 M53.3 -64.9 L58.4 -71.1 M56.6 -56.6 L65.1 -65.1 M64.9 -53.3 L71.1 -58.4 M69.8 -46.7 L76.5 -51.1 M74.1 -39.6 L81.1 -43.4 M73.9 -30.6 L85 -35.2 M80.4 -24.4 L88 -26.7 M82.4 -16.4 L90.2 -17.9 M83.6 -8.2 L91.6 -9"/>
+          <text class="t-compass" y="-100" text-anchor="middle">N</text><text class="t-compass" y="112" text-anchor="middle">S</text>
+          <text class="t-compass" x="-109" y="5" text-anchor="middle">W</text><text class="t-compass" x="109" y="5" text-anchor="middle">E</text>
+        </g>
+
+        <!-- wax seal -->
+        <g transform="translate(108 902)">
+          <path class="seal-tail" d="M-14 22L-26 62L-14 54L-6 66L2 26Z"/><path class="seal-tail" d="M10 24L24 62L12 54L8 68L-2 28Z"/>
+          <path d="M36 0 Q38.2 0 35.1 4.2 Q36.2 8.9 32.9 12.5 Q33.6 17.7 28.4 19.4 Q26.6 23.6 22.3 25.2 Q20.6 29.9 16.1 30.9 Q13.5 35.5 8.4 33.7 Q4.4 35.9 0.2 32.5 Q-4 33 -8.3 32.5 Q-13.6 35.8 -17 32.2 Q-22.5 32.5 -23.9 27.1 Q-28.1 24.9 -27 19 Q-29.2 15.3 -30.6 11.4 Q-35.7 8.8 -35.5 4.2 Q-39.5 0 -35.2 -4.1 Q-35.1 -8.6 -31.5 -11.9 Q-31.8 -16.7 -28.3 -19.7 Q-28.3 -25.1 -22.1 -24.5 Q-18.6 -26.9 -14.9 -29 Q-13.1 -34.5 -8.4 -34.7 Q-4.7 -39.1 -0.1 -35.9 Q4.5 -37.1 8.5 -34.2 Q13.4 -35.4 16.6 -31.6 Q21.7 -31.5 23.1 -26.3 Q27.3 -24.2 29 -19.9 Q34.1 -17.9 31.1 -12.1 Q31.9 -7.9 33 -3.7Z" fill="url(#waxGrad)" stroke="#5a120c" stroke-width="1.4"/>
+          <circle r="25" fill="none" stroke="#e58a76" stroke-opacity=".5" stroke-width="1.4"/>
+          <text class="t-seal" y="7" text-anchor="middle" transform="translate(1 1)" fill="#4a0f09">SPS</text><text class="t-seal" y="7" text-anchor="middle" fill="#f2b3a0">SPS</text>
+        </g>
+      </svg>
+
+      <!-- layer 2 · animated: dotted course, compass needle, chart waves, the little ship -->
+      <svg class="map-layer map-fg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+        <g class="wavemarks"><g class="wm wm1"><path d="M584 249 q5.2 -5.2 10.3 0 t10.3 0 M554 269 q5.4 -5.4 10.8 0 t10.8 0 M559 276 q4.3 -4.3 8.7 0 t8.7 0 M585 695 q4.9 -4.9 9.8 0 t9.8 0 M590 702 q3.9 -3.9 7.8 0 t7.8 0 M1389 654 q5.6 -5.6 11.3 0 t11.3 0 M1394 661 q4.5 -4.5 9 0 t9 0 M424 756 q6.3 -6.3 12.5 0 t12.5 0 M429 763 q5 -5 10 0 t10 0 M365 653 q7 -7 14 0 t14 0 M600 372 q4.5 -4.5 9 0 t9 0 M1452 332 q5.5 -5.5 11.1 0 t11.1 0 M1457 339 q4.4 -4.4 8.8 0 t8.8 0 M1458 617 q4.3 -4.3 8.6 0 t8.6 0 M1463 624 q3.4 -3.4 6.9 0 t6.9 0 M757 617 q4.4 -4.4 8.8 0 t8.8 0 M601 330 q7.5 -7.5 15 0 t15 0 M99 742 q5.9 -5.9 11.7 0 t11.7 0 M104 749 q4.7 -4.7 9.4 0 t9.4 0 M477 654 q6.2 -6.2 12.3 0 t12.3 0 M1063 508 q6.5 -6.5 13 0 t13 0 M1068 515 q5.2 -5.2 10.4 0 t10.4 0 M197 590 q5.3 -5.3 10.6 0 t10.6 0 M202 597 q4.2 -4.2 8.5 0 t8.5 0 M1377 632 q5.7 -5.7 11.5 0 t11.5 0 M1094 860 q4.5 -4.5 9.1 0 t9.1 0 M1099 867 q3.6 -3.6 7.3 0 t7.3 0 M1235 891 q6.8 -6.8 13.5 0 t13.5 0 M1240 898 q5.4 -5.4 10.8 0 t10.8 0 M107 771 q6.6 -6.6 13.1 0 t13.1 0 M112 778 q5.2 -5.2 10.5 0 t10.5 0 M1432 350 q5.9 -5.9 11.9 0 t11.9 0 M1437 357 q4.8 -4.8 9.5 0 t9.5 0 M218 478 q4.8 -4.8 9.5 0 t9.5 0 M223 485 q3.8 -3.8 7.6 0 t7.6 0 M1345 686 q6 -6 11.9 0 t11.9 0 M1350 693 q4.8 -4.8 9.6 0 t9.6 0 M294 904 q4 -4 8.1 0 t8.1 0 M401 659 q5.9 -5.9 11.9 0 t11.9 0 M406 666 q4.7 -4.7 9.5 0 t9.5 0 M196 446 q5.2 -5.2 10.5 0 t10.5 0 M201 453 q4.2 -4.2 8.4 0 t8.4 0 M594 229 q6.6 -6.6 13.1 0 t13.1 0"/></g><g class="wm wm2"><path d="M1292 848 q6.2 -6.2 12.4 0 t12.4 0 M1297 855 q5 -5 9.9 0 t9.9 0 M1440 104 q5.4 -5.4 10.8 0 t10.8 0 M1479 575 q5.8 -5.8 11.5 0 t11.5 0 M514 726 q4.9 -4.9 9.8 0 t9.8 0 M245 578 q7.5 -7.5 15 0 t15 0 M250 585 q6 -6 12 0 t12 0 M265 427 q5.7 -5.7 11.3 0 t11.3 0 M229 598 q6.3 -6.3 12.6 0 t12.6 0 M1348 669 q5.2 -5.2 10.3 0 t10.3 0 M1353 676 q4.1 -4.1 8.3 0 t8.3 0 M1141 185 q6.1 -6.1 12.2 0 t12.2 0 M151 450 q4.9 -4.9 9.8 0 t9.8 0 M140 565 q5.8 -5.8 11.7 0 t11.7 0 M1134 100 q6.7 -6.7 13.4 0 t13.4 0 M1406 718 q5.4 -5.4 10.8 0 t10.8 0 M1214 519 q4.3 -4.3 8.6 0 t8.6 0 M1219 526 q3.4 -3.4 6.9 0 t6.9 0 M726 613 q4.3 -4.3 8.6 0 t8.6 0 M1018 840 q7 -7 14 0 t14 0 M586 513 q6.3 -6.3 12.5 0 t12.5 0 M591 520 q5 -5 10 0 t10 0 M1167 256 q6.8 -6.8 13.7 0 t13.7 0 M1172 263 q5.5 -5.5 10.9 0 t10.9 0 M915 273 q6.4 -6.4 12.7 0 t12.7 0 M262 413 q5.8 -5.8 11.6 0 t11.6 0 M267 420 q4.6 -4.6 9.3 0 t9.3 0 M1429 296 q4.3 -4.3 8.6 0 t8.6 0 M1434 303 q3.4 -3.4 6.9 0 t6.9 0 M1189 827 q6.5 -6.5 13 0 t13 0 M566 616 q6 -6 12 0 t12 0 M597 357 q4 -4 8 0 t8 0 M589 574 q6.3 -6.3 12.6 0 t12.6 0 M594 581 q5 -5 10.1 0 t10.1 0 M579 389 q4.8 -4.8 9.6 0 t9.6 0"/></g><g class="wm wm3"><path d="M1194 335 q6.5 -6.5 12.9 0 t12.9 0 M1271 902 q4.5 -4.5 8.9 0 t8.9 0 M1276 909 q3.6 -3.6 7.1 0 t7.1 0 M221 406 q5.6 -5.6 11.3 0 t11.3 0 M1093 848 q6.8 -6.8 13.7 0 t13.7 0 M1206 415 q5.3 -5.3 10.6 0 t10.6 0 M599 208 q5.5 -5.5 10.9 0 t10.9 0 M604 215 q4.4 -4.4 8.7 0 t8.7 0 M166 433 q7.2 -7.2 14.4 0 t14.4 0 M171 440 q5.7 -5.7 11.5 0 t11.5 0 M1490 288 q4.3 -4.3 8.6 0 t8.6 0 M525 337 q6.4 -6.4 12.8 0 t12.8 0 M449 759 q4.9 -4.9 9.7 0 t9.7 0 M590 636 q7.4 -7.4 14.8 0 t14.8 0 M319 136 q6.6 -6.6 13.2 0 t13.2 0 M427 764 q4.9 -4.9 9.8 0 t9.8 0 M1046 653 q6.7 -6.7 13.4 0 t13.4 0 M125 512 q4.5 -4.5 9 0 t9 0 M130 519 q3.6 -3.6 7.2 0 t7.2 0 M1099 134 q6.3 -6.3 12.5 0 t12.5 0 M139 640 q7.5 -7.5 15 0 t15 0 M144 647 q6 -6 12 0 t12 0 M1156 481 q5.9 -5.9 11.7 0 t11.7 0 M186 365 q4.3 -4.3 8.7 0 t8.7 0 M191 372 q3.5 -3.5 6.9 0 t6.9 0 M197 270 q6.8 -6.8 13.6 0 t13.6 0 M355 852 q4.6 -4.6 9.3 0 t9.3 0 M263 571 q6.2 -6.2 12.4 0 t12.4 0 M1136 523 q7.4 -7.4 14.8 0 t14.8 0 M1141 530 q5.9 -5.9 11.8 0 t11.8 0 M329 636 q7.4 -7.4 14.8 0 t14.8 0 M1500 418 q6.7 -6.7 13.5 0 t13.5 0 M1505 425 q5.4 -5.4 10.8 0 t10.8 0 M991 549 q5.8 -5.8 11.6 0 t11.6 0 M996 556 q4.6 -4.6 9.3 0 t9.3 0"/></g></g>
+        <path id="route" class="route" d="M250 760 C268.2 742.4 329.4 694.5 359.4 654.5 C389.4 614.5 430.9 559.1 430 520 C429.1 480.9 368.2 457.6 354.1 420.1 C339.9 382.6 308.8 309.8 345 295 C381.2 280.2 498.6 309.7 571.1 331.4 C643.6 353 746.5 380.6 780 425 C813.5 469.4 780.5 540.9 772.2 597.5 C763.8 654.2 721.2 741.3 730 765 C738.8 788.7 794.3 750.8 825.1 740 C856 729.1 884 735.3 915 700 C946 664.7 988.8 589 1011.3 528.2 C1033.8 467.3 1019.4 371.8 1050 335 C1080.6 298.2 1151.6 327.3 1194.9 307.3 C1238.2 287.3 1280.6 209 1310 215 C1339.4 221 1360.8 298.1 1371.1 343.1 C1381.4 388.1 1388.9 446.8 1372 485 C1355.1 523.2 1297.8 538.2 1270 572.4 C1242.1 606.6 1194.9 659 1205 690 C1215.1 721 1291.2 731.7 1330.4 758.4 C1369.6 785 1421.7 834.7 1440 850"/>
+        <g transform="translate(150 140)"><g class="compass-star"><path d="M0 0 L-6 -11 L0 -78Z" fill="#f3e7c2" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L6.1 -11 L0 -78Z" fill="#8c2a1f" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L-0.8 -6.8 L13 -31.4Z" fill="#f3e7c2" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L5.3 -4.3 L13 -31.4Z" fill="#6b4a22" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L2.9 -9.9 L38.2 -38.2Z" fill="#f3e7c2" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L9.9 -2.9 L38.2 -38.2Z" fill="#6b4a22" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L4.3 -5.3 L31.4 -13Z" fill="#f3e7c2" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L6.8 0.8 L31.4 -13Z" fill="#6b4a22" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L11 -6.1 L78 0Z" fill="#f3e7c2" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L11 6.1 L78 0Z" fill="#8c2a1f" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L6.8 -0.8 L31.4 13Z" fill="#f3e7c2" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L4.3 5.3 L31.4 13Z" fill="#6b4a22" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L9.9 2.9 L38.2 38.2Z" fill="#f3e7c2" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L2.9 9.9 L38.2 38.2Z" fill="#6b4a22" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L5.3 4.3 L13 31.4Z" fill="#f3e7c2" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L-0.8 6.8 L13 31.4Z" fill="#6b4a22" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L6.1 11 L0 78Z" fill="#f3e7c2" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L-6 11 L0 78Z" fill="#8c2a1f" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L0.8 6.8 L-13 31.4Z" fill="#f3e7c2" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L-5.3 4.3 L-13 31.4Z" fill="#6b4a22" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L-2.9 9.9 L-38.2 38.2Z" fill="#f3e7c2" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L-9.9 2.9 L-38.2 38.2Z" fill="#6b4a22" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L-4.3 5.3 L-31.4 13Z" fill="#f3e7c2" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L-6.8 -0.8 L-31.4 13Z" fill="#6b4a22" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L-11 6.1 L-78 0Z" fill="#f3e7c2" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L-11 -6 L-78 0Z" fill="#8c2a1f" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L-6.8 0.8 L-31.4 -13Z" fill="#f3e7c2" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L-4.3 -5.3 L-31.4 -13Z" fill="#6b4a22" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L-9.9 -2.9 L-38.2 -38.2Z" fill="#f3e7c2" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L-2.9 -9.9 L-38.2 -38.2Z" fill="#6b4a22" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L-5.3 -4.3 L-13 -31.4Z" fill="#f3e7c2" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/><path d="M0 0 L0.8 -6.8 L-13 -31.4Z" fill="#6b4a22" stroke="#2a1c0e" stroke-width=".9" stroke-linejoin="round"/></g><circle r="4.2" fill="#e9b13a" stroke="#2a1c0e" stroke-width="1"/></g>
+        <g id="map-ship" class="map-ship"><g class="ship-ink"><use href="#galleon" transform="scale(.3)"/></g></g>
+      </svg>
+
+      <!-- layer 3 · interactive islands (real links, keyboard focusable) -->
+      <svg class="map-layer map-isles" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid meet" role="group" aria-label="Treasure map of destinations">
+        <a class="isle" id="link-log" href="#captains-log" data-slug="captains-log" aria-label="Captain’s Log — About me" style="--n:0">
+          <g transform="translate(250 760) scale(1.1)">
+            <circle class="hit" r="106"/>
+            <ellipse class="focus-ring" rx="116" ry="84"/>
+            <g class="lift"><use href="#isle-log"/></g>
+          </g>
+          <g class="tag" transform="translate(250 856)">
+            <text class="t-name" text-anchor="middle">Captain’s Log</text>
+            <text class="t-sub" text-anchor="middle" y="23">About me</text>
+          </g>
+          <g class="marker" transform="translate(180 696)">
+            <circle r="16"/><text y="4.5" text-anchor="middle">I</text>
+          </g>
+        </a>
+        <a class="isle" id="link-arsenal" href="#arsenal" data-slug="arsenal" aria-label="The Arsenal — Languages, frameworks &amp; tools" style="--n:1">
+          <g transform="translate(430 520) scale(1.1)">
+            <circle class="hit" r="106"/>
+            <ellipse class="focus-ring" rx="116" ry="84"/>
+            <g class="lift"><use href="#isle-arsenal"/></g>
+          </g>
+          <g class="tag" transform="translate(430 612)">
+            <text class="t-name" text-anchor="middle">The Arsenal</text>
+            <text class="t-sub" text-anchor="middle" y="23">Languages, frameworks &amp; tools</text>
+          </g>
+          <g class="marker" transform="translate(360 456)">
+            <circle r="16"/><text y="4.5" text-anchor="middle">II</text>
+          </g>
+        </a>
+        <a class="isle" id="link-arena" href="#arena" data-slug="arena" aria-label="The Challenge Arena — Competitive programming" style="--n:2">
+          <g transform="translate(345 295) scale(1.1)">
+            <circle class="hit" r="106"/>
+            <ellipse class="focus-ring" rx="116" ry="84"/>
+            <g class="lift"><use href="#isle-arena"/></g>
+          </g>
+          <g class="tag" transform="translate(345 387)">
+            <text class="t-name" text-anchor="middle">The Challenge Arena</text>
+            <text class="t-sub" text-anchor="middle" y="23">Competitive programming</text>
+          </g>
+          <g class="marker" transform="translate(275 231)">
+            <circle r="16"/><text y="4.5" text-anchor="middle">III</text>
+          </g>
+        </a>
+        <a class="isle" id="link-treasure" href="#treasure-islands" data-slug="treasure-islands" aria-label="Treasure Islands — Software &amp; hardware projects" style="--n:3">
+          <g transform="translate(780 425) scale(1.5)">
+            <circle class="hit" r="106"/>
+            <ellipse class="focus-ring" rx="116" ry="84"/>
+            <g class="lift"><use href="#isle-treasure"/></g>
+          </g>
+          <g class="tag" transform="translate(780 553)">
+            <text class="t-name" text-anchor="middle">Treasure Islands</text>
+            <text class="t-sub" text-anchor="middle" y="23">Software &amp; hardware projects</text>
+          </g>
+          <g class="marker" transform="translate(684 338)">
+            <circle r="16"/><text y="4.5" text-anchor="middle">IV</text>
+          </g>
+        </a>
+        <a class="isle" id="link-games" href="#game-seas" data-slug="game-seas" aria-label="The Game Seas — Games" style="--n:4">
+          <g transform="translate(730 765) scale(1.05)">
+            <circle class="hit" r="106"/>
+            <ellipse class="focus-ring" rx="116" ry="84"/>
+            <g class="lift"><use href="#isle-games"/></g>
+          </g>
+          <g class="tag" transform="translate(730 855)">
+            <text class="t-name" text-anchor="middle">The Game Seas</text>
+            <text class="t-sub" text-anchor="middle" y="23">Games</text>
+          </g>
+          <g class="marker" transform="translate(663 704)">
+            <circle r="16"/><text y="4.5" text-anchor="middle">V</text>
+          </g>
+        </a>
+        <a class="isle" id="link-honors" href="#hall-of-honors" data-slug="hall-of-honors" aria-label="The Hall of Honors — Achievements &amp; certificates" style="--n:5">
+          <g transform="translate(915 700) scale(1.1)">
+            <circle class="hit" r="106"/>
+            <ellipse class="focus-ring" rx="116" ry="84"/>
+            <g class="lift"><use href="#isle-honors"/></g>
+          </g>
+          <g class="tag" transform="translate(915 792)">
+            <text class="t-name" text-anchor="middle">The Hall of Honors</text>
+            <text class="t-sub" text-anchor="middle" y="23">Achievements &amp; certificates</text>
+          </g>
+          <g class="marker" transform="translate(845 636)">
+            <circle r="16"/><text y="4.5" text-anchor="middle">VI</text>
+          </g>
+        </a>
+        <a class="isle" id="link-research" href="#research-guild" data-slug="research-guild" aria-label="The Research Guild — Research &amp; case studies" style="--n:6">
+          <g transform="translate(1050 335) scale(1.1)">
+            <circle class="hit" r="106"/>
+            <ellipse class="focus-ring" rx="116" ry="84"/>
+            <g class="lift"><use href="#isle-research"/></g>
+          </g>
+          <g class="tag" transform="translate(1050 427)">
+            <text class="t-name" text-anchor="middle">The Research Guild</text>
+            <text class="t-sub" text-anchor="middle" y="23">Research &amp; case studies</text>
+          </g>
+          <g class="marker" transform="translate(980 271)">
+            <circle r="16"/><text y="4.5" text-anchor="middle">VII</text>
+          </g>
+        </a>
+        <a class="isle" id="link-cove" href="#storytellers-cove" data-slug="storytellers-cove" aria-label="The Storyteller’s Cove — Blogs &amp; articles" style="--n:7">
+          <g transform="translate(1310 215) scale(1.1)">
+            <circle class="hit" r="106"/>
+            <ellipse class="focus-ring" rx="116" ry="84"/>
+            <g class="lift"><use href="#isle-cove"/></g>
+          </g>
+          <g class="tag" transform="translate(1310 309)">
+            <text class="t-name" text-anchor="middle">The Storyteller’s Cove</text>
+            <text class="t-sub" text-anchor="middle" y="23">Blogs &amp; articles</text>
+          </g>
+          <g class="marker" transform="translate(1240 151)">
+            <circle r="16"/><text y="4.5" text-anchor="middle">VIII</text>
+          </g>
+        </a>
+        <a class="isle" id="link-broadcast" href="#broadcast" data-slug="broadcast" aria-label="The Ship’s Broadcast — Videos &amp; playlists" style="--n:8">
+          <g transform="translate(1372 485) scale(1.1)">
+            <circle class="hit" r="106"/>
+            <ellipse class="focus-ring" rx="116" ry="84"/>
+            <g class="lift"><use href="#isle-broadcast"/></g>
+          </g>
+          <g class="tag" transform="translate(1372 577)">
+            <text class="t-name" text-anchor="middle">The Ship’s Broadcast</text>
+            <text class="t-sub" text-anchor="middle" y="23">Videos &amp; playlists</text>
+          </g>
+          <g class="marker" transform="translate(1302 421)">
+            <circle r="16"/><text y="4.5" text-anchor="middle">IX</text>
+          </g>
+        </a>
+        <a class="isle" id="link-dossier" href="#dossier" data-slug="dossier" aria-label="The Captain’s Dossier — CV &amp; professional profile" style="--n:9">
+          <g transform="translate(1205 690) scale(1.1)">
+            <circle class="hit" r="106"/>
+            <ellipse class="focus-ring" rx="116" ry="84"/>
+            <g class="lift"><use href="#isle-dossier"/></g>
+          </g>
+          <g class="tag" transform="translate(1205 782)">
+            <text class="t-name" text-anchor="middle">The Captain’s Dossier</text>
+            <text class="t-sub" text-anchor="middle" y="23">CV &amp; professional profile</text>
+          </g>
+          <g class="marker" transform="translate(1135 626)">
+            <circle r="16"/><text y="4.5" text-anchor="middle">X</text>
+          </g>
+        </a>
+        <a class="isle" id="link-message" href="#message" data-slug="message" aria-label="Send a Message — Contact" style="--n:10">
+          <g transform="translate(1440 850) scale(1.0)">
+            <circle class="hit" r="106"/>
+            <ellipse class="focus-ring" rx="116" ry="84"/>
+            <g class="lift"><use href="#isle-message"/></g>
+          </g>
+          <g class="tag" transform="translate(1440 916)">
+            <text class="t-name" text-anchor="middle">Send a Message</text>
+            <text class="t-sub" text-anchor="middle" y="23">Contact</text>
+          </g>
+          <g class="marker" transform="translate(1376 792)">
+            <circle r="16"/><text y="4.5" text-anchor="middle">XI</text>
+          </g>
+        </a>
+      </svg>
+    </div>
+    <p class="map-hint">Select an island to explore &middot; or open the <button type="button" class="linkish" data-action="voyage">Voyage list</button></p>
+
+    <!-- ================= SAILING ORDERS: same destinations as the map; inline on small screens, a drawer on large ones ================= -->
+    <nav class="orders" id="orders" aria-labelledby="orders-title">
+      <div class="orders-head">
+        <h2 id="orders-title">Sailing Orders</h2>
+        <button type="button" class="orders-close" data-action="voyage" aria-label="Close the voyage list">&times;</button>
+      </div>
+      <p class="orders-lead">Eleven destinations, one dotted route. Start at the beginning or sail anywhere.</p>
+      <ol class="orders-list">
+        <li><a class="order" href="#captains-log" data-slug="captains-log">
+          <svg class="order-ico" viewBox="-118 -88 236 180" aria-hidden="true" focusable="false"><use href="#isle-log"/></svg>
+          <span class="order-txt"><span class="order-num">I</span><strong>Captain’s Log</strong><small>About me</small></span>
+        </a></li>
+        <li><a class="order" href="#arsenal" data-slug="arsenal">
+          <svg class="order-ico" viewBox="-118 -88 236 180" aria-hidden="true" focusable="false"><use href="#isle-arsenal"/></svg>
+          <span class="order-txt"><span class="order-num">II</span><strong>The Arsenal</strong><small>Languages, frameworks &amp; tools</small></span>
+        </a></li>
+        <li><a class="order" href="#arena" data-slug="arena">
+          <svg class="order-ico" viewBox="-118 -88 236 180" aria-hidden="true" focusable="false"><use href="#isle-arena"/></svg>
+          <span class="order-txt"><span class="order-num">III</span><strong>The Challenge Arena</strong><small>Competitive programming</small></span>
+        </a></li>
+        <li><a class="order" href="#treasure-islands" data-slug="treasure-islands">
+          <svg class="order-ico" viewBox="-118 -88 236 180" aria-hidden="true" focusable="false"><use href="#isle-treasure"/></svg>
+          <span class="order-txt"><span class="order-num">IV</span><strong>Treasure Islands</strong><small>Software &amp; hardware projects</small></span>
+        </a></li>
+        <li><a class="order" href="#game-seas" data-slug="game-seas">
+          <svg class="order-ico" viewBox="-118 -88 236 180" aria-hidden="true" focusable="false"><use href="#isle-games"/></svg>
+          <span class="order-txt"><span class="order-num">V</span><strong>The Game Seas</strong><small>Games</small></span>
+        </a></li>
+        <li><a class="order" href="#hall-of-honors" data-slug="hall-of-honors">
+          <svg class="order-ico" viewBox="-118 -88 236 180" aria-hidden="true" focusable="false"><use href="#isle-honors"/></svg>
+          <span class="order-txt"><span class="order-num">VI</span><strong>The Hall of Honors</strong><small>Achievements &amp; certificates</small></span>
+        </a></li>
+        <li><a class="order" href="#research-guild" data-slug="research-guild">
+          <svg class="order-ico" viewBox="-118 -88 236 180" aria-hidden="true" focusable="false"><use href="#isle-research"/></svg>
+          <span class="order-txt"><span class="order-num">VII</span><strong>The Research Guild</strong><small>Research &amp; case studies</small></span>
+        </a></li>
+        <li><a class="order" href="#storytellers-cove" data-slug="storytellers-cove">
+          <svg class="order-ico" viewBox="-118 -88 236 180" aria-hidden="true" focusable="false"><use href="#isle-cove"/></svg>
+          <span class="order-txt"><span class="order-num">VIII</span><strong>The Storyteller’s Cove</strong><small>Blogs &amp; articles</small></span>
+        </a></li>
+        <li><a class="order" href="#broadcast" data-slug="broadcast">
+          <svg class="order-ico" viewBox="-118 -88 236 180" aria-hidden="true" focusable="false"><use href="#isle-broadcast"/></svg>
+          <span class="order-txt"><span class="order-num">IX</span><strong>The Ship’s Broadcast</strong><small>Videos &amp; playlists</small></span>
+        </a></li>
+        <li><a class="order" href="#dossier" data-slug="dossier">
+          <svg class="order-ico" viewBox="-118 -88 236 180" aria-hidden="true" focusable="false"><use href="#isle-dossier"/></svg>
+          <span class="order-txt"><span class="order-num">X</span><strong>The Captain’s Dossier</strong><small>CV &amp; professional profile</small></span>
+        </a></li>
+        <li><a class="order" href="#message" data-slug="message">
+          <svg class="order-ico" viewBox="-118 -88 236 180" aria-hidden="true" focusable="false"><use href="#isle-message"/></svg>
+          <span class="order-txt"><span class="order-num">XI</span><strong>Send a Message</strong><small>Contact</small></span>
+        </a></li>
+      </ol>
+      <div class="orders-quick">
+        <a class="btn gold" id="quick-cv" href="#dossier">Captain&rsquo;s Dossier &mdash; CV</a>
+        <a class="btn" id="quick-github" href="https://github.com/Shiva-Prasad-Sarkar" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" id="quick-linkedin" href="https://linkedin.com/in/shiva-prasad-sarkar-4700ab227/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <label class="calm"><input type="checkbox" id="calm-toggle" /> <span>Still waters &mdash; reduce motion</span></label>
+    </nav>
+  </main>
+
+  <!-- ================= JOURNAL: one chapter at a time, filled by pirate.js ================= -->
+  <section class="journal" id="journal" role="region" aria-label="Chapter" hidden></section>
+
+  <div class="veil" aria-hidden="true"></div>
+  <button type="button" class="skip-intro" id="skip-intro">Skip intro <kbd>Esc</kbd></button>
+
+  <noscript>
+    <div class="nojs">
+      <h2>The Lost Developer&rsquo;s World needs JavaScript</h2>
+      <p>The treasure map reads its content from the portfolio page. Without scripts you can still read everything on the
+         <a href="batman.html">Dark Knight portfolio</a>, or <a href="index.html">return to the gateway</a>.</p>
+    </div>
+  </noscript>
+
+  <script src="universe/universe.js" data-universe="pirate" data-switcher="none"></script>
+  <script src="pirate/pirate-data.js"></script>
+  <script src="pirate/pirate.js"></script>
+</body>
+</html>
