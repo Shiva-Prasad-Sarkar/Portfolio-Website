@@ -519,7 +519,7 @@
   /* ================================================================ INTRO */
   var introTimer = 0;
   function startIntro() {
-    if (calm() || window.location.hash || store('intro') === '1') { html.classList.remove('intro-play'); return; }   // the <head> script may have started it early
+    if (calm() || window.location.hash || store('intro') === '1') return;
     store('intro', '1');
     html.classList.add('intro-play');
     introTimer = window.setTimeout(endIntro, 5200);
@@ -577,23 +577,6 @@
     ship.raf = ship.running ? window.requestAnimationFrame(shipFrame) : 0;
   }
   var mapWrap = $('#map-wrap');
-  // Small screens: the map keeps a readable size inside a frame that scrolls sideways (see .map-pan in pirate.css); large screens ignore the frame.
-  if (mapWrap && mapWrap.parentNode) {
-    var pan = document.createElement('div');
-    pan.className = 'map-pan'; pan.id = 'map-pan';
-    mapWrap.parentNode.insertBefore(pan, mapWrap); pan.appendChild(mapWrap);
-    var panTip = document.createElement('p');
-    panTip.className = 'map-pan-hint'; panTip.textContent = 'Drag the map sideways · tap an island';
-    pan.parentNode.insertBefore(panTip, pan.nextSibling);
-    var dragged = false;
-    var lastW = -1;
-    var centerMap = function () {                       // only when the WIDTH changes: phones fire resize whenever the address bar slides in or out
-      if (dragged || pan.clientWidth === lastW) return;
-      lastW = pan.clientWidth; pan.scrollLeft = Math.max(0, (pan.scrollWidth - pan.clientWidth) / 2);
-    };
-    ['touchstart', 'mousedown', 'wheel'].forEach(function (ev) { pan.addEventListener(ev, function () { dragged = true; }, { passive: true }); });
-    centerMap(); window.addEventListener('resize', centerMap);
-  }
   function mapVisible() { return !!(mapWrap && mapWrap.offsetParent !== null); }
   function shipStart() {
     if (!routeEl || !shipEl || ship.running || calm() || isOpen || !mapVisible() || !ship.len) return;

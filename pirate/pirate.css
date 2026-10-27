@@ -381,20 +381,6 @@ html.intro-play .map-hint { animation: fade-in 1s ease 4s both; }
   .orders { margin-top: 6px; }
   .o-ship { --ship-w: 84px; }
 }
-/* Small screens keep the treasure map too: at a readable size, in a frame you drag sideways (tap an island to open it).
-   pirate.js wraps #map-wrap in .map-pan and centres it; the Sailing orders list stays below as the alternative. */
-.map-pan { overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scrollbar-width: none; padding: 2px 0 6px; }
-.map-pan::-webkit-scrollbar { display: none; }
-.map-pan-hint { margin: 0 12px 6px; text-align: center; font: italic 400 .95rem var(--f-note); color: #cfe9e3; text-shadow: 0 1px 6px #000; }
-@keyframes unfurl-flat { from { clip-path: inset(0 50% 0 50%); opacity: .5; } to { clip-path: inset(0 0 0 0); opacity: 1; } }
-@media (max-width: 899px), (max-height: 559px) {
-  .map-wrap { display: block; flex: none; width: 920px; margin: 0; aspect-ratio: 16 / 10; }
-  html.intro-play .map-wrap { animation-name: unfurl-flat; }   /* no scale on phones: the zoom made the map (and everything under it) shift while it opened */
-}
-@media (min-width: 900px) and (min-height: 560px) {
-  .map-pan { display: contents; }
-  .map-pan-hint { display: none; }
-}
 @media (max-width: 899px) {
   :root { --band: 120px; }
   .o-moon { display: none; }
