@@ -19,7 +19,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&amp;family=Cinzel:wght@500;600;700&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=IM+Fell+English:ital@0;1&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="pirate/pirate.css" />
-  <script>document.documentElement.className = 'js';</script>
+  <script>
+    // Start the intro BEFORE the first paint (same conditions as startIntro() in pirate/pirate.js): otherwise the finished map
+    // flashes for a moment and is then reset to its hidden start state - a visible "blink".
+    (function () {
+      var d = document.documentElement; d.className = 'js';
+      try {
+        var s = window.sessionStorage;
+        if (!window.location.hash && s.getItem('spsPirate:intro') !== '1' && s.getItem('spsPirate:calm') !== '1' &&
+            !window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro-play');
+      } catch (e) { /* storage blocked: the script in pirate.js decides */ }
+    })();
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#stage">Skip to the map</a>

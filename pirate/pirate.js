@@ -519,7 +519,7 @@
   /* ================================================================ INTRO */
   var introTimer = 0;
   function startIntro() {
-    if (calm() || window.location.hash || store('intro') === '1') return;
+    if (calm() || window.location.hash || store('intro') === '1') { html.classList.remove('intro-play'); return; }   // the <head> script may have started it early
     store('intro', '1');
     html.classList.add('intro-play');
     introTimer = window.setTimeout(endIntro, 5200);
