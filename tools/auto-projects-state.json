@@ -1,0 +1,218 @@
+{
+  "added": {
+    "1248724023": {
+      "added_on": "2026-10-27",
+      "code": "https://github.com/Shiva-Prasad-Sarkar/Dataset-De-identification",
+      "created_at": "2026-05-25T01:49:57Z",
+      "demo": "",
+      "desc": "A lightweight Python script that removes personally identifiable information (PII) from survey datasets",
+      "fp": "f2287b00ef39",
+      "image": "images/projects/gh-dataset-de-identification.jpg",
+      "name": "Dataset-De-identification",
+      "score": 7,
+      "title": "Survey De-identification Tool",
+      "why": [
+        "+2 detailed description",
+        "+2 README 429 words",
+        "+2 README sections: configuration, install, project structure, quick start",
+        "+1 project word \"script\""
+      ]
+    },
+    "1360050103": {
+      "added_on": "2026-10-27",
+      "code": "https://github.com/Shiva-Prasad-Sarkar/pet-segmentation-classification",
+      "created_at": "2026-09-07T09:51:18Z",
+      "demo": "",
+      "desc": "A PyTorch implementation for joint binary pet segmentation and 37-breed classification on the Oxford-IIIT Pet dataset using U-Net and Attention U-Net architectures.",
+      "fp": "f5a6407a8f6e",
+      "image": "images/projects/gh-pet-segmentation-classification.jpg",
+      "name": "pet-segmentation-classification",
+      "score": 8,
+      "title": "Pet Segmentation Classification",
+      "why": [
+        "+2 detailed description",
+        "+2 README 2638 words",
+        "+2 README sections: dataset, model, results",
+        "+1 README says \"this project/app/tool\"",
+        "+1 project word \"Classification\""
+      ]
+    },
+    "1360055600": {
+      "added_on": "2026-10-27",
+      "code": "https://github.com/Shiva-Prasad-Sarkar/metadata-journaling",
+      "created_at": "2026-09-07T09:56:39Z",
+      "demo": "",
+      "desc": "Metadata-journaled virtual filesystem with consistency validation and crash recovery — CSE321 Operating Systems project.",
+      "fp": "90568615a9a6",
+      "image": "images/projects/gh-metadata-journaling.jpg",
+      "name": "metadata-journaling",
+      "score": 6,
+      "title": "Metadata Journaling Filesystem (CSE321 Project)",
+      "why": [
+        "+2 detailed description",
+        "+1 README 237 words",
+        "+1 README sections: features, project structure",
+        "+1 README says \"this project/app/tool\"",
+        "+1 project word \"filesystem\""
+      ]
+    }
+  },
+  "aliases": {
+    "cse260-projects": 992922776,
+    "games-and-projects": 813159748,
+    "math-lab-project": null,
+    "microprocessor-": 1067587116,
+    "ml-project": 1067589047,
+    "space_shooter_opengl": 977323742
+  },
+  "checked": {
+    "1093893458": {
+      "fp": "c920a5f94262",
+      "name": "Arduino",
+      "score": -3,
+      "verdict": "skipped",
+      "why": [
+        "+2 detailed description",
+        "-1 no README",
+        "-4 notes/practice/collection wording \"variety of\""
+      ]
+    },
+    "1355395853": {
+      "fp": "013a332d12d7",
+      "name": "Humanitarian-Category-Classification-of-Disaster-Tweets",
+      "score": 1,
+      "verdict": "close",
+      "why": [
+        "+1 description",
+        "-1 no README",
+        "+1 project word \"Classification\""
+      ]
+    },
+    "732539039": {
+      "fp": "5a979970abd8",
+      "name": "CSE---LAB",
+      "score": -2,
+      "verdict": "skipped",
+      "why": [
+        "+2 detailed description",
+        "-4 notes/practice/collection wording \"practice\""
+      ]
+    },
+    "834513879": {
+      "fp": "87661823d7f4",
+      "name": "Data-Structure",
+      "score": 0,
+      "verdict": "skipped",
+      "why": [
+        "+2 detailed description",
+        "+1 README 138 words",
+        "+1 README sections: how to use",
+        "-4 notes/practice/collection wording \"practicing\""
+      ]
+    },
+    "842975510": {
+      "fp": "8caff46256a3",
+      "name": "MODULES-LIBRARIES",
+      "score": -3,
+      "verdict": "skipped",
+      "why": [
+        "+2 detailed description",
+        "-1 no README",
+        "-4 notes/practice/collection wording \"I saved\""
+      ]
+    },
+    "842978013": {
+      "fp": "528a8396d295",
+      "name": "Problem-solving_Practise-notes",
+      "score": -3,
+      "verdict": "skipped",
+      "why": [
+        "+2 detailed description",
+        "-1 no README",
+        "-4 notes/practice/collection wording \"Notes\""
+      ]
+    },
+    "845461952": {
+      "fp": "ff4c9b3e9326",
+      "name": "Integral-Calculus-and-Differential-Equations",
+      "score": -2,
+      "verdict": "skipped",
+      "why": [
+        "+2 detailed description",
+        "-4 notes/practice/collection wording \"assignments\""
+      ]
+    },
+    "872297296": {
+      "fp": "292e129dc68f",
+      "name": "One-Shot-Projects",
+      "score": -6,
+      "verdict": "skipped",
+      "why": [
+        "+1 description",
+        "-1 no README",
+        "-4 notes/practice/collection wording \"A collection of\"",
+        "-2 name sounds like a collection"
+      ]
+    },
+    "875846623": {
+      "fp": "5812c026d162",
+      "name": "Online-Judges",
+      "score": -4,
+      "verdict": "skipped",
+      "why": [
+        "+1 description",
+        "-1 no README",
+        "-4 notes/practice/collection wording \"practises\""
+      ]
+    },
+    "921166413": {
+      "fp": "290b29e55c8d",
+      "name": "PyGames",
+      "score": 1,
+      "verdict": "close",
+      "why": [
+        "+2 detailed description",
+        "+1 README 127 words",
+        "+2 README sections: install, installation, prerequisites, running",
+        "-4 notes/practice/collection wording \"A small collection of\""
+      ]
+    },
+    "944702372": {
+      "fp": "86e0ffa0db5d",
+      "name": "CSE-423_Computer-Graphics",
+      "score": -2,
+      "verdict": "skipped",
+      "why": [
+        "+2 detailed description",
+        "-1 no README",
+        "+1 topics",
+        "-4 notes/practice/collection wording \"Assignments\""
+      ]
+    },
+    "968059095": {
+      "fp": "b5aa5d5814de",
+      "name": "OpenGL-Projects",
+      "score": -6,
+      "verdict": "skipped",
+      "why": [
+        "+1 description",
+        "-1 README only 10 words",
+        "-4 notes/practice/collection wording \"Here I stored\"",
+        "-2 name sounds like a collection"
+      ]
+    },
+    "997097563": {
+      "fp": "82177553d0dc",
+      "name": "Java_Learning",
+      "score": -3,
+      "verdict": "skipped",
+      "why": [
+        "+1 description",
+        "-1 README only 2 words",
+        "+1 topics",
+        "-4 notes/practice/collection wording \"notes\""
+      ]
+    }
+  },
+  "last_run": "2026-10-27T02:20:05+00:00"
+}

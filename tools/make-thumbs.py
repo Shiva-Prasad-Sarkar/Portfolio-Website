@@ -18,6 +18,7 @@ Originals are never modified; if a WebP is missing the pages fall back to the or
     python tools/make-thumbs.py          # run from the repository root
 
 Add a project, or edit batman.html -> run this again -> commit pirate/thumbs/, batman/img/ and pirate/batman-snapshot.js.
+(Cards added by tools/auto-projects.py already come with their WebP copies and a fresh snapshot.)
 The slug rule here MUST match thumbSlug() in pirate/pirate-data.js.
 """
 import json
@@ -41,6 +42,22 @@ EXTRA = ['sps.png']  # profile portrait: hero of the Batman page, Captain's Log 
 def slug(path):
     base = os.path.splitext(os.path.basename(path))[0].lower()
     return re.sub(r'[^a-z0-9]+', '-', base).strip('-')
+
+
+def write_webps(src, name):
+    """Write the WebP copies of one image (one per OUTPUTS folder) and return their sizes in bytes."""
+    sizes = []
+    with Image.open(src) as im0:
+        im0 = im0.convert('RGBA' if im0.mode in ('RGBA', 'LA', 'P') else 'RGB')
+        for folder, max_w, quality in OUTPUTS:
+            os.makedirs(folder, exist_ok=True)
+            im = im0
+            if im.width > max_w:
+                im = im.resize((max_w, round(im.height * max_w / im.width)), Image.LANCZOS)
+            dst = os.path.join(folder, name + '.webp')
+            im.save(dst, 'WEBP', quality=quality, method=6)
+            sizes.append(os.path.getsize(dst))
+    return sizes
 
 
 def write_snapshot(html):
@@ -83,17 +100,9 @@ def main():
         if name in seen and seen[name] != rel:
             sys.exit(f'slug collision: {rel} and {seen[name]} -> {name}')
         seen[name] = rel
-        sizes = []
-        with Image.open(src) as im0:
-            im0 = im0.convert('RGBA' if im0.mode in ('RGBA', 'LA', 'P') else 'RGB')
-            for i, (folder, max_w, quality) in enumerate(OUTPUTS):
-                im = im0
-                if im.width > max_w:
-                    im = im.resize((max_w, round(im.height * max_w / im.width)), Image.LANCZOS)
-                dst = os.path.join(folder, name + '.webp')
-                im.save(dst, 'WEBP', quality=quality, method=6)
-                sizes.append(os.path.getsize(dst))
-                total_out[i] += sizes[-1]
+        sizes = write_webps(src, name)
+        for i, size in enumerate(sizes):
+            total_out[i] += size
         orig = os.path.getsize(src)
         total_in += orig
         print(f'  {rel:<28}{orig / 1024:8.0f}KB' + ''.join(f'{s / 1024:16.0f}KB' for s in sizes))

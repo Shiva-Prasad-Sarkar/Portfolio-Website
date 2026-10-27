@@ -27,6 +27,7 @@ under the GitHub Pages project path (`/Portfolio-Website/`) and on any other bas
 - `universe/switcher.css` - Floating "Switch universe" button injected into the Batman pages.
 - `universe/og-gateway.png` - Social preview image of the gateway; `og-image.png` - social preview of the Batman page.
 - `tools/make-thumbs.py` - Regenerates `pirate/thumbs/`, `batman/img/` and `pirate/batman-snapshot.js` (needs `pip install pillow`).
+- `tools/auto-projects.py`, `tools/auto-projects-state.json`, `images/projects/` - Weekly auto-added project cards (see below).
 - `pbl.html`, `case422.html` - Research write-ups linked from both worlds.
 - `test.html` - Test page to verify CSS/JS loading (legacy).
 - Image files (`*.png`, `*.jpg`, etc.) - Portfolio images
@@ -80,6 +81,20 @@ It regenerates the optimised images **and** `pirate/batman-snapshot.js`. On GitH
 always reads the live `batman.html`, and the snapshot is never downloaded. The snapshot exists for one case only: a page
 **opened straight from disk** (double-clicking `index.html` / `pirate.html`), where browsers refuse to `fetch()` other files and the
 pirate chapters would otherwise be empty. If you edit `batman.html` and skip the tool, a disk-opened pirate world shows the old text.
+
+## New GitHub projects are added automatically
+Every Sunday a GitHub Action (`.github/workflows/auto-projects.yml`, kept on the `main` branch because GitHub only runs schedules
+from the default branch) runs `tools/auto-projects.py` on this branch and pushes the result here. The script looks at every public
+repo, decides whether it is a real project (live demo, description, README length and sections such as Features / Installation /
+Usage, screenshots, topics - and against: notes, practice, lab work, "a collection of ..."), and adds the winners as cards with a
+picture (the README's first screenshot, else a title card in the site's colours). The pirate world gets them automatically.
+
+- The cards live between the `auto-projects` marker comments in `#projects-grid` (after the three featured cards) and are
+  rewritten every run, newest first. Move the markers to move the block; move a card out of the block to hand-edit it.
+- A repo already linked anywhere else on the page is never added twice (renamed repos and demo URLs are recognised).
+- Repo topics override the score: `portfolio` = always add, `not-portfolio` = never show (also removes an existing card).
+- Close calls are not added; they are listed in the run summary (Actions tab -> the run -> Summary).
+- Try it without changing anything: `python tools/auto-projects.py --dry-run`, or Actions -> Run workflow -> tick "dry run".
 
 ## Run locally
 Double-click `index.html` - everything works from disk. Or serve the folder, which also reads the live `batman.html`:
