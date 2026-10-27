@@ -586,7 +586,11 @@
     panTip.className = 'map-pan-hint'; panTip.textContent = 'Drag the map sideways · tap an island';
     pan.parentNode.insertBefore(panTip, pan.nextSibling);
     var dragged = false;
-    var centerMap = function () { if (!dragged) pan.scrollLeft = Math.max(0, (pan.scrollWidth - pan.clientWidth) / 2); };
+    var lastW = -1;
+    var centerMap = function () {                       // only when the WIDTH changes: phones fire resize whenever the address bar slides in or out
+      if (dragged || pan.clientWidth === lastW) return;
+      lastW = pan.clientWidth; pan.scrollLeft = Math.max(0, (pan.scrollWidth - pan.clientWidth) / 2);
+    };
     ['touchstart', 'mousedown', 'wheel'].forEach(function (ev) { pan.addEventListener(ev, function () { dragged = true; }, { passive: true }); });
     centerMap(); window.addEventListener('resize', centerMap);
   }
