@@ -1,0 +1,57 @@
+# Every week: look for new projects on GitHub and add them to the portfolio (see tools/auto-projects.py on gh-pages).
+#
+# This file lives on the default branch (main) because GitHub only runs scheduled workflows from there. The site itself
+# is the gh-pages branch, so the job checks that out, runs the script and pushes what changed back to gh-pages.
+# Run it by hand: Actions tab -> "Auto-add GitHub projects" -> Run workflow (tick "dry run" to only see the report).
+name: Auto-add GitHub projects
+
+on:
+  schedule:
+    - cron: '0 3 * * 0'   # Sundays 03:00 UTC = 09:00 in Bangladesh (GitHub may start it a little late)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run - only report, change nothing'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-projects
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install pillow
+
+      - name: Check GitHub for new projects
+        id: scan
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python tools/auto-projects.py ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Commit and push to gh-pages
+        if: ${{ !inputs.dry_run }}
+        env:
+          MESSAGE: ${{ steps.scan.outputs.message }}
+        run: |
+          git add -A
+          if git diff --cached --quiet; then echo "Nothing changed."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "${MESSAGE:-Weekly project check}"
+          git pull -q --rebase origin gh-pages
+          git push origin HEAD:gh-pages
